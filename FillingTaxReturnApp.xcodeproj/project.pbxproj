@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		950499192605DF5C005CF8BF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950499182605DF5C005CF8BF /* CameraViewController.swift */; };
 		9546112E260580FE004D1BBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546112D260580FE004D1BBC /* AppDelegate.swift */; };
 		95461130260580FE004D1BBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546112F260580FE004D1BBC /* SceneDelegate.swift */; };
 		95461132260580FE004D1BBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95461131260580FE004D1BBC /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		950499182605DF5C005CF8BF /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		9546112A260580FE004D1BBC /* FillingTaxReturnApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FillingTaxReturnApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9546112D260580FE004D1BBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9546112F260580FE004D1BBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9504991D2605E0E4005CF8BF /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		9504991E2605E0F4005CF8BF /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				950499182605DF5C005CF8BF /* CameraViewController.swift */,
+				95461131260580FE004D1BBC /* ViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		9504991F2605E106005CF8BF /* data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
+		95248D012605E19000C7331D /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				95461133260580FE004D1BBC /* Main.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
 		95461121260580FE004D1BBC = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +132,12 @@
 		9546112C260580FE004D1BBC /* FillingTaxReturnApp */ = {
 			isa = PBXGroup;
 			children = (
-				9546112D260580FE004D1BBC /* AppDelegate.swift */,
+				95248D012605E19000C7331D /* storyboard */,
 				9546112F260580FE004D1BBC /* SceneDelegate.swift */,
-				95461131260580FE004D1BBC /* ViewController.swift */,
-				95461133260580FE004D1BBC /* Main.storyboard */,
+				9546112D260580FE004D1BBC /* AppDelegate.swift */,
+				9504991F2605E106005CF8BF /* data */,
+				9504991E2605E0F4005CF8BF /* controller */,
+				9504991D2605E0E4005CF8BF /* model */,
 				9546113626058100004D1BBC /* Assets.xcassets */,
 				9546113826058100004D1BBC /* LaunchScreen.storyboard */,
 				9546113B26058100004D1BBC /* Info.plist */,
@@ -259,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95461132260580FE004D1BBC /* ViewController.swift in Sources */,
+				950499192605DF5C005CF8BF /* CameraViewController.swift in Sources */,
 				9546112E260580FE004D1BBC /* AppDelegate.swift in Sources */,
 				95461130260580FE004D1BBC /* SceneDelegate.swift in Sources */,
 			);
@@ -439,6 +475,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U3XNGYYQD3;
 				INFOPLIST_FILE = FillingTaxReturnApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,7 +483,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanukisdev.FillingTaxReturnApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -458,6 +495,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U3XNGYYQD3;
 				INFOPLIST_FILE = FillingTaxReturnApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,7 +503,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tanukisdev.FillingTaxReturnApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
