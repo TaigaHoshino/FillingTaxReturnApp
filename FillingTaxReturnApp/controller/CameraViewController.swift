@@ -60,7 +60,16 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate{
             // Data型をUIImageオブジェクトに変換
             let uiImage = UIImage(data: imageData)
             // 写真ライブラリに画像を保存
-            UIImageWriteToSavedPhotosAlbum(uiImage!, nil,nil,nil)
+//            UIImageWriteToSavedPhotosAlbum(uiImage!, nil,nil,nil)
+            
+            let date = Date()
+            let targetDirectory: String? = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: "receipt\(DatetimeUtil.dateToSimpleDateTime(date: date))")
+            if let targetDirectory = targetDirectory {
+                
+                if let uiImage = uiImage{
+                    ReadAndWriteFileUtil.saveImage(image: uiImage, path: targetDirectory)
+                }
+            }
         }
     }
 }
