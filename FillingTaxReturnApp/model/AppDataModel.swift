@@ -11,8 +11,25 @@ import CoreData
 class AppDataModel {
     private static var persistentContainer: NSPersistentCloudKitContainer! = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
 
-    func save(){
+    static func save(){
         AppDataModel.persistentContainer.saveContext()
+    }
+    
+    static func deleteReceipt(receipt: Receipt){
+        let context = persistentContainer.viewContext
+        context.delete(receipt)
+    }
+    
+    static func getReceipts() -> [Receipt]{
+        let context = persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Receipt")
+        do {
+            let receipts = try context.fetch(request) as! [Receipt]
+            return receipts
+        }
+        catch{
+            fatalError()
+        }
     }
     
     static func newReceipt() -> Receipt{
@@ -20,6 +37,7 @@ class AppDataModel {
         let receipt = NSEntityDescription.insertNewObject(forEntityName: "Receipt", into: context) as! Receipt
         return receipt
     }
+    
 }
 
 extension NSPersistentCloudKitContainer{

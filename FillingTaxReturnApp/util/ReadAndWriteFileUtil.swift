@@ -11,13 +11,13 @@ import UIKit
 class ReadAndWriteFileUtil {
     static func getImageInDocumentsDirectory(filename: String) -> String?{
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0] as NSURL
-        let fileURL = documentsURL.appendingPathComponent("\(filename).png")
+        let fileURL = documentsURL.appendingPathComponent(filename)
         return fileURL?.path
     }
     
     static func saveImage (image: UIImage, path: String ) -> Bool {
         do {
-            try image.pngData()?.write(to: URL(fileURLWithPath: path))
+            try image.jpegData(compressionQuality: 1.0)!.write(to: URL(fileURLWithPath: "\(path).jpg"))
         } catch {
             print(error)
             return false
@@ -26,9 +26,9 @@ class ReadAndWriteFileUtil {
     }
     
     static func loadFileFromPath(path: String) -> UIImage?{
-        let image = UIImage(contentsOfFile: path)
+        let image = UIImage(contentsOfFile: "\(path).jpg")
         if image == nil{
-            print("imageLoadFailed: \(path)")
+            print("imageLoadFailed: \(path).jpg")
         }
         return image
     }
@@ -36,7 +36,7 @@ class ReadAndWriteFileUtil {
     static func deleteFileFromPath(path: String) -> Bool{
         let fileManager = FileManager.default
         do{
-            try fileManager.removeItem(atPath: path)
+            try fileManager.removeItem(atPath: "\(path).jpg")
         }
         catch{
             print(error)

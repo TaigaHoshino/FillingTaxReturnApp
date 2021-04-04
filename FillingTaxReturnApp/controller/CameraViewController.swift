@@ -63,11 +63,17 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate{
 //            UIImageWriteToSavedPhotosAlbum(uiImage!, nil,nil,nil)
             
             let date = Date()
-            let targetDirectory: String? = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: "receipt\(DatetimeUtil.dateToSimpleDateTime(date: date))")
+            let fileName = "receipt\(DatetimeUtil.dateToSimpleDateTime(date: date))"
+            let targetDirectory: String? = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: fileName)
             if let targetDirectory = targetDirectory {
                 
                 if let uiImage = uiImage{
-                    ReadAndWriteFileUtil.saveImage(image: uiImage, path: targetDirectory)
+                    if(ReadAndWriteFileUtil.saveImage(image: uiImage, path: targetDirectory)){
+                        let receipt = AppDataModel.newReceipt()
+                        receipt.createdAt = date
+                        receipt.imageName = fileName
+                        AppDataModel.save()
+                    }
                 }
             }
         }
@@ -121,7 +127,8 @@ extension CameraViewController{
         // 指定したAVCaptureSessionでプレビューレイヤを初期化
         self.cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         // プレビューレイヤが、カメラのキャプチャーを縦横比を維持した状態で、表示するように設定
-        self.cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+//        self.cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        self.cameraPreviewLayer?.frame = CGRect(x:0, y:0, width:375, height: 525)
         // プレビューレイヤの表示の向きを設定
         self.cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
 
