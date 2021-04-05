@@ -28,7 +28,7 @@
                                 <rect key="frame" x="114" y="314" width="92" height="30"/>
                                 <state key="normal" title="レシート一覧"/>
                                 <connections>
-                                    <segue destination="vD2-nY-kLd" kind="presentation" id="9pO-WZ-NsE"/>
+                                    <segue destination="oiF-Kg-arS" kind="presentation" id="ZuR-Zi-1Ug"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -45,7 +45,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-303" y="296"/>
+            <point key="canvasLocation" x="-303.75" y="295.77464788732397"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="x7G-Qt-k8b">
@@ -80,36 +80,29 @@
             <point key="canvasLocation" x="1284" y="-357"/>
         </scene>
         <!--Receipt Collection View Controller-->
-        <scene sceneID="g7Z-FF-jMp">
+        <scene sceneID="pDJ-Ca-6tX">
             <objects>
-                <viewController id="vD2-nY-kLd" customClass="ReceiptCollectionViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cHo-7Z-SBz">
+                <collectionViewController id="oiF-Kg-arS" customClass="ReceiptCollectionViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="87h-wc-Idv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4OV-rN-4Pk">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3MR-Vu-nYf">
-                                    <size key="itemSize" width="144" height="213"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="9rk-iX-nov"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <connections>
-                        <outlet property="collectionView" destination="4OV-rN-4Pk" id="mlT-sL-jfm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u4s-2G-0ky" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wpk-s5-67k">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells/>
+                        <connections>
+                            <outlet property="dataSource" destination="oiF-Kg-arS" id="yFk-nQ-h9F"/>
+                            <outlet property="delegate" destination="oiF-Kg-arS" id="Rnl-Kt-hk4"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dag-n7-Vlj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282.5" y="300"/>
+            <point key="canvasLocation" x="1316" y="351"/>
         </scene>
     </scenes>
     <resources>

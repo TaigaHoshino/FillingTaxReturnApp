@@ -112,6 +112,8 @@ extension CameraViewController{
             let captureDeviceInput = try AVCaptureDeviceInput(device: currentDevice!)
             // 指定した入力をセッションに追加
             captureSession.addInput(captureDeviceInput)
+            
+            captureSession.sessionPreset = .photo
             // 出力データを受け取るオブジェクトの作成
             photoOutput = AVCapturePhotoOutput()
             // 出力ファイルのフォーマットを指定

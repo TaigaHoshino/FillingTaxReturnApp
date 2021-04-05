@@ -16,6 +16,14 @@ class ReceiptViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
     }
     
     override init(frame: CGRect) {
@@ -42,11 +50,11 @@ class ReceiptViewCell: UICollectionViewCell {
             let targetFile: String! = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: receipt.imageName!)
             let img = ReadAndWriteFileUtil.loadFileFromPath(path: targetFile)!.resize(withPercentage: 0.1)
             DispatchQueue.main.async {
-                self.uiReceiptImageView.image = img?.fixedOrientation()
+                self.uiReceiptImageView.image = img?.resize(size: self.frame.size)
                 self.createdAtText.text = DatetimeUtil.dateToFormattedDateTime(date: receipt.createdAt!)
+                self.uiRegisterImageView.image = UIImage(named: "baseline_check_circle_outline")
             }
         }
-        
         backgroundColor = .lightGray
         print("setupsell")
     }
