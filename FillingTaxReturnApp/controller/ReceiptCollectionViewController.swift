@@ -7,22 +7,25 @@
 
 import UIKit
 
-class ReceiptCollectionViewController: UICollectionViewController {
+class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSource {
     
     private var receipts: [Receipt] = AppDataModel.getReceipts()
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         receipts = AppDataModel.getReceipts()
         
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         collectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
         collectionView.register(UINib(nibName: "ReceiptViewCell", bundle: nil), forCellWithReuseIdentifier: "ReceiptViewCell")
         
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        layout.minimumInteritemSpacing = 8
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+//        collectionView.minimumInteritemSpacing = 8
         
         // Do any additional setup after loading the view.
     }
@@ -42,15 +45,15 @@ class ReceiptCollectionViewController: UICollectionViewController {
 
 extension ReceiptCollectionViewController{
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return receipts.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReceiptViewCell", for: indexPath)
         
         if let cell = cell as? ReceiptViewCell{
@@ -65,7 +68,7 @@ extension ReceiptCollectionViewController{
 extension ReceiptCollectionViewController: UICollectionViewDelegateFlowLayout {
     // [1]
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: cellWidth, height: cellWidth * 5/3)
+        return CGSize.init(width: cellWidth - 1, height: cellWidth * 5/3)
     }
 
     private var cellWidth: CGFloat {
