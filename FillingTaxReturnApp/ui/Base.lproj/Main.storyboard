@@ -98,29 +98,60 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wR0-EK-8Sh">
+                                <rect key="frame" x="264" y="492" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" image="trash.fill" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-hW-mFw">
+                                <rect key="frame" x="264" y="493" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <state key="normal" image="checkmark" catalog="system"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmR-S9-xxC">
-                                <rect key="frame" x="260" y="488" width="40" height="39.5"/>
+                                <rect key="frame" x="258" y="486.5" width="45" height="44.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="FU0-4G-hc5"/>
-                                    <constraint firstAttribute="width" constant="40" id="aQi-vn-yC1"/>
+                                    <constraint firstAttribute="width" constant="45" id="dok-Ug-DSf"/>
+                                    <constraint firstAttribute="height" constant="45" id="sef-Tf-vr3"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="gearshape.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="onSettingButtonClick:" destination="RhA-lj-kim" eventType="touchUpInside" id="pil-Pc-f7x"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="shP-LZ-Aah"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="shP-LZ-Aah" firstAttribute="bottom" secondItem="WmR-S9-xxC" secondAttribute="bottom" constant="20" id="JjK-ql-t0q"/>
                             <constraint firstItem="5yq-Am-cvN" firstAttribute="top" secondItem="shP-LZ-Aah" secondAttribute="top" id="Mrj-6o-bId"/>
                             <constraint firstItem="5yq-Am-cvN" firstAttribute="trailing" secondItem="shP-LZ-Aah" secondAttribute="trailing" id="UDA-TQ-bkt"/>
-                            <constraint firstItem="shP-LZ-Aah" firstAttribute="trailing" secondItem="WmR-S9-xxC" secondAttribute="trailing" constant="20" id="aaN-e2-w2Y"/>
+                            <constraint firstItem="shP-LZ-Aah" firstAttribute="trailing" secondItem="WmR-S9-xxC" secondAttribute="trailing" constant="17" id="hKm-gy-DFu"/>
                             <constraint firstItem="5yq-Am-cvN" firstAttribute="leading" secondItem="shP-LZ-Aah" secondAttribute="leading" id="ip7-5i-5h2"/>
                             <constraint firstAttribute="bottom" secondItem="5yq-Am-cvN" secondAttribute="bottom" id="opE-3G-Xh9"/>
+                            <constraint firstItem="shP-LZ-Aah" firstAttribute="bottom" secondItem="WmR-S9-xxC" secondAttribute="bottom" constant="16.5" id="qpF-61-EOc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Nft-Gn-gEU"/>
                     <connections>
+                        <outlet property="addButton" destination="YgK-hW-mFw" id="Ire-Ex-rKd"/>
                         <outlet property="collectionView" destination="5yq-Am-cvN" id="Uiy-MV-DBL"/>
+                        <outlet property="settingButton" destination="WmR-S9-xxC" id="sMS-aY-7l3"/>
+                        <outlet property="trashButton" destination="wR0-EK-8Sh" id="l59-Fn-FxF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ehg-hU-e8H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -129,9 +160,17 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

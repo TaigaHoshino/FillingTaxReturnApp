@@ -32,9 +32,27 @@ class AppDataModel {
         }
     }
     
+    static func getReceiptById(id: UUID) -> [Receipt]?{
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Receipt> = Receipt.fetchRequest()
+        let predicate = NSPredicate(format: "id = '\(id)'")
+        fetchRequest.predicate = predicate
+        var receipt: [Receipt]?
+        
+        do{
+            receipt = try context.fetch(fetchRequest)
+            
+        }
+        catch{
+            
+        }
+        return receipt
+    }
+    
     static func newReceipt() -> Receipt{
         let context = persistentContainer.viewContext
         let receipt = NSEntityDescription.insertNewObject(forEntityName: "Receipt", into: context) as! Receipt
+        receipt.id = UUID()
         return receipt
     }
     

@@ -17,6 +17,7 @@
 		9546113A26058100004D1BBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9546113826058100004D1BBC /* LaunchScreen.storyboard */; };
 		9546114526058100004D1BBC /* FillingTaxReturnAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546114426058100004D1BBC /* FillingTaxReturnAppTests.swift */; };
 		9546115026058100004D1BBC /* FillingTaxReturnAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546114F26058100004D1BBC /* FillingTaxReturnAppUITests.swift */; };
+		9561AC5B261E5E7200D8585D /* UIExtensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561AC5A261E5E7200D8585D /* UIExtensionUtil.swift */; };
 		958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9588239E2607F65E001996DA /* AppData.xcdatamodeld */; };
 		958823AA2607F7EC001996DA /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958823A82607F7EC001996DA /* Receipt+CoreDataClass.swift */; };
 		958823AB2607F7EC001996DA /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958823A92607F7EC001996DA /* Receipt+CoreDataProperties.swift */; };
@@ -62,6 +63,7 @@
 		9546114B26058100004D1BBC /* FillingTaxReturnAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FillingTaxReturnAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9546114F26058100004D1BBC /* FillingTaxReturnAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillingTaxReturnAppUITests.swift; sourceTree = "<group>"; };
 		9546115126058100004D1BBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9561AC5A261E5E7200D8585D /* UIExtensionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensionUtil.swift; sourceTree = "<group>"; };
 		9588239F2607F65E001996DA /* AppData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppData.xcdatamodel; sourceTree = "<group>"; };
 		958823A02607F65E001996DA /* ReceiptData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReceiptData.xcdatamodel; sourceTree = "<group>"; };
 		958823A82607F7EC001996DA /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				958823FA260AA719001996DA /* DatetimeUtil.swift */,
 				95882402260AA923001996DA /* ReadAndWriteFileUtil.swift */,
+				9561AC5A261E5E7200D8585D /* UIExtensionUtil.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				958823AA2607F7EC001996DA /* Receipt+CoreDataClass.swift in Sources */,
 				958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */,
 				958823AB2607F7EC001996DA /* Receipt+CoreDataProperties.swift in Sources */,
+				9561AC5B261E5E7200D8585D /* UIExtensionUtil.swift in Sources */,
 				958823F52609517B001996DA /* AppDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

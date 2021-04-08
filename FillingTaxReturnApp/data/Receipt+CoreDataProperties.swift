@@ -18,6 +18,7 @@ extension Receipt {
 
     @NSManaged public var createdAt: Date?
     @NSManaged public var imageName: String?
+    @NSManaged public var id: UUID?
 
 }
 

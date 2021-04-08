@@ -11,10 +11,16 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
     
     private var receipts: [Receipt] = AppDataModel.getReceipts()
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var trashButton: UIButton!
+    @IBOutlet weak var addButton: UIButton!
+    private var animator: UIViewPropertyAnimator!
+    private var isSettingButtonsShowed = false
+    private var didViewLoad = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         receipts = AppDataModel.getReceipts()
         
         collectionView.dataSource = self
@@ -29,7 +35,59 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
         
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        if didViewLoad == false{
+            buttonSetting()
+            didViewLoad = true
+        }
+    }
+    
+    
+    @IBAction func onSettingButtonClick(_ sender: Any){
+        
+        let visibleCells = collectionView.visibleCells
+        
+        settingButtonAnimation()
+    }
+    
+    private func buttonSetting(){
+        trashButton.center = settingButton.center
+        addButton.center = settingButton.center
+        trashButton.isHidden = true
+        addButton.isHidden = true
+        trashButton.tintColor = UIColor.white
+        addButton.tintColor = UIColor.white
+    }
+    
+    private func settingButtonAnimation(){
+        if isSettingButtonsShowed {
+            animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeOut){
+                self.trashButton.center.y += 100
+                self.addButton.center.y += 50
+                self.settingButton.transform = CGAffineTransform(rotationAngle: 0)
+            }
+            animator.addCompletion{ _ in
+                self.trashButton.isHidden = true
+                self.addButton.isHidden = true
+            }
+        }
+        else{
+            trashButton.isHidden = false
+            addButton.isHidden = false
+            animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeOut){
+                self.trashButton.center.y -= 100
+                self.addButton.center.y -= 50
+                self.settingButton.transform = CGAffineTransform(rotationAngle: CGFloat.pi/180*180)
+            }
+            
+        }
+        
+        isSettingButtonsShowed = !isSettingButtonsShowed
+        
+        animator.startAnimation()
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -58,7 +116,6 @@ extension ReceiptCollectionViewController{
         
         if let cell = cell as? ReceiptViewCell{
             cell.setupCell(receipt: receipts[indexPath.row])
-            cell.layer.cornerRadius = 10
         }
         
         return cell
@@ -76,8 +133,6 @@ extension ReceiptCollectionViewController: UICollectionViewDelegateFlowLayout {
         let interColumnSpace = CGFloat(8)
         let numColumns = CGFloat(2)
         let numInterColumnSpaces = numColumns - 1
-        
-        print(((availableWidth - interColumnSpace * numInterColumnSpaces) / numColumns).rounded(.down))
 
         return ((availableWidth - interColumnSpace * numInterColumnSpaces) / numColumns).rounded(.down)
     }

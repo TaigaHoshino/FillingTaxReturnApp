@@ -60,6 +60,11 @@
                 <constraint firstItem="eUL-5W-wWs" firstAttribute="centerY" secondItem="S7r-c4-SNz" secondAttribute="centerY" id="kTP-Hu-1Xy"/>
             </constraints>
             <size key="customSize" width="272" height="403"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="createdAtText" destination="GQ3-xo-ffo" id="prK-TN-kxn"/>
                 <outlet property="uiReceiptImageView" destination="Bdq-zK-6d2" id="6D8-XQ-Its"/>

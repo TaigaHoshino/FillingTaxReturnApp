@@ -56,7 +56,6 @@ class ReceiptViewCell: UICollectionViewCell {
             }
         }
         backgroundColor = .lightGray
-        print("setupsell")
     }
 
 
