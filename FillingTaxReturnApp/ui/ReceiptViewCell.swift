@@ -12,6 +12,10 @@ class ReceiptViewCell: UICollectionViewCell {
     @IBOutlet weak var createdAtText: UILabel!
     @IBOutlet weak var uiReceiptImageView: UIImageView!
     @IBOutlet weak var uiRegisterImageView: UIImageView!
+    @IBOutlet weak var uiCheckBoxView: UIImageView!
+    private var isSettingModeActive = false
+    private var isCellSelected = false
+    private var receipt: Receipt!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,9 +59,70 @@ class ReceiptViewCell: UICollectionViewCell {
                 self.uiRegisterImageView.image = UIImage(named: "baseline_check_circle_outline")
             }
         }
+        self.receipt = receipt
+        uiCheckBoxView.image = getEmptyImage()
+        isCellSelected = false
+        uiCheckBoxView.isHidden = true
+        
         backgroundColor = .lightGray
     }
-
+    
+    func setIsCellSelected(selected: Bool){
+        if selected {
+            isCellSelected = true
+            uiCheckBoxView.image = getCheckedImage()
+        }
+        else {
+            isCellSelected = false
+            uiCheckBoxView.image = getEmptyImage()
+        }
+    }
+    
+    func getIsCellSelected() -> Bool{
+        return isCellSelected
+    }
+    
+    func onSelect(){
+        
+        if(isSettingModeActive == false){
+            return
+        }
+        
+        if isCellSelected == false {
+            uiCheckBoxView.image = getCheckedImage()
+        }
+        else{
+            uiCheckBoxView.image = getEmptyImage()
+        }
+        
+        isCellSelected = !isCellSelected
+    }
+    
+    func acitivateSettingMode(){
+        isSettingModeActive = true
+        uiCheckBoxView.isHidden = false
+    }
+    
+    func inactivateSettingMode(){
+        isSettingModeActive = false
+        isCellSelected = false
+        uiCheckBoxView.image = getEmptyImage()
+        uiCheckBoxView.isHidden = true
+    }
+    
+    func getEmptyImage() -> UIImage{
+        return UIImage.getEmptyImage(color: .white, size: uiCheckBoxView.frame.size, imageView: uiCheckBoxView)
+    }
+    
+    func getCheckedImage() -> UIImage {
+        let image = UIImage(systemName: "checkmark")
+        let resultImage = image!.resize(size: uiCheckBoxView.frame.size)
+        return resultImage!
+    }
+    
+    func getReceipt() -> Receipt{
+        return receipt
+    }
 
 }
 
@@ -95,4 +160,25 @@ extension UIImage{
         UIGraphicsEndImageContext()
         return image!
     }
+    
+    class func getEmptyImage(color: UIColor, size: CGSize, imageView:UIImageView) -> UIImage {
+        // グラフィックスコンテキストを作成
+        UIGraphicsBeginImageContext(size)
+
+        // グラフィックスコンテキスト用の位置情報
+        let rect = imageView.frame
+        // グラフィックスコンテキストを取得
+        let context = UIGraphicsGetCurrentContext()
+        // グラフィックスコンテキストの設定
+        context!.setFillColor(color.cgColor)
+        context!.fill(rect)
+        // グラフィックスコンテキストの画像を取得
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+
+        // グラフィックスコンテキストの編集を終了
+        UIGraphicsEndImageContext()
+
+        return image
+   }
+
 }

@@ -10,6 +10,7 @@ import UIKit
 class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSource {
     
     private var receipts: [Receipt] = AppDataModel.getReceipts()
+    private var selectedCellsReceiptUUIDs: [UUID] = [UUID]()
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
@@ -46,7 +47,20 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
     
     @IBAction func onSettingButtonClick(_ sender: Any){
         
-        let visibleCells = collectionView.visibleCells
+        let visibleCells = collectionView.visibleCells as! [ReceiptViewCell]
+        
+        if isSettingButtonsShowed == false{
+            for cell in visibleCells {
+                cell.acitivateSettingMode()
+                checkAlreadySelectedCell(receiptViewCell: cell)
+            }
+        }
+        else {
+            for cell in visibleCells {
+                cell.inactivateSettingMode()
+            }
+            selectedCellsReceiptUUIDs.removeAll()
+        }
         
         settingButtonAnimation()
     }
@@ -110,6 +124,19 @@ extension ReceiptCollectionViewController{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return receipts.count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? ReceiptViewCell{
+            cell.setupCell(receipt: receipts[indexPath.row])
+            if isSettingButtonsShowed{
+                cell.acitivateSettingMode()
+                checkAlreadySelectedCell(receiptViewCell: cell)
+            }
+            else{
+                cell.inactivateSettingMode()
+            }
+        }
+    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReceiptViewCell", for: indexPath)
@@ -120,12 +147,34 @@ extension ReceiptCollectionViewController{
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        if let cell = cell as? ReceiptViewCell{
+            cell.onSelect()
+            if cell.getIsCellSelected(){
+                selectedCellsReceiptUUIDs.append(cell.getReceipt().id!)
+            }
+            else {
+                let index = selectedCellsReceiptUUIDs.firstIndex(of: cell.getReceipt().id!)
+                if let index = index{
+                    selectedCellsReceiptUUIDs.remove(at: index)
+                }
+            }
+        }
+    }
+    
+    private func checkAlreadySelectedCell(receiptViewCell: ReceiptViewCell){
+        if selectedCellsReceiptUUIDs.contains(receiptViewCell.getReceipt().id!){
+            receiptViewCell.setIsCellSelected(selected: true)
+        }
+    }
 }
 
 extension ReceiptCollectionViewController: UICollectionViewDelegateFlowLayout {
     // [1]
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: cellWidth - 1, height: cellWidth * 5/3)
+        return CGSize.init(width: cellWidth - 1, height: cellWidth * 9/5)
     }
 
     private var cellWidth: CGFloat {
