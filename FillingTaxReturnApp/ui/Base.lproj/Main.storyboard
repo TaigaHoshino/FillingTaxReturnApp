@@ -111,6 +111,9 @@
                                         <real key="value" value="16"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onTrashButtonClick:" destination="RhA-lj-kim" eventType="touchUpInside" id="S6g-7b-2Oz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-hW-mFw">
                                 <rect key="frame" x="264" y="493" width="32" height="32"/>

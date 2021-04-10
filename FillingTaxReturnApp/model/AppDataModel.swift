@@ -15,9 +15,17 @@ class AppDataModel {
         AppDataModel.persistentContainer.saveContext()
     }
     
-    static func deleteReceipt(receipt: Receipt){
+    static func deleteReceipt(receipt: Receipt) -> Bool{
         let context = persistentContainer.viewContext
         context.delete(receipt)
+        do{
+            try context.save()
+        }
+        catch{
+            print(error)
+            return true
+        }
+        return false
     }
     
     static func getReceipts() -> [Receipt]{

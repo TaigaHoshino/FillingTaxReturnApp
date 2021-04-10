@@ -10,7 +10,7 @@ import UIKit
 class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSource {
     
     private var receipts: [Receipt] = AppDataModel.getReceipts()
-    private var selectedCellsReceiptUUIDs: [UUID] = [UUID]()
+    private var selectedCellsReceiptIds: [UUID] = [UUID]()
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
@@ -59,10 +59,27 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
             for cell in visibleCells {
                 cell.inactivateSettingMode()
             }
-            selectedCellsReceiptUUIDs.removeAll()
+            selectedCellsReceiptIds.removeAll()
         }
         
         settingButtonAnimation()
+    }
+    
+    @IBAction func onTrashButtonClick(_ sender: Any) {
+        
+        for id in selectedCellsReceiptIds {
+            let receipt = AppDataModel.getReceiptById(id: id)!.first!
+            let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: receipt.imageName!)!
+            if AppDataModel.deleteReceipt(receipt: receipt){
+                _ = ReadAndWriteFileUtil.deleteFileFromPath(path: path)
+            }
+        }
+        
+        receipts = AppDataModel.getReceipts()
+        selectedCellsReceiptIds.removeAll()
+        
+        collectionView.reloadData()
+        
     }
     
     private func buttonSetting(){
@@ -153,19 +170,19 @@ extension ReceiptCollectionViewController{
         if let cell = cell as? ReceiptViewCell{
             cell.onSelect()
             if cell.getIsCellSelected(){
-                selectedCellsReceiptUUIDs.append(cell.getReceipt().id!)
+                selectedCellsReceiptIds.append(cell.getReceipt().id!)
             }
             else {
-                let index = selectedCellsReceiptUUIDs.firstIndex(of: cell.getReceipt().id!)
+                let index = selectedCellsReceiptIds.firstIndex(of: cell.getReceipt().id!)
                 if let index = index{
-                    selectedCellsReceiptUUIDs.remove(at: index)
+                    selectedCellsReceiptIds.remove(at: index)
                 }
             }
         }
     }
     
     private func checkAlreadySelectedCell(receiptViewCell: ReceiptViewCell){
-        if selectedCellsReceiptUUIDs.contains(receiptViewCell.getReceipt().id!){
+        if selectedCellsReceiptIds.contains(receiptViewCell.getReceipt().id!){
             receiptViewCell.setIsCellSelected(selected: true)
         }
     }
