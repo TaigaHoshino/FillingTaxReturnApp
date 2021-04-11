@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detailed Receipt View Controller-->
+        <scene sceneID="EDD-Qg-FGo">
+            <objects>
+                <viewController storyboardIdentifier="DetailedReceiptViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1kH-V3-yKy" customClass="DetailedReceiptViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LNn-9J-LnP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehX-F0-rzQ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="vMt-1M-pAn">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZP-0u-JH7">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="2000"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="414" id="NiN-Dc-9ew"/>
+                                                    <constraint firstAttribute="height" constant="2000" id="VOu-T6-viC"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vMt-1M-pAn" firstAttribute="width" secondItem="ehX-F0-rzQ" secondAttribute="width" id="Mf1-oN-7es"/>
+                                    <constraint firstItem="vMt-1M-pAn" firstAttribute="leading" secondItem="ehX-F0-rzQ" secondAttribute="leading" id="QbC-Jz-TdB"/>
+                                    <constraint firstAttribute="bottom" secondItem="vMt-1M-pAn" secondAttribute="bottom" id="X3d-yD-KCs"/>
+                                    <constraint firstAttribute="trailing" secondItem="vMt-1M-pAn" secondAttribute="trailing" id="XEs-Lf-nH2"/>
+                                    <constraint firstItem="vMt-1M-pAn" firstAttribute="top" secondItem="ehX-F0-rzQ" secondAttribute="top" id="faO-nU-ayA"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9Ee-Rk-fP7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ehX-F0-rzQ" firstAttribute="top" secondItem="9Ee-Rk-fP7" secondAttribute="top" id="1u3-Fi-fxe"/>
+                            <constraint firstItem="ehX-F0-rzQ" firstAttribute="trailing" secondItem="9Ee-Rk-fP7" secondAttribute="trailing" id="6QQ-ON-lcH"/>
+                            <constraint firstItem="ehX-F0-rzQ" firstAttribute="leading" secondItem="9Ee-Rk-fP7" secondAttribute="leading" id="Spo-cM-IwP"/>
+                            <constraint firstItem="9Ee-Rk-fP7" firstAttribute="bottom" secondItem="ehX-F0-rzQ" secondAttribute="bottom" id="ryB-aK-5g8"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JYk-7R-FBB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297.10144927536237" y="113.31521739130436"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

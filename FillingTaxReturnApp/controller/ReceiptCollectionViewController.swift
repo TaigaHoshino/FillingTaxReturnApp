@@ -168,6 +168,14 @@ extension ReceiptCollectionViewController{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         if let cell = cell as? ReceiptViewCell{
+            
+            if isSettingButtonsShowed == false{
+                let storyboard = UIStoryboard(name: "DetailedReceipt", bundle: nil)
+                let detailedReceitViewController = storyboard.instantiateViewController(withIdentifier: "DetailedReceiptViewController") as! DetailedReceiptViewController
+                present(detailedReceitViewController, animated: true, completion: nil)
+                return
+            }
+            
             cell.onSelect()
             if cell.getIsCellSelected(){
                 selectedCellsReceiptIds.append(cell.getReceipt().id!)

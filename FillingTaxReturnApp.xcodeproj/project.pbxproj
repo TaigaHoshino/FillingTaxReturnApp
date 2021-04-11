@@ -18,6 +18,8 @@
 		9546114526058100004D1BBC /* FillingTaxReturnAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546114426058100004D1BBC /* FillingTaxReturnAppTests.swift */; };
 		9546115026058100004D1BBC /* FillingTaxReturnAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546114F26058100004D1BBC /* FillingTaxReturnAppUITests.swift */; };
 		9561AC5B261E5E7200D8585D /* UIExtensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561AC5A261E5E7200D8585D /* UIExtensionUtil.swift */; };
+		956F48862622C7FF00A0A1DD /* DetailedReceipt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956F48852622C7FF00A0A1DD /* DetailedReceipt.storyboard */; };
+		956F488B2622D81F00A0A1DD /* DetailedReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F488A2622D81F00A0A1DD /* DetailedReceiptViewController.swift */; };
 		958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9588239E2607F65E001996DA /* AppData.xcdatamodeld */; };
 		958823AA2607F7EC001996DA /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958823A82607F7EC001996DA /* Receipt+CoreDataClass.swift */; };
 		958823AB2607F7EC001996DA /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958823A92607F7EC001996DA /* Receipt+CoreDataProperties.swift */; };
@@ -64,6 +66,8 @@
 		9546114F26058100004D1BBC /* FillingTaxReturnAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillingTaxReturnAppUITests.swift; sourceTree = "<group>"; };
 		9546115126058100004D1BBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9561AC5A261E5E7200D8585D /* UIExtensionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensionUtil.swift; sourceTree = "<group>"; };
+		956F48852622C7FF00A0A1DD /* DetailedReceipt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedReceipt.storyboard; sourceTree = "<group>"; };
+		956F488A2622D81F00A0A1DD /* DetailedReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReceiptViewController.swift; sourceTree = "<group>"; };
 		9588239F2607F65E001996DA /* AppData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppData.xcdatamodel; sourceTree = "<group>"; };
 		958823A02607F65E001996DA /* ReceiptData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReceiptData.xcdatamodel; sourceTree = "<group>"; };
 		958823A82607F7EC001996DA /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				95248D162607164000C7331D /* ReceiptCollectionViewController.swift */,
 				950499182605DF5C005CF8BF /* CameraViewController.swift */,
 				95461131260580FE004D1BBC /* ViewController.swift */,
+				956F488A2622D81F00A0A1DD /* DetailedReceiptViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 				959947A52616840D00C516B3 /* ReceiptViewCell.xib */,
 				959947A42616840D00C516B3 /* ReceiptViewCell.swift */,
 				95461133260580FE004D1BBC /* Main.storyboard */,
+				956F48852622C7FF00A0A1DD /* DetailedReceipt.storyboard */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -317,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				959947B2261939B300C516B3 /* baseline_check_circle_outline.png in Resources */,
+				956F48862622C7FF00A0A1DD /* DetailedReceipt.storyboard in Resources */,
 				9546113A26058100004D1BBC /* LaunchScreen.storyboard in Resources */,
 				9546113726058100004D1BBC /* Assets.xcassets in Resources */,
 				95461135260580FE004D1BBC /* Main.storyboard in Resources */,
@@ -355,6 +362,7 @@
 				95461130260580FE004D1BBC /* SceneDelegate.swift in Sources */,
 				958823AA2607F7EC001996DA /* Receipt+CoreDataClass.swift in Sources */,
 				958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */,
+				956F488B2622D81F00A0A1DD /* DetailedReceiptViewController.swift in Sources */,
 				958823AB2607F7EC001996DA /* Receipt+CoreDataProperties.swift in Sources */,
 				9561AC5B261E5E7200D8585D /* UIExtensionUtil.swift in Sources */,
 				958823F52609517B001996DA /* AppDataModel.swift in Sources */,
