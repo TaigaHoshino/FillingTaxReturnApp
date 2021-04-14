@@ -29,6 +29,7 @@
 		959947A62616840D00C516B3 /* ReceiptViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959947A42616840D00C516B3 /* ReceiptViewCell.swift */; };
 		959947A72616840D00C516B3 /* ReceiptViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 959947A52616840D00C516B3 /* ReceiptViewCell.xib */; };
 		959947B2261939B300C516B3 /* baseline_check_circle_outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 959947B1261939B300C516B3 /* baseline_check_circle_outline.png */; };
+		95EBFE832625031A001095E7 /* DetailedReceiptContainerTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBFE822625031A001095E7 /* DetailedReceiptContainerTableTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		959947A42616840D00C516B3 /* ReceiptViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReceiptViewCell.swift; path = FillingTaxReturnApp/ui/ReceiptViewCell.swift; sourceTree = SOURCE_ROOT; };
 		959947A52616840D00C516B3 /* ReceiptViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ReceiptViewCell.xib; path = FillingTaxReturnApp/ui/ReceiptViewCell.xib; sourceTree = SOURCE_ROOT; };
 		959947B1261939B300C516B3 /* baseline_check_circle_outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseline_check_circle_outline.png; path = "../../../check_circle_outline-black-ios/baseline_check_circle_outline_black_24pt.xcassets/baseline_check_circle_outline_black_24pt.imageset/baseline_check_circle_outline.png"; sourceTree = "<group>"; };
+		95EBFE822625031A001095E7 /* DetailedReceiptContainerTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReceiptContainerTableTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				950499182605DF5C005CF8BF /* CameraViewController.swift */,
 				95461131260580FE004D1BBC /* ViewController.swift */,
 				956F488A2622D81F00A0A1DD /* DetailedReceiptViewController.swift */,
+				95EBFE822625031A001095E7 /* DetailedReceiptContainerTableTableViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				958823AA2607F7EC001996DA /* Receipt+CoreDataClass.swift in Sources */,
 				958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */,
 				956F488B2622D81F00A0A1DD /* DetailedReceiptViewController.swift in Sources */,
+				95EBFE832625031A001095E7 /* DetailedReceiptContainerTableTableViewController.swift in Sources */,
 				958823AB2607F7EC001996DA /* Receipt+CoreDataProperties.swift in Sources */,
 				9561AC5B261E5E7200D8585D /* UIExtensionUtil.swift in Sources */,
 				958823F52609517B001996DA /* AppDataModel.swift in Sources */,

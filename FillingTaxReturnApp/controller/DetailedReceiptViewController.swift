@@ -8,10 +8,23 @@
 import UIKit
 
 class DetailedReceiptViewController: UIViewController {
-
+    
+    var receipt: Receipt?
+    @IBOutlet weak var uiReceiptImage: UIImageView!
+    @IBOutlet weak var tfExpense: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let fileName = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: (receipt?.imageName)!)
+        
+        let uiImage = ReadAndWriteFileUtil.loadFileFromPath(path: fileName!)
+        
+        uiReceiptImage.image = uiImage
+        if let expense = receipt?.expense{
+            tfExpense.text = expense.stringValue
+        }
+        
         // Do any additional setup after loading the view.
     }
     

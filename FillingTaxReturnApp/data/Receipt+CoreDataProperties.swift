@@ -19,6 +19,10 @@ extension Receipt {
     @NSManaged public var createdAt: Date?
     @NSManaged public var imageName: String?
     @NSManaged public var id: UUID?
+    @NSManaged public var countingClass: NSNumber?
+    @NSManaged public var taxClass: NSNumber?
+    @NSManaged public var occuredAt: Date?
+    @NSManaged public var expense: NSNumber?
 
 }
 
