@@ -93,6 +93,9 @@
                                                     <constraint firstAttribute="height" constant="70" id="jlO-YZ-3D3"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="onRegisterButtonClick:" destination="1kH-V3-yKy" eventType="touchUpInside" id="V7d-XD-fGQ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -125,10 +128,10 @@
             </objects>
             <point key="canvasLocation" x="297.10144927536237" y="113.31521739130436"/>
         </scene>
-        <!--Detailed Receipt Container Table Table View Controller-->
+        <!--Detailed Receipt Container Table View Controller-->
         <scene sceneID="joL-L1-mLS">
             <objects>
-                <tableViewController id="vuz-xO-ykA" customClass="DetailedReceiptContainerTableTableViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vuz-xO-ykA" customClass="DetailedReceiptContainerTableViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="M36-Ki-jgQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="238"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,20 +154,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MKW-Z8-7Ku">
-                                                    <rect key="frame" x="60" y="12" width="58.333333333333343" height="36.333333333333336"/>
+                                                    <rect key="frame" x="60" y="6.3333333333333321" width="84" height="47.333333333333343"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勘定科目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="89b-Em-Xj3">
-                                                            <rect key="frame" x="0.0" y="0.0" width="58.333333333333336" height="13.333333333333334"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="84" height="13.333333333333334"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acc-xF-UGZ">
-                                                            <rect key="frame" x="0.0" y="13.333333333333332" width="58.333333333333336" height="22.999999999999996"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="未選択" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uIU-lQ-k7w" customClass="PickerTextField" customModule="FillingTaxReturnApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="13.333333333333336" width="84" height="34"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -191,20 +193,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KXX-j7-4qx">
-                                                    <rect key="frame" x="60" y="12" width="58.333333333333343" height="36.333333333333336"/>
+                                                    <rect key="frame" x="60" y="6.3333333333333321" width="84" height="47.333333333333343"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="発生日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSP-CE-4rH">
-                                                            <rect key="frame" x="0.0" y="0.0" width="58.333333333333336" height="13.333333333333334"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="84" height="13.333333333333334"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3zl-jJ-CG0">
-                                                            <rect key="frame" x="0.0" y="13.333333333333332" width="58.333333333333336" height="22.999999999999996"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="未選択" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qzf-yv-PNA" customClass="PickerTextField" customModule="FillingTaxReturnApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="13.333333333333336" width="84" height="34"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -231,20 +232,19 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="69u-a4-5Cx">
-                                                    <rect key="frame" x="60" y="12" width="58.333333333333343" height="36.333333333333336"/>
+                                                    <rect key="frame" x="60" y="6.3333333333333321" width="84" height="47.333333333333343"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="税区分" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUA-jE-08W">
-                                                            <rect key="frame" x="0.0" y="0.0" width="58.333333333333336" height="13.333333333333334"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="84" height="13.333333333333334"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9e-ED-Cjx">
-                                                            <rect key="frame" x="0.0" y="13.333333333333332" width="58.333333333333336" height="22.999999999999996"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="未選択" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jqM-yb-xGo" customClass="PickerTextField" customModule="FillingTaxReturnApp" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="13.333333333333336" width="84" height="34"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -264,6 +264,9 @@
                             <outlet property="delegate" destination="vuz-xO-ykA" id="QEG-Ot-Ihj"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tfCountingClass" destination="uIU-lQ-k7w" id="Qi1-Rg-OkT"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26r-o6-aBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

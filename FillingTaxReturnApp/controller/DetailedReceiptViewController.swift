@@ -28,6 +28,11 @@ class DetailedReceiptViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    @IBAction func onRegisterButtonClick(_ sender: Any) {
+        
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -40,3 +45,7 @@ class DetailedReceiptViewController: UIViewController {
     */
 
 }
+//
+//extension DetailedReceiptViewController: UIFontPickerViewDelegate, UIPickerViewDataSource{
+//    
+//}

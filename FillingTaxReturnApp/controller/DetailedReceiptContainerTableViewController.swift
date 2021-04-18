@@ -7,10 +7,22 @@
 
 import UIKit
 
-class DetailedReceiptContainerTableTableViewController: UITableViewController {
+class DetailedReceiptContainerTableViewController: UITableViewController {
 
+    @IBOutlet weak var tfCountingClass: PickerTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let dataSource = ReceiptClassesData.countingClass
+        var data = [String]()
+        
+        for i in 1...dataSource.count {
+            data.append(dataSource[i]!["title"]!)
+            
+        }
+        
+        tfCountingClass.setDataSource(dataSource: data)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
