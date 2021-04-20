@@ -11,7 +11,7 @@ class DetailedReceiptViewController: UIViewController {
     
     var receipt: Receipt?
     @IBOutlet weak var uiReceiptImage: UIImageView!
-    @IBOutlet weak var tfExpense: UITextField!
+    @IBOutlet weak var tfExpense: PriceTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class DetailedReceiptViewController: UIViewController {
     
     
     @IBAction func onRegisterButtonClick(_ sender: Any) {
-        
+//        let countingClass = self.children[0] as! DetailedReceiptContainerTableViewController
     }
     
 

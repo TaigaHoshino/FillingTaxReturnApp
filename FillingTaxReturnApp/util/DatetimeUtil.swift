@@ -11,7 +11,7 @@ class DatetimeUtil{
     static func dateToSimpleDateTime(date: Date) -> String{
         let dateFormatter = DateFormatter()
         
-        dateFormatter.locale = Locale(identifier: "ja_JP")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "yyyyMMddHHmmss"
 
         return dateFormatter.string(from: date)
@@ -20,9 +20,25 @@ class DatetimeUtil{
     static func dateToFormattedDateTime(date: Date) -> String{
         let dateFormatter = DateFormatter()
         
-        dateFormatter.locale = Locale(identifier: "ja_JP")
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
         return dateFormatter.string(from: date)
+    }
+    
+    static func dateToFormattedDate(date: Date) -> String{
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "yyyy年MM月dd日"
+        return dateFormatter.string(from: date)
+    }
+    
+    static func FormattedDateTimeToDate(strDate: String) -> Date{
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
+        return dateFormatter.date(from: strDate)!
     }
     
 }

@@ -10,6 +10,7 @@ import UIKit
 class PickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSource {
     
     private var dataSource = [String]()
+    private var picker: UIPickerView!
     
     init(){
         super.init(frame: CGRect.zero)
@@ -26,7 +27,7 @@ class PickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSource
     func setDataSource(dataSource: [String]){
         self.dataSource = dataSource
         
-        let picker = UIPickerView()
+        picker = UIPickerView()
         picker.delegate = self
         picker.dataSource = self
         
@@ -36,6 +37,13 @@ class PickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSource
         
         self.inputView = picker
         self.inputAccessoryView = toolbar
+    }
+    
+    func setDefaultValue(value: String){
+        
+        guard let index = dataSource.firstIndex(of: value) else {return}
+        text = value
+        picker.selectRow(index, inComponent: 0, animated: true)
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -31,6 +31,8 @@
 		959947B2261939B300C516B3 /* baseline_check_circle_outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 959947B1261939B300C516B3 /* baseline_check_circle_outline.png */; };
 		95A05239262A5528001C94F0 /* PickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A05238262A5528001C94F0 /* PickerTextField.swift */; };
 		95A05241262BA886001C94F0 /* ReceiptClassesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A05240262BA886001C94F0 /* ReceiptClassesData.swift */; };
+		95A0524F262C31DE001C94F0 /* DatePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A0524E262C31DE001C94F0 /* DatePickerTextField.swift */; };
+		95A05254262CDFA4001C94F0 /* PriceTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A05253262CDFA4001C94F0 /* PriceTextField.swift */; };
 		95EBFE832625031A001095E7 /* DetailedReceiptContainerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBFE822625031A001095E7 /* DetailedReceiptContainerTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +85,8 @@
 		959947B1261939B300C516B3 /* baseline_check_circle_outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseline_check_circle_outline.png; path = "../../../check_circle_outline-black-ios/baseline_check_circle_outline_black_24pt.xcassets/baseline_check_circle_outline_black_24pt.imageset/baseline_check_circle_outline.png"; sourceTree = "<group>"; };
 		95A05238262A5528001C94F0 /* PickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTextField.swift; sourceTree = "<group>"; };
 		95A05240262BA886001C94F0 /* ReceiptClassesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptClassesData.swift; sourceTree = "<group>"; };
+		95A0524E262C31DE001C94F0 /* DatePickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTextField.swift; sourceTree = "<group>"; };
+		95A05253262CDFA4001C94F0 /* PriceTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTextField.swift; sourceTree = "<group>"; };
 		95EBFE822625031A001095E7 /* DetailedReceiptContainerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReceiptContainerTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				95A05238262A5528001C94F0 /* PickerTextField.swift */,
+				95A0524E262C31DE001C94F0 /* DatePickerTextField.swift */,
+				95A05253262CDFA4001C94F0 /* PriceTextField.swift */,
 			);
 			path = customUiParts;
 			sourceTree = "<group>";
@@ -374,12 +380,14 @@
 				95248D182607164000C7331D /* ReceiptCollectionViewController.swift in Sources */,
 				959947A62616840D00C516B3 /* ReceiptViewCell.swift in Sources */,
 				950499192605DF5C005CF8BF /* CameraViewController.swift in Sources */,
+				95A0524F262C31DE001C94F0 /* DatePickerTextField.swift in Sources */,
 				9546112E260580FE004D1BBC /* AppDelegate.swift in Sources */,
 				958823FB260AA719001996DA /* DatetimeUtil.swift in Sources */,
 				95A05239262A5528001C94F0 /* PickerTextField.swift in Sources */,
 				95461130260580FE004D1BBC /* SceneDelegate.swift in Sources */,
 				958823AA2607F7EC001996DA /* Receipt+CoreDataClass.swift in Sources */,
 				958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */,
+				95A05254262CDFA4001C94F0 /* PriceTextField.swift in Sources */,
 				956F488B2622D81F00A0A1DD /* DetailedReceiptViewController.swift in Sources */,
 				95EBFE832625031A001095E7 /* DetailedReceiptContainerTableViewController.swift in Sources */,
 				958823AB2607F7EC001996DA /* Receipt+CoreDataProperties.swift in Sources */,

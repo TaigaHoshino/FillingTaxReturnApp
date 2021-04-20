@@ -10,6 +10,7 @@ import UIKit
 class DetailedReceiptContainerTableViewController: UITableViewController {
 
     @IBOutlet weak var tfCountingClass: PickerTextField!
+    @IBOutlet weak var tfOccuredDate: DatePickerTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +22,26 @@ class DetailedReceiptContainerTableViewController: UITableViewController {
             data.append(dataSource[i]!["title"]!)
             
         }
-        
-        tfCountingClass.setDataSource(dataSource: data)
 
+        tfCountingClass.setDataSource(dataSource: data)
+        tfCountingClass.setDefaultValue(value: dataSource[3]!["title"]!)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let parent = self.parent as! DetailedReceiptViewController
+        let receipt = parent.receipt
+        
+        if receipt?.occuredAt == nil {
+            tfOccuredDate.setDateValue(date: receipt!.createdAt!)
+        }
+        else {
+            tfOccuredDate.setDateValue(date: receipt!.occuredAt!)
+        }
     }
 
     // MARK: - Table view data source
