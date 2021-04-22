@@ -28,9 +28,30 @@ class DetailedReceiptViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        saveAllContents()
+    }
+    
     
     @IBAction func onRegisterButtonClick(_ sender: Any) {
-//        let countingClass = self.children[0] as! DetailedReceiptContainerTableViewController
+        
+//        receipt?.countingClass = Int(detailedReceiptTableView.tfCountingClass.text)
+    }
+    
+    private func saveAllContents(){
+        if tfExpense.text != "" {
+            receipt?.expense = Int(tfExpense.text!)! as NSNumber
+        }
+        
+        let detailedReceiptTableView = self.children[0] as! DetailedReceiptContainerTableViewController
+        
+        receipt?.occuredAt = DatetimeUtil.formattedDateToDate(strDate: detailedReceiptTableView.tfOccuredDate.text!)
+        
+        if let id = ReceiptClassesUtil.findCountingClassIdByTitle(title: detailedReceiptTableView.tfCountingClass.text!){
+            receipt?.countingClass = id as NSNumber
+        }
+        
+        AppDataModel.save()
     }
     
 

@@ -33,6 +33,14 @@ class DatetimeUtil{
         return dateFormatter.string(from: date)
     }
     
+    static func formattedDateToDate(strDate: String) -> Date{
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "yyyy年MM月dd日"
+        return dateFormatter.date(from: strDate)!
+    }
+    
     static func FormattedDateTimeToDate(strDate: String) -> Date{
         let dateFormatter = DateFormatter()
         

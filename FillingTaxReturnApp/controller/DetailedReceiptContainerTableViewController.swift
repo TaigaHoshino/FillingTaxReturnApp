@@ -15,16 +15,14 @@ class DetailedReceiptContainerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dataSource = ReceiptClassesData.countingClass
+        let dataSource = ReceiptClassesUtil.countingClass
         var data = [String]()
         
-        for i in 1...dataSource.count {
-            data.append(dataSource[i]!["title"]!)
-            
+        for title in dataSource{
+            data.append(title["title"] as! String)
         }
 
         tfCountingClass.setDataSource(dataSource: data)
-        tfCountingClass.setDefaultValue(value: dataSource[3]!["title"]!)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,6 +39,19 @@ class DetailedReceiptContainerTableViewController: UITableViewController {
         }
         else {
             tfOccuredDate.setDateValue(date: receipt!.occuredAt!)
+        }
+        
+        if let id = receipt?.countingClass{
+            if let title = ReceiptClassesUtil.findCountingClassTitleById(id: id.intValue){
+                tfCountingClass.setDefaultValue(value: title)
+            }
+            else{
+                tfCountingClass.setDefaultValue(value: ReceiptClassesUtil.countingClass.first!["title"] as! String)
+            }
+            
+        }
+        else {
+            tfCountingClass.setDefaultValue(value: ReceiptClassesUtil.countingClass.first!["title"] as! String)
         }
     }
 
