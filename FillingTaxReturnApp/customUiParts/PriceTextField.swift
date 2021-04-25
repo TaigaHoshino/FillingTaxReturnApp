@@ -43,7 +43,6 @@ class PriceTextField: UITextField {
     }
     
     private func addComma(strNumber: String) -> String{
-        print(strNumber)
         if(strNumber != "") {
             let strNumber = removeComma(strNumber: strNumber)
             return formatter.string(from: Int(strNumber)! as NSNumber)!
@@ -54,6 +53,19 @@ class PriceTextField: UITextField {
     
     private func removeComma(strNumber: String) -> String{
         return strNumber.replacingOccurrences(of: ",", with: "")
+    }
+    
+    func setValue(value: Int){
+        text = addComma(strNumber: String(value))
+    }
+    
+    func getValue() -> Int{
+        var strNumber = "0"
+        
+        if text != nil{
+            strNumber = removeComma(strNumber: text!)
+        }
+        return Int(strNumber)!
     }
     
     @objc func done(){

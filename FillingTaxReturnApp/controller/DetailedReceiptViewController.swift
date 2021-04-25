@@ -22,7 +22,7 @@ class DetailedReceiptViewController: UIViewController {
         
         uiReceiptImage.image = uiImage
         if let expense = receipt?.expense{
-            tfExpense.text = expense.stringValue
+            tfExpense.setValue(value: expense as! Int)
         }
         
         // Do any additional setup after loading the view.
@@ -40,7 +40,7 @@ class DetailedReceiptViewController: UIViewController {
     
     private func saveAllContents(){
         if tfExpense.text != "" {
-            receipt?.expense = Int(tfExpense.text!)! as NSNumber
+            receipt?.expense = tfExpense.getValue() as NSNumber
         }
         
         let detailedReceiptTableView = self.children[0] as! DetailedReceiptContainerTableViewController
