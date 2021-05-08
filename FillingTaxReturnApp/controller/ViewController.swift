@@ -14,6 +14,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func onShowTransactionButtonClick(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "TransactionList", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "TransactionListViewController") as! TransactionListViewController
+        present(viewController, animated: true, completion: nil)
+    }
     
 }
 

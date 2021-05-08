@@ -28,4 +28,12 @@ extension UIView {
         }
     }
     
+    @IBInspectable var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
 }
