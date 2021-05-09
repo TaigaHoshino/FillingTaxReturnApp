@@ -10,7 +10,8 @@ import UIKit
 class TransactionListViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var dateCollectionView: UICollectionView!
-
+    private var selectedDateCellIndexPath: IndexPath!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,9 +19,18 @@ class TransactionListViewController: UIViewController, UICollectionViewDataSourc
         dateCollectionView.delegate = self
         
         dateCollectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-//        dateCollectionView.collectionViewLayout = UICollectionViewLayout()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        let calender = Calendar.current
+        
+        let month = calender.component(.month, from: Date())
+        
+        selectedDateCellIndexPath = IndexPath(row: month - 1, section: 0)
+        dateCollectionView.scrollToItem(at: selectedDateCellIndexPath, at: .centeredHorizontally, animated: false)
     }
     
 
@@ -45,14 +55,36 @@ extension TransactionListViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateCell", for: indexPath)
         
         if let cell = cell as? DateCell {
-            cell.setupCell(date: Date())
-            cell.backgroundColor = .white
-//            cell.cornerRadius = 5
-//            cell.borderColor = .black
-//            cell.layer.borderWidth = 0.5
+            
+            let calender = Calendar.current
+            
+            let year = calender.component(.year, from: Date())
+            let month = indexPath[1] + 1
+            
+            cell.setupCell(date: DatetimeUtil.formattedDateToDate(strDate: "\(year)年\(month)月1日"))
+            
+            if selectedDateCellIndexPath == indexPath{
+                cell.onSelect()
+            }
+            else{
+                cell.setDefault()
+            }
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        
+        if let cell = cell as? DateCell{
+            
+            let preSelectedCell = collectionView.cellForItem(at: selectedDateCellIndexPath) as? DateCell
+            preSelectedCell?.setDefault()
+            cell.onSelect()
+            selectedDateCellIndexPath = indexPath
+            
+        }
     }
 }
 

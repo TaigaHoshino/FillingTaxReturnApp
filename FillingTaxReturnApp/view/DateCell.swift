@@ -9,8 +9,10 @@ import UIKit
 
 class DateCell: UICollectionViewCell {
     
-    @IBOutlet weak var btDate: UIButton!
+    
     private var date: Date!
+    @IBOutlet weak var lbYear: UILabel!
+    @IBOutlet weak var lbMonth: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,11 +33,21 @@ class DateCell: UICollectionViewCell {
         
         let year = calender.component(.year, from: date)
         let month = calender.component(.month, from: date)
+        lbYear.text = "\(year)年"
+        lbMonth.text = "\(month)月"
         
-        btDate.titleLabel?.numberOfLines = 0
-        btDate.titleLabel?.textAlignment = NSTextAlignment.center
-        btDate.titleLabel?.baselineAdjustment = .alignCenters
-        btDate.setTitle("\(year)年\n\(month)月", for: .normal)
+    }
+    
+    func onSelect(){
+        self.backgroundColor = .blue
+        lbYear.textColor = .white
+        lbMonth.textColor = .white
+    }
+    
+    func setDefault(){
+        self.backgroundColor = .white
+        lbYear.textColor = .black
+        lbMonth.textColor = .black
     }
 
 }
