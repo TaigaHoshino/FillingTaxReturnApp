@@ -80,17 +80,39 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u5X-eD-jv5">
+                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionCell" id="JWO-Gv-kOF">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JWO-Gv-kOF" id="SaD-tc-EAm">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i5g-7a-5SG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="u5X-eD-jv5" firstAttribute="leading" secondItem="i5g-7a-5SG" secondAttribute="leading" id="0AK-LM-cC2"/>
+                            <constraint firstItem="v75-bZ-ZqA" firstAttribute="trailing" secondItem="i5g-7a-5SG" secondAttribute="trailing" id="0rn-aw-aYV"/>
                             <constraint firstItem="v75-bZ-ZqA" firstAttribute="trailing" secondItem="i5g-7a-5SG" secondAttribute="trailing" id="3pF-IL-hLk"/>
+                            <constraint firstItem="v75-bZ-ZqA" firstAttribute="leading" secondItem="i5g-7a-5SG" secondAttribute="leading" id="6Pu-JY-eBA"/>
                             <constraint firstItem="v75-bZ-ZqA" firstAttribute="top" secondItem="i5g-7a-5SG" secondAttribute="top" id="Jhd-cy-pJD"/>
+                            <constraint firstItem="v75-bZ-ZqA" firstAttribute="top" secondItem="i5g-7a-5SG" secondAttribute="top" id="Ksq-SO-Ems"/>
+                            <constraint firstItem="u5X-eD-jv5" firstAttribute="top" secondItem="v75-bZ-ZqA" secondAttribute="bottom" id="YGB-SG-XFz"/>
+                            <constraint firstItem="u5X-eD-jv5" firstAttribute="bottom" secondItem="i5g-7a-5SG" secondAttribute="bottom" id="cds-Tr-vjQ"/>
+                            <constraint firstItem="u5X-eD-jv5" firstAttribute="trailing" secondItem="i5g-7a-5SG" secondAttribute="trailing" id="p6r-Uw-fI4"/>
                             <constraint firstItem="v75-bZ-ZqA" firstAttribute="leading" secondItem="i5g-7a-5SG" secondAttribute="leading" id="pZs-1d-rHd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="dateCollectionView" destination="v75-bZ-ZqA" id="aKl-uB-HXB"/>
+                        <outlet property="tvTransactionList" destination="u5X-eD-jv5" id="gt0-RV-afc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rec-z3-9tx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

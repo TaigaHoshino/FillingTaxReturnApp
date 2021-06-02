@@ -41,12 +41,19 @@ class DatetimeUtil{
         return dateFormatter.date(from: strDate)!
     }
     
-    static func FormattedDateTimeToDate(strDate: String) -> Date{
+    static func formattedDateTimeToDate(strDate: String) -> Date{
         let dateFormatter = DateFormatter()
         
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
         return dateFormatter.date(from: strDate)!
+    }
+    
+    static func truncateDate(date: Date) -> Date{
+        let calendar = Calendar.current
+        let comps = calendar.dateComponents([.year, .month, .day], from: date)
+        let truncateDay = calendar.date(from:comps)
+        return truncateDay!
     }
     
 }

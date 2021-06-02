@@ -51,10 +51,29 @@ class AppDataModel {
             receipt = try context.fetch(fetchRequest)
             
         }
-        catch{
-            
+        catch let error as NSError {
+            print("Error: \(error), \(error.userInfo)")
         }
         return receipt
+    }
+    
+    static func getReceiptsByDate(from: Date, to: Date) -> [Receipt]?{
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Receipt> = Receipt.fetchRequest()
+        let predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@)", from as CVarArg, to as CVarArg)
+        let sortDescripter = NSSortDescriptor(key: "occuredAt", ascending: true)
+        fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = [sortDescripter]
+        var receipts: [Receipt]?
+        
+        do{
+            receipts = try context.fetch(fetchRequest)
+            
+        }
+        catch let error as NSError {
+            print("Error: \(error), \(error.userInfo)")
+        }
+        return receipts
     }
     
     static func newReceipt() -> Receipt{
