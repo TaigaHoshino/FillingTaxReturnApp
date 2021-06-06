@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		950499192605DF5C005CF8BF /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950499182605DF5C005CF8BF /* CameraViewController.swift */; };
 		95248D182607164000C7331D /* ReceiptCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95248D162607164000C7331D /* ReceiptCollectionViewController.swift */; };
+		953A3450266AE87E00B5DD8C /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953A344F266AE87E00B5DD8C /* TransactionCell.swift */; };
+		953A3458266B023B00B5DD8C /* PriceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953A3457266B023B00B5DD8C /* PriceUtil.swift */; };
 		9546112E260580FE004D1BBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546112D260580FE004D1BBC /* AppDelegate.swift */; };
 		95461130260580FE004D1BBC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546112F260580FE004D1BBC /* SceneDelegate.swift */; };
 		95461132260580FE004D1BBC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95461131260580FE004D1BBC /* ViewController.swift */; };
@@ -29,6 +31,7 @@
 		958EFD33263505ED0025B373 /* TransactionList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 958EFD32263505ED0025B373 /* TransactionList.storyboard */; };
 		958EFD382636274A0025B373 /* TransactionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EFD372636274A0025B373 /* TransactionListViewController.swift */; };
 		958EFD3D263A29580025B373 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EFD3C263A29580025B373 /* DateCell.swift */; };
+		9591E135266CBDDB00F12A92 /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591E134266CBDDB00F12A92 /* ImageUtil.swift */; };
 		959947A62616840D00C516B3 /* ReceiptViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959947A42616840D00C516B3 /* ReceiptViewCell.swift */; };
 		959947A72616840D00C516B3 /* ReceiptViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 959947A52616840D00C516B3 /* ReceiptViewCell.xib */; };
 		959947B2261939B300C516B3 /* baseline_check_circle_outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 959947B1261939B300C516B3 /* baseline_check_circle_outline.png */; };
@@ -60,6 +63,8 @@
 /* Begin PBXFileReference section */
 		950499182605DF5C005CF8BF /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		95248D162607164000C7331D /* ReceiptCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ReceiptCollectionViewController.swift; path = FillingTaxReturnApp/controller/ReceiptCollectionViewController.swift; sourceTree = SOURCE_ROOT; };
+		953A344F266AE87E00B5DD8C /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		953A3457266B023B00B5DD8C /* PriceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceUtil.swift; sourceTree = "<group>"; };
 		9546112A260580FE004D1BBC /* FillingTaxReturnApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FillingTaxReturnApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9546112D260580FE004D1BBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9546112F260580FE004D1BBC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +92,7 @@
 		958EFD32263505ED0025B373 /* TransactionList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionList.storyboard; sourceTree = "<group>"; };
 		958EFD372636274A0025B373 /* TransactionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewController.swift; sourceTree = "<group>"; };
 		958EFD3C263A29580025B373 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
+		9591E134266CBDDB00F12A92 /* ImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
 		959947A42616840D00C516B3 /* ReceiptViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewCell.swift; sourceTree = "<group>"; };
 		959947A52616840D00C516B3 /* ReceiptViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ReceiptViewCell.xib; path = FillingTaxReturnApp/view/ReceiptViewCell.xib; sourceTree = SOURCE_ROOT; };
 		959947B1261939B300C516B3 /* baseline_check_circle_outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseline_check_circle_outline.png; path = "../../../check_circle_outline-black-ios/baseline_check_circle_outline_black_24pt.xcassets/baseline_check_circle_outline_black_24pt.imageset/baseline_check_circle_outline.png"; sourceTree = "<group>"; };
@@ -171,6 +177,7 @@
 				959947A42616840D00C516B3 /* ReceiptViewCell.swift */,
 				959947A52616840D00C516B3 /* ReceiptViewCell.xib */,
 				958EFD3C263A29580025B373 /* DateCell.swift */,
+				953A344F266AE87E00B5DD8C /* TransactionCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -240,6 +247,8 @@
 				958823FA260AA719001996DA /* DatetimeUtil.swift */,
 				95882402260AA923001996DA /* ReadAndWriteFileUtil.swift */,
 				9561AC5A261E5E7200D8585D /* UIExtensionUtil.swift */,
+				953A3457266B023B00B5DD8C /* PriceUtil.swift */,
+				9591E134266CBDDB00F12A92 /* ImageUtil.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -389,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95461132260580FE004D1BBC /* ViewController.swift in Sources */,
+				953A3450266AE87E00B5DD8C /* TransactionCell.swift in Sources */,
 				95882403260AA923001996DA /* ReadAndWriteFileUtil.swift in Sources */,
 				95248D182607164000C7331D /* ReceiptCollectionViewController.swift in Sources */,
 				959947A62616840D00C516B3 /* ReceiptViewCell.swift in Sources */,
@@ -398,8 +408,10 @@
 				958823FB260AA719001996DA /* DatetimeUtil.swift in Sources */,
 				958EFD3D263A29580025B373 /* DateCell.swift in Sources */,
 				95A05239262A5528001C94F0 /* PickerTextField.swift in Sources */,
+				953A3458266B023B00B5DD8C /* PriceUtil.swift in Sources */,
 				95461130260580FE004D1BBC /* SceneDelegate.swift in Sources */,
 				958823AA2607F7EC001996DA /* Receipt+CoreDataClass.swift in Sources */,
+				9591E135266CBDDB00F12A92 /* ImageUtil.swift in Sources */,
 				95AE9D842647D4DF00B5EAC3 /* ReceiptsEachDay.swift in Sources */,
 				958EFD382636274A0025B373 /* TransactionListViewController.swift in Sources */,
 				958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */,

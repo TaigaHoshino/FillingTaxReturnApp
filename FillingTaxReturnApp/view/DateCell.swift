@@ -38,6 +38,10 @@ class DateCell: UICollectionViewCell {
         
     }
     
+    func getDate() -> Date {
+        return date
+    }
+    
     func onSelect(){
         self.backgroundColor = .blue
         lbYear.textColor = .white

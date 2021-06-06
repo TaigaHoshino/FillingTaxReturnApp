@@ -7,24 +7,25 @@
 
 import UIKit
 
-class TransactionListViewController: UIViewController, UICollectionViewDataSource, UITableViewDataSource {
+class TransactionListViewController: UIViewController {
     
     @IBOutlet weak var dateCollectionView: UICollectionView!
+    
     @IBOutlet weak var tvTransactionList: UITableView!
     
     private var selectedDateCellIndexPath: IndexPath!
-    private var receiptsEachDayList: [ReceiptsEachDay]?
-    private var receiptsEachMonth: [Receipt]!
+    private var receiptsEachDayList: [ReceiptsEachDay] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         dateCollectionView.dataSource = self
         dateCollectionView.delegate = self
+        tvTransactionList.dataSource = self
         
         dateCollectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        receiptsEachMonth = getReceiptEachMonth(year: 2021, month: 6)
+        let receiptsEachMonth = getReceiptEachMonth(year: 2021, month: 6)!
         
         receiptsEachDayList = separateReceiptsEachDay(receipts: receiptsEachMonth)
         print(receiptsEachDayList)
@@ -34,6 +35,7 @@ class TransactionListViewController: UIViewController, UICollectionViewDataSourc
     
     override func viewWillAppear(_ animated: Bool) {
         
+        // 今日の月のコレクションセルを探し、中央に表示して選択状態にする
         let calender = Calendar.current
         
         let month = calender.component(.month, from: Date())
@@ -91,7 +93,7 @@ class TransactionListViewController: UIViewController, UICollectionViewDataSourc
 
 }
 
-extension TransactionListViewController {
+extension TransactionListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 12
     }
@@ -128,23 +130,37 @@ extension TransactionListViewController {
             preSelectedCell?.setDefault()
             cell.onSelect()
             selectedDateCellIndexPath = indexPath
-            
+            let date = cell.getDate()
+            let calender = Calendar.current
+            let year = calender.component(.year, from: date)
+            let month = calender.component(.month, from: date)
+            let receiptsEachMonth = getReceiptEachMonth(year: year, month: month)!
+            receiptsEachDayList = separateReceiptsEachDay(receipts: receiptsEachMonth)
+            tvTransactionList.reloadData()
         }
     }
 }
 
-extension TransactionListViewController{
+extension TransactionListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return receiptsEachDayList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return receiptsEachDayList[section].receipts.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return DatetimeUtil.dateToFormattedDate(date: receiptsEachDayList[section].date)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tvTransactionList.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath)
+        
+        if let cell = cell as? TransactionCell {
+            cell.setupCell(receipt: receiptsEachDayList[indexPath.section].receipts[indexPath.row])
+        }
         
         return cell
     }
@@ -154,9 +170,7 @@ extension TransactionListViewController{
 extension TransactionListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let horizontalSpace : CGFloat = 80
-        let cellSize : CGFloat = self.view.bounds.width/3 - horizontalSpace
-        return CGSize.init(width: horizontalSpace, height: 50)
+        return CGSize.init(width: 80, height: 50)
     }
     
 }
