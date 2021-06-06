@@ -22,10 +22,16 @@ class TransactionListViewController: UIViewController {
         dateCollectionView.dataSource = self
         dateCollectionView.delegate = self
         tvTransactionList.dataSource = self
+        tvTransactionList.delegate = self
         
         dateCollectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        let receiptsEachMonth = getReceiptEachMonth(year: 2021, month: 6)!
+        let date = Date()
+        let calender = Calendar.current
+        let year = calender.component(.year, from: date)
+        let month = calender.component(.month, from: date)
+        
+        let receiptsEachMonth = getReceiptEachMonth(year: year, month: month)!
         
         receiptsEachDayList = separateReceiptsEachDay(receipts: receiptsEachMonth)
         print(receiptsEachDayList)
@@ -165,6 +171,19 @@ extension TransactionListViewController: UITableViewDataSource {
         return cell
     }
     
+}
+
+extension TransactionListViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tvTransactionList.cellForRow(at: indexPath)
+        
+        if let cell = cell as? TransactionCell {
+            
+            let detailedReceitViewController = DetailedReceiptViewController.getInitialViewController(receipt: cell.getReceipt())
+            present(detailedReceitViewController, animated: true, completion: nil)
+        }
+    }
 }
 
 extension TransactionListViewController: UICollectionViewDelegateFlowLayout {

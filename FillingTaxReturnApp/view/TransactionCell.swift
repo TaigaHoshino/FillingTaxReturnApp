@@ -32,6 +32,10 @@ class TransactionCell: UITableViewCell {
         self.lbPrice.text = price.addComma()
         self.lbCountingClass.text = ReceiptClassesUtil.findCountingClassTitleById(id: receipt.countingClass as! Int)
     }
+    
+    func getReceipt() -> Receipt {
+        return receipt
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

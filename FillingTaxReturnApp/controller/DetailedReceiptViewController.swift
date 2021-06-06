@@ -54,6 +54,12 @@ class DetailedReceiptViewController: UIViewController {
         AppDataModel.save()
     }
     
+    static func getInitialViewController(receipt: Receipt) -> DetailedReceiptViewController {
+        let storyboard = UIStoryboard(name: "DetailedReceipt", bundle: nil)
+        let detailedReceitViewController = storyboard.instantiateViewController(withIdentifier: "DetailedReceiptViewController") as! DetailedReceiptViewController
+        detailedReceitViewController.receipt = receipt
+        return detailedReceitViewController
+    }
 
     /*
     // MARK: - Navigation

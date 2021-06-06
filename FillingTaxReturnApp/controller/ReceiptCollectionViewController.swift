@@ -170,9 +170,7 @@ extension ReceiptCollectionViewController{
         if let cell = cell as? ReceiptViewCell{
             
             if isSettingButtonsShowed == false{
-                let storyboard = UIStoryboard(name: "DetailedReceipt", bundle: nil)
-                let detailedReceitViewController = storyboard.instantiateViewController(withIdentifier: "DetailedReceiptViewController") as! DetailedReceiptViewController
-                detailedReceitViewController.receipt = cell.getReceipt()
+                let detailedReceitViewController = DetailedReceiptViewController.getInitialViewController(receipt: cell.getReceipt())
                 present(detailedReceitViewController, animated: true, completion: nil)
                 return
             }
