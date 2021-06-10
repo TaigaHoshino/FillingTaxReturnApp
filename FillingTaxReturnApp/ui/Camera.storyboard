@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="Edt-qq-jpZ">
+            <objects>
+                <viewController storyboardIdentifier="CameraViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="826-2B-VAi" customClass="CameraViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MPS-g8-14z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esk-ui-DQb">
+                                <rect key="frame" x="0.0" y="426.5" width="320" height="141.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmw-vG-oJh">
+                                        <rect key="frame" x="125" y="36" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="G7F-w2-xeo"/>
+                                            <constraint firstAttribute="width" constant="70" id="irw-jS-vVx"/>
+                                        </constraints>
+                                        <state key="normal" title="撮影"/>
+                                        <connections>
+                                            <action selector="cameraButton_TouchUpInside:" destination="826-2B-VAi" eventType="touchUpInside" id="her-ip-8M4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="hmw-vG-oJh" firstAttribute="centerY" secondItem="esk-ui-DQb" secondAttribute="centerY" id="KAw-ad-Whl"/>
+                                    <constraint firstItem="hmw-vG-oJh" firstAttribute="centerX" secondItem="esk-ui-DQb" secondAttribute="centerX" id="Wv9-lP-fDw"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gru-ge-N8b" customClass="CameraView" customModule="FillingTaxReturnApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="426.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gru-ge-N8b" secondAttribute="height" multiplier="3:4" id="0RP-ww-U8f"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vv6-hj-23N"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gru-ge-N8b" firstAttribute="leading" secondItem="vv6-hj-23N" secondAttribute="leading" id="1am-O2-doc"/>
+                            <constraint firstItem="esk-ui-DQb" firstAttribute="trailing" secondItem="vv6-hj-23N" secondAttribute="trailing" id="ERz-t3-7k0"/>
+                            <constraint firstItem="esk-ui-DQb" firstAttribute="bottom" secondItem="vv6-hj-23N" secondAttribute="bottom" id="Kq8-Mq-VMy"/>
+                            <constraint firstItem="esk-ui-DQb" firstAttribute="top" secondItem="gru-ge-N8b" secondAttribute="bottom" id="QHx-zP-9Yt"/>
+                            <constraint firstItem="esk-ui-DQb" firstAttribute="leading" secondItem="vv6-hj-23N" secondAttribute="leading" id="SPq-QB-FSq"/>
+                            <constraint firstItem="vv6-hj-23N" firstAttribute="trailing" secondItem="gru-ge-N8b" secondAttribute="trailing" id="Xus-yF-yg4"/>
+                            <constraint firstItem="gru-ge-N8b" firstAttribute="top" secondItem="vv6-hj-23N" secondAttribute="top" id="gv1-Ch-BYN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraView" destination="gru-ge-N8b" id="He1-cz-ZV8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M8S-xK-5kG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1284" y="-357.57121439280365"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

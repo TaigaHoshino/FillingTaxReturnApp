@@ -32,6 +32,9 @@
 		958EFD382636274A0025B373 /* TransactionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EFD372636274A0025B373 /* TransactionListViewController.swift */; };
 		958EFD3D263A29580025B373 /* DateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958EFD3C263A29580025B373 /* DateCell.swift */; };
 		9591E135266CBDDB00F12A92 /* ImageUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591E134266CBDDB00F12A92 /* ImageUtil.swift */; };
+		9591E13A266D84B900F12A92 /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9591E139266D84B900F12A92 /* Camera.storyboard */; };
+		9591E13F266D85C300F12A92 /* CameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9591E13E266D85C300F12A92 /* CameraView.xib */; };
+		9591E144266D85E200F12A92 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9591E143266D85E200F12A92 /* CameraView.swift */; };
 		959947A62616840D00C516B3 /* ReceiptViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959947A42616840D00C516B3 /* ReceiptViewCell.swift */; };
 		959947A72616840D00C516B3 /* ReceiptViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 959947A52616840D00C516B3 /* ReceiptViewCell.xib */; };
 		959947B2261939B300C516B3 /* baseline_check_circle_outline.png in Resources */ = {isa = PBXBuildFile; fileRef = 959947B1261939B300C516B3 /* baseline_check_circle_outline.png */; };
@@ -93,6 +96,9 @@
 		958EFD372636274A0025B373 /* TransactionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewController.swift; sourceTree = "<group>"; };
 		958EFD3C263A29580025B373 /* DateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCell.swift; sourceTree = "<group>"; };
 		9591E134266CBDDB00F12A92 /* ImageUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtil.swift; sourceTree = "<group>"; };
+		9591E139266D84B900F12A92 /* Camera.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Camera.storyboard; sourceTree = "<group>"; };
+		9591E13E266D85C300F12A92 /* CameraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraView.xib; sourceTree = "<group>"; };
+		9591E143266D85E200F12A92 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		959947A42616840D00C516B3 /* ReceiptViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptViewCell.swift; sourceTree = "<group>"; };
 		959947A52616840D00C516B3 /* ReceiptViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ReceiptViewCell.xib; path = FillingTaxReturnApp/view/ReceiptViewCell.xib; sourceTree = SOURCE_ROOT; };
 		959947B1261939B300C516B3 /* baseline_check_circle_outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = baseline_check_circle_outline.png; path = "../../../check_circle_outline-black-ios/baseline_check_circle_outline_black_24pt.xcassets/baseline_check_circle_outline_black_24pt.imageset/baseline_check_circle_outline.png"; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 				95461133260580FE004D1BBC /* Main.storyboard */,
 				956F48852622C7FF00A0A1DD /* DetailedReceipt.storyboard */,
 				958EFD32263505ED0025B373 /* TransactionList.storyboard */,
+				9591E139266D84B900F12A92 /* Camera.storyboard */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -178,6 +185,8 @@
 				959947A52616840D00C516B3 /* ReceiptViewCell.xib */,
 				958EFD3C263A29580025B373 /* DateCell.swift */,
 				953A344F266AE87E00B5DD8C /* TransactionCell.swift */,
+				9591E13E266D85C300F12A92 /* CameraView.xib */,
+				9591E143266D85E200F12A92 /* CameraView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -367,7 +376,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				959947B2261939B300C516B3 /* baseline_check_circle_outline.png in Resources */,
+				9591E13A266D84B900F12A92 /* Camera.storyboard in Resources */,
 				956F48862622C7FF00A0A1DD /* DetailedReceipt.storyboard in Resources */,
+				9591E13F266D85C300F12A92 /* CameraView.xib in Resources */,
 				9546113A26058100004D1BBC /* LaunchScreen.storyboard in Resources */,
 				9546113726058100004D1BBC /* Assets.xcassets in Resources */,
 				958EFD33263505ED0025B373 /* TransactionList.storyboard in Resources */,
@@ -412,6 +423,7 @@
 				95461130260580FE004D1BBC /* SceneDelegate.swift in Sources */,
 				958823AA2607F7EC001996DA /* Receipt+CoreDataClass.swift in Sources */,
 				9591E135266CBDDB00F12A92 /* ImageUtil.swift in Sources */,
+				9591E144266D85E200F12A92 /* CameraView.swift in Sources */,
 				95AE9D842647D4DF00B5EAC3 /* ReceiptsEachDay.swift in Sources */,
 				958EFD382636274A0025B373 /* TransactionListViewController.swift in Sources */,
 				958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */,

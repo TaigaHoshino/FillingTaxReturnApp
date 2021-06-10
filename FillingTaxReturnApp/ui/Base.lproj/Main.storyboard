@@ -21,7 +21,7 @@
                                 <rect key="frame" x="106" y="269" width="108" height="30"/>
                                 <state key="normal" title="撮影画面に移動"/>
                                 <connections>
-                                    <segue destination="IQM-FO-6Q5" kind="presentation" id="R6R-ua-uha"/>
+                                    <action selector="onCameraButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bta-ov-67L"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13t-SB-8im">
@@ -55,38 +55,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-303.75" y="295.77464788732397"/>
-        </scene>
-        <!--Camera View Controller-->
-        <scene sceneID="x7G-Qt-k8b">
-            <objects>
-                <viewController id="IQM-FO-6Q5" customClass="CameraViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kPr-Ax-8t1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwz-In-nHa">
-                                <rect key="frame" x="125" y="494" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="7u6-za-b73"/>
-                                    <constraint firstAttribute="height" constant="70" id="cmV-Aa-wL6"/>
-                                </constraints>
-                                <state key="normal" title="撮影"/>
-                                <connections>
-                                    <action selector="cameraButton_TouchUpInside:" destination="IQM-FO-6Q5" eventType="touchUpInside" id="Jb4-fh-91u"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="skj-Kw-srH"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="dwz-In-nHa" firstAttribute="centerX" secondItem="kPr-Ax-8t1" secondAttribute="centerX" id="YhY-mO-z6U"/>
-                            <constraint firstItem="dwz-In-nHa" firstAttribute="centerY" secondItem="kPr-Ax-8t1" secondAttribute="centerY" constant="255" id="yj8-o1-J1E"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tvM-Nj-jRL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1284" y="-357"/>
         </scene>
         <!--Receipt Collection View Controller-->
         <scene sceneID="gf9-ZN-ulr">

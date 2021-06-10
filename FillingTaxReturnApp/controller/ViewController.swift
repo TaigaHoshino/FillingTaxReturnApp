@@ -20,5 +20,11 @@ class ViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
     
+    @IBAction func onCameraButtonClicked(_ sender: Any) {
+        let viewController = CameraViewController.getInitialController()
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    
 }
 
