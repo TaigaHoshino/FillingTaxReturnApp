@@ -40,16 +40,25 @@ class CameraView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        loadNib()
         setup()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        loadNib()
         setup()
     }
     
     override class func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    func loadNib() {
+//        if let view = Bundle(for: type(of: self)).loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)?.first as? UIView {
+//            view.frame = self.bounds
+//            self.addSubview(view)
+//        }
     }
     
     private func setup(){
@@ -66,6 +75,11 @@ class CameraView: UIView {
         settings.flashMode = .auto
         // 撮影された画像をdelegateメソッドで処理
         self.photoOutput?.capturePhoto(with: settings, delegate: self as AVCapturePhotoCaptureDelegate)
+    }
+    
+    func adjustPreviewLayer(size: CGRect){
+        self.cameraPreviewLayer?.frame = size
+        self.layer.insertSublayer(self.cameraPreviewLayer!, at: 0)
     }
 
 }

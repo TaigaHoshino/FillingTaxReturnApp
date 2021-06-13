@@ -14,6 +14,7 @@ class CameraViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cameraView.adjustPreviewLayer(size: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width * 4/3))
         cameraView.delegate = self
     }
 
@@ -32,6 +33,11 @@ class CameraViewController: UIViewController {
         let viewController = storyboard.instantiateViewController(withIdentifier: "CameraViewController") as! CameraViewController
         return viewController
     }
+    
+    @IBAction func onBackButtonClick(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
 }
 
