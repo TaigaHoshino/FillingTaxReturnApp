@@ -16,6 +16,12 @@ class CameraView: UIView {
 
     private var _delegate: CameraViewProtocol?
     
+    private var pinchGesture = UIPinchGestureRecognizer()
+    private var currentZoom: CGFloat = 1
+    private let ZOOM_MINIMUM: CGFloat = 1
+    private let ZOOM_MAXIMUM: CGFloat = 6
+    private var preZoom: CGFloat = 1
+    
     var delegate: CameraViewProtocol? {
         set(p){
             _delegate = p
@@ -67,6 +73,9 @@ class CameraView: UIView {
         setupInputOutput()
         setupPreviewLayer()
         captureSession.startRunning()
+        
+        self.pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(self.pinchGestureRecognized(_:)))
+        self.addGestureRecognizer(self.pinchGesture)
     }
     
     func shutter(){
@@ -81,7 +90,35 @@ class CameraView: UIView {
         self.cameraPreviewLayer?.frame = size
         self.layer.insertSublayer(self.cameraPreviewLayer!, at: 0)
     }
-
+    
+    @IBAction func pinchGestureRecognized(_ sender: UIPinchGestureRecognizer) {
+        
+        if sender.state == .ended {
+            preZoom = currentZoom
+            return
+        }
+        
+        currentZoom = preZoom * sender.scale
+        
+        if currentZoom < ZOOM_MINIMUM {
+            currentZoom = ZOOM_MINIMUM
+        }
+        else if currentZoom > ZOOM_MAXIMUM {
+            currentZoom = ZOOM_MAXIMUM
+        }
+        
+        do {
+            try self.currentDevice?.lockForConfiguration()
+            self.currentDevice?.videoZoomFactor = currentZoom
+            currentDevice?.unlockForConfiguration()
+        }
+        catch {
+            print(error)
+        }
+    
+        
+    }
+    
 }
 
 //MARK: AVCapturePhotoCaptureDelegateデリゲートメソッド
