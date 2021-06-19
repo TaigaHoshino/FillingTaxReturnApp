@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private var semiModalPresenter = SemiModalPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,11 @@ class ViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
     
+    @IBAction func showModal(_ sender: Any) {
+        let viewController = DetailedReceiptModalViewController.getInitialController()
+        semiModalPresenter.viewController = viewController
+        present(viewController, animated: true, completion: nil)
+    }
     
 }
 

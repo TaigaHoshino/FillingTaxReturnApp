@@ -38,15 +38,25 @@
                                     <action selector="onShowTransactionButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vyG-6P-E00"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxj-HB-xZg">
+                                <rect key="frame" x="137" y="414" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="showModal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="na5-0T-Qw2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vLO-sT-fAG" firstAttribute="top" secondItem="13t-SB-8im" secondAttribute="bottom" constant="20" id="7Vg-Mk-4zm"/>
                             <constraint firstItem="vLO-sT-fAG" firstAttribute="centerX" secondItem="13t-SB-8im" secondAttribute="centerX" id="Abq-nD-q66"/>
+                            <constraint firstItem="Vxj-HB-xZg" firstAttribute="top" secondItem="vLO-sT-fAG" secondAttribute="bottom" constant="20" id="ELJ-La-jhU"/>
                             <constraint firstItem="hfn-JK-XK0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EiO-Vd-OkO"/>
                             <constraint firstItem="13t-SB-8im" firstAttribute="centerX" secondItem="hfn-JK-XK0" secondAttribute="centerX" id="GuN-Bp-6Id"/>
                             <constraint firstItem="vLO-sT-fAG" firstAttribute="top" secondItem="13t-SB-8im" secondAttribute="bottom" constant="20" id="NcI-aI-W9Q"/>
                             <constraint firstItem="hfn-JK-XK0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ocx-VN-R9K"/>
+                            <constraint firstItem="Vxj-HB-xZg" firstAttribute="centerX" secondItem="vLO-sT-fAG" secondAttribute="centerX" id="lZ3-rE-uUU"/>
                             <constraint firstItem="13t-SB-8im" firstAttribute="top" secondItem="hfn-JK-XK0" secondAttribute="bottom" constant="15" id="ncc-Em-Ife"/>
                             <constraint firstItem="hfn-JK-XK0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ubp-Rd-Thh"/>
                         </constraints>
