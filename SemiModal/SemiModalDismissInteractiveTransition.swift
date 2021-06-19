@@ -13,7 +13,7 @@ final class SemiModalDismissInteractiveTransition: UIPercentDrivenInteractiveTra
     weak var viewController: UIViewController?
 
     /// 遷移中かどうか
-    private(set) var isInteractiveDismalTransition = true
+    private(set) var isInteractiveDismalTransition = false
 
     /// 完了閾値(0 ~ 1.0)
     private let percentCompleteThreshold: CGFloat = 0.3
@@ -99,10 +99,10 @@ extension SemiModalDismissInteractiveTransition: UIGestureRecognizerDelegate {
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         // UIScrollViewのときはpan gestureとコンフリクトしないようにする
-        if otherGestureRecognizer is UIPanGestureRecognizer && otherGestureRecognizer.view is UIScrollView {
-            return true
-        } else {
+        if otherGestureRecognizer is UIPanGestureRecognizer || otherGestureRecognizer.view is UIScrollView {
             return false
+        } else {
+            return true
         }
     }
 }

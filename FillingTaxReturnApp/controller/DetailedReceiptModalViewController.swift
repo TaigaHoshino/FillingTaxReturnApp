@@ -10,16 +10,56 @@ import UIKit
 class DetailedReceiptModalViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var tfExpense: PriceTextField!
+    private var receipt: Receipt!
+    
+    var registerCompletion: (() -> Void )? = nil
+    var dismissCompletion: ((_ recept: Receipt) -> Void)? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let expense = receipt?.expense{
+            tfExpense.setValue(value: expense as! Int)
+        }
         // Do any additional setup after loading the view.
     }
     
-    static func getInitialController() -> DetailedReceiptModalViewController {
+    override func viewWillDisappear(_ animated: Bool) {
+        dismissCompletion?(receipt)
+        saveAllContents()
+    }
+    
+    func getReceipt() -> Receipt {
+        return receipt
+    }
+    
+    @IBAction func onRegisterButtonClick(_ sender: Any) {
+//        saveAllContents()
+        self.dismiss(animated: true, completion: nil)
+        AppDataModel.save()
+        registerCompletion?()
+    }
+    
+    
+    private func saveAllContents(){
+        if tfExpense.text != "" {
+            receipt?.expense = tfExpense.getValue() as NSNumber
+        }
+        
+        let detailedReceiptTableView = self.children[0] as! DetailedReceiptContainerTableViewController
+        
+        receipt?.occuredAt = DatetimeUtil.formattedDateToDate(strDate: detailedReceiptTableView.tfOccuredDate.text!)
+        
+        if let id = ReceiptClassesUtil.findCountingClassIdByTitle(title: detailedReceiptTableView.tfCountingClass.text!){
+            receipt?.countingClass = id as NSNumber
+        }
+    }
+    
+    static func getInitialController(receipt: Receipt) -> DetailedReceiptModalViewController {
         let storyboard = UIStoryboard(name: "DetailedReceiptModal", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "DetailedReceiptModalViewController") as! DetailedReceiptModalViewController
+        viewController.receipt = receipt
         return viewController
     }
 

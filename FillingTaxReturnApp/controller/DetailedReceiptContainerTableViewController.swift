@@ -31,17 +31,17 @@ class DetailedReceiptContainerTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let parent = self.parent as! DetailedReceiptViewController
-        let receipt = parent.receipt
+        let parent = self.parent as! DetailedReceiptModalViewController
+        let receipt = parent.getReceipt()
         
-        if receipt?.occuredAt == nil {
-            tfOccuredDate.setDateValue(date: receipt!.createdAt!)
+        if receipt.occuredAt == nil {
+            tfOccuredDate.setDateValue(date: receipt.createdAt!)
         }
         else {
-            tfOccuredDate.setDateValue(date: receipt!.occuredAt!)
+            tfOccuredDate.setDateValue(date: receipt.occuredAt!)
         }
         
-        if let id = receipt?.countingClass{
+        if let id = receipt.countingClass{
             if let title = ReceiptClassesUtil.findCountingClassTitleById(id: id.intValue){
                 tfCountingClass.setDefaultValue(value: title)
             }

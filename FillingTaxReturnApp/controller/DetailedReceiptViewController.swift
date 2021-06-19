@@ -9,9 +9,9 @@ import UIKit
 
 class DetailedReceiptViewController: UIViewController {
     
+    private var semiModalPresenter = SemiModalPresenter()
     var receipt: Receipt?
     @IBOutlet weak var uiReceiptImage: UIImageView!
-    @IBOutlet weak var tfExpense: PriceTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,38 +21,28 @@ class DetailedReceiptViewController: UIViewController {
         let uiImage = ReadAndWriteFileUtil.loadFileFromPath(path: fileName!)
         
         uiReceiptImage.image = uiImage
-        if let expense = receipt?.expense{
-            tfExpense.setValue(value: expense as! Int)
-        }
         
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        saveAllContents()
+    
+    @IBAction func onBackButtonClick(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
-    
-    @IBAction func onRegisterButtonClick(_ sender: Any) {
-        
-//        receipt?.countingClass = Int(detailedReceiptTableView.tfCountingClass.text)
-    }
-    
-    private func saveAllContents(){
-        if tfExpense.text != "" {
-            receipt?.expense = tfExpense.getValue() as NSNumber
+    @IBAction func onEditButtonClick(_ sender: Any) {
+        let viewController = DetailedReceiptModalViewController.getInitialController(receipt: self.receipt!)
+        viewController.registerCompletion = { () in
+            self.dismiss(animated: true, completion: nil)
         }
-        
-        let detailedReceiptTableView = self.children[0] as! DetailedReceiptContainerTableViewController
-        
-        receipt?.occuredAt = DatetimeUtil.formattedDateToDate(strDate: detailedReceiptTableView.tfOccuredDate.text!)
-        
-        if let id = ReceiptClassesUtil.findCountingClassIdByTitle(title: detailedReceiptTableView.tfCountingClass.text!){
-            receipt?.countingClass = id as NSNumber
+        viewController.dismissCompletion = { receipt in
+            self.receipt = receipt
         }
+        semiModalPresenter.viewController = viewController
+        present(viewController, animated: true, completion: nil)
         
-        AppDataModel.save()
     }
+    
     
     static func getInitialViewController(receipt: Receipt) -> DetailedReceiptViewController {
         let storyboard = UIStoryboard(name: "DetailedReceipt", bundle: nil)
