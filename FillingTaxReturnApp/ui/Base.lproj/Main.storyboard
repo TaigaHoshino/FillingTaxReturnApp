@@ -69,13 +69,13 @@
         <!--Receipt Collection View Controller-->
         <scene sceneID="gf9-ZN-ulr">
             <objects>
-                <viewController id="RhA-lj-kim" customClass="ReceiptCollectionViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="RhA-lj-kim" customClass="ReceiptCollectionViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ER6-18-d8J">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5yq-Am-cvN">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LkD-En-8XY">
                                     <size key="itemSize" width="128" height="128"/>
@@ -114,7 +114,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmR-S9-xxC">
-                                <rect key="frame" x="258" y="486.5" width="45" height="44.5"/>
+                                <rect key="frame" x="258" y="506.5" width="45" height="44.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="dok-Ug-DSf"/>
                                     <constraint firstAttribute="height" constant="45" id="sef-Tf-vr3"/>
@@ -124,11 +124,26 @@
                                     <action selector="onSettingButtonClick:" destination="RhA-lj-kim" eventType="touchUpInside" id="pil-Pc-f7x"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZOD-VW-xwi">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <navigationItem id="Xsb-BB-bxH">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="ok3-zk-5Rk">
+                                            <connections>
+                                                <action selector="onBackButtonClick:" destination="RhA-lj-kim" id="orE-1o-w1U"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="shP-LZ-Aah"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="5yq-Am-cvN" firstAttribute="top" secondItem="shP-LZ-Aah" secondAttribute="top" id="Mrj-6o-bId"/>
+                            <constraint firstItem="ZOD-VW-xwi" firstAttribute="top" secondItem="shP-LZ-Aah" secondAttribute="top" id="Ayc-Yh-EQW"/>
+                            <constraint firstItem="ZOD-VW-xwi" firstAttribute="trailing" secondItem="shP-LZ-Aah" secondAttribute="trailing" id="Bo9-1m-OjD"/>
+                            <constraint firstItem="ZOD-VW-xwi" firstAttribute="leading" secondItem="shP-LZ-Aah" secondAttribute="leading" id="EEh-Zk-lUZ"/>
+                            <constraint firstItem="5yq-Am-cvN" firstAttribute="top" secondItem="ZOD-VW-xwi" secondAttribute="bottom" id="Sif-4o-Wfq"/>
                             <constraint firstItem="5yq-Am-cvN" firstAttribute="trailing" secondItem="shP-LZ-Aah" secondAttribute="trailing" id="UDA-TQ-bkt"/>
                             <constraint firstItem="shP-LZ-Aah" firstAttribute="trailing" secondItem="WmR-S9-xxC" secondAttribute="trailing" constant="17" id="hKm-gy-DFu"/>
                             <constraint firstItem="5yq-Am-cvN" firstAttribute="leading" secondItem="shP-LZ-Aah" secondAttribute="leading" id="ip7-5i-5h2"/>
@@ -151,6 +166,7 @@
     </scenes>
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="gearshape.fill" catalog="system" width="128" height="121"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">

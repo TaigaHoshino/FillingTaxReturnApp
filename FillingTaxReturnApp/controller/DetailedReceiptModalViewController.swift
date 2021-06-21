@@ -12,8 +12,8 @@ class DetailedReceiptModalViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tfExpense: PriceTextField!
     private var receipt: Receipt!
+    @IBOutlet weak var registerReceiptButton: UIButton!
     
-    var registerCompletion: (() -> Void )? = nil
     var dismissCompletion: ((_ recept: Receipt) -> Void)? = nil
 
     override func viewDidLoad() {
@@ -34,14 +34,6 @@ class DetailedReceiptModalViewController: UIViewController {
         return receipt
     }
     
-    @IBAction func onRegisterButtonClick(_ sender: Any) {
-//        saveAllContents()
-        self.dismiss(animated: true, completion: nil)
-        AppDataModel.save()
-        registerCompletion?()
-    }
-    
-    
     private func saveAllContents(){
         if tfExpense.text != "" {
             receipt?.expense = tfExpense.getValue() as NSNumber
@@ -54,6 +46,8 @@ class DetailedReceiptModalViewController: UIViewController {
         if let id = ReceiptClassesUtil.findCountingClassIdByTitle(title: detailedReceiptTableView.tfCountingClass.text!){
             receipt?.countingClass = id as NSNumber
         }
+        
+        AppDataModel.save()
     }
     
     static func getInitialController(receipt: Receipt) -> DetailedReceiptModalViewController {
@@ -62,6 +56,10 @@ class DetailedReceiptModalViewController: UIViewController {
         viewController.receipt = receipt
         return viewController
     }
+    
+    @IBAction func onRegisterButtonClick(_ sender: Any) {
+    }
+    
 
     /*
     // MARK: - Navigation

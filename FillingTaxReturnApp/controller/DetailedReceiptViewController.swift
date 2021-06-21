@@ -10,7 +10,7 @@ import UIKit
 class DetailedReceiptViewController: UIViewController {
     
     private var semiModalPresenter = SemiModalPresenter()
-    var receipt: Receipt?
+    var receipt: Receipt!
     @IBOutlet weak var uiReceiptImage: UIImageView!
     
     override func viewDidLoad() {
@@ -32,9 +32,6 @@ class DetailedReceiptViewController: UIViewController {
     
     @IBAction func onEditButtonClick(_ sender: Any) {
         let viewController = DetailedReceiptModalViewController.getInitialController(receipt: self.receipt!)
-        viewController.registerCompletion = { () in
-            self.dismiss(animated: true, completion: nil)
-        }
         viewController.dismissCompletion = { receipt in
             self.receipt = receipt
         }
@@ -43,6 +40,14 @@ class DetailedReceiptViewController: UIViewController {
         
     }
     
+    @IBAction func onDeleteButtonClick(_ sender: Any) {
+        let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: receipt.imageName!)!
+        if AppDataModel.deleteReceipt(receipt: receipt){
+            _ = ReadAndWriteFileUtil.deleteFileFromPath(path: path)
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     static func getInitialViewController(receipt: Receipt) -> DetailedReceiptViewController {
         let storyboard = UIStoryboard(name: "DetailedReceipt", bundle: nil)

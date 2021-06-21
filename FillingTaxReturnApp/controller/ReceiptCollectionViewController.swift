@@ -9,7 +9,7 @@ import UIKit
 
 class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSource {
     
-    private var receipts: [Receipt] = AppDataModel.getReceipts()
+    private var receipts: [Receipt] = []
     private var selectedCellsReceiptIds: [UUID] = [UUID]()
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var settingButton: UIButton!
@@ -81,6 +81,11 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
         collectionView.reloadData()
         
     }
+    
+    @IBAction func onBackButtonClick(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     private func buttonSetting(){
         trashButton.center = settingButton.center
