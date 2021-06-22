@@ -23,6 +23,7 @@ extension Receipt {
     @NSManaged public var taxClass: NSNumber?
     @NSManaged public var occuredAt: Date?
     @NSManaged public var expense: NSNumber?
+    @NSManaged public var isRegistered: NSNumber?
 
 }
 

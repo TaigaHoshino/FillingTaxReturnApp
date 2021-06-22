@@ -13,6 +13,7 @@ class DetailedReceiptModalViewController: UIViewController {
     @IBOutlet weak var tfExpense: PriceTextField!
     private var receipt: Receipt!
     @IBOutlet weak var registerReceiptButton: UIButton!
+    private var isRegistered: Bool = false
     
     var dismissCompletion: ((_ recept: Receipt) -> Void)? = nil
 
@@ -21,6 +22,11 @@ class DetailedReceiptModalViewController: UIViewController {
 
         if let expense = receipt?.expense{
             tfExpense.setValue(value: expense as! Int)
+        }
+        
+        if let isRegistered = receipt?.isRegistered{
+            self.isRegistered = Bool(truncating: isRegistered)
+            setRegisterButtonUI(bool: self.isRegistered)
         }
         // Do any additional setup after loading the view.
     }
@@ -47,7 +53,20 @@ class DetailedReceiptModalViewController: UIViewController {
             receipt?.countingClass = id as NSNumber
         }
         
+        receipt?.isRegistered = NSNumber(value: isRegistered)
+        
         AppDataModel.save()
+    }
+    
+    private func setRegisterButtonUI(bool: Bool) {
+        if isRegistered {
+            registerReceiptButton.backgroundColor = .blue
+            registerReceiptButton.setTitle("登録済み", for: UIControl.State.normal)
+        }
+        else {
+            registerReceiptButton.backgroundColor = .yellow
+            registerReceiptButton.setTitle("未登録", for: UIControl.State.normal)
+        }
     }
     
     static func getInitialController(receipt: Receipt) -> DetailedReceiptModalViewController {
@@ -58,6 +77,8 @@ class DetailedReceiptModalViewController: UIViewController {
     }
     
     @IBAction func onRegisterButtonClick(_ sender: Any) {
+        isRegistered = !isRegistered
+        setRegisterButtonUI(bool: isRegistered)
     }
     
 

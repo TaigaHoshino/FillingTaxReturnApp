@@ -22,8 +22,6 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        receipts = AppDataModel.getReceipts()
-        
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -35,6 +33,11 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
 //        collectionView.minimumInteritemSpacing = 8
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        receipts = AppDataModel.getReceipts()
+        collectionView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {

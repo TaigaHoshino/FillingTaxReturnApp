@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="30" width="414" height="270"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="V41-1e-nQP">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="408"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="440"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Kw-0C-2w4">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -63,20 +63,34 @@
                                                         </constraints>
                                                     </view>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="58a-2e-eyn">
-                                                        <rect key="frame" x="0.0" y="110" width="414" height="238"/>
+                                                        <rect key="frame" x="0.0" y="110" width="414" height="200"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="238" id="pJ1-rh-f4u"/>
+                                                            <constraint firstAttribute="height" constant="200" id="pJ1-rh-f4u"/>
                                                         </constraints>
                                                         <connections>
                                                             <segue destination="wPg-hn-Oxa" kind="embed" id="c7N-Zf-t2e"/>
                                                         </connections>
                                                     </containerView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UaV-Eh-CoG">
-                                                        <rect key="frame" x="0.0" y="358" width="414" height="50"/>
+                                                        <rect key="frame" x="0.0" y="320" width="414" height="120"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgv-zL-NFj">
-                                                                <rect key="frame" x="50" y="5" width="314" height="40"/>
+                                                                <rect key="frame" x="50" y="35" width="314" height="50"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="szk-Qe-sJf"/>
+                                                                </constraints>
                                                                 <state key="normal" title="登録済み"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                        <real key="value" value="6"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="onRegisterButtonClick:" destination="Q1l-bI-d4D" eventType="touchUpInside" id="pzy-jf-pnj"/>
                                                                 </connections>
@@ -84,18 +98,15 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="bgv-zL-NFj" secondAttribute="bottom" constant="5" id="1c0-er-duV"/>
                                                             <constraint firstAttribute="trailing" secondItem="bgv-zL-NFj" secondAttribute="trailing" constant="50" id="Fh4-mG-cpK"/>
                                                             <constraint firstItem="bgv-zL-NFj" firstAttribute="leading" secondItem="UaV-Eh-CoG" secondAttribute="leading" constant="50" id="IpL-OW-88f"/>
-                                                            <constraint firstAttribute="height" constant="50" id="dmY-bM-s5l"/>
+                                                            <constraint firstAttribute="height" constant="120" id="dmY-bM-s5l"/>
                                                             <constraint firstItem="bgv-zL-NFj" firstAttribute="centerX" secondItem="UaV-Eh-CoG" secondAttribute="centerX" id="h67-51-uph"/>
                                                             <constraint firstItem="bgv-zL-NFj" firstAttribute="centerY" secondItem="UaV-Eh-CoG" secondAttribute="centerY" id="paa-MF-cBA"/>
-                                                            <constraint firstItem="bgv-zL-NFj" firstAttribute="top" secondItem="UaV-Eh-CoG" secondAttribute="top" constant="5" id="rep-NS-m29"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="UaV-Eh-CoG" secondAttribute="bottom" id="hgx-Pm-tCW"/>
                                                     <constraint firstAttribute="trailing" secondItem="UaV-Eh-CoG" secondAttribute="trailing" id="iDo-iy-MFo"/>
                                                     <constraint firstItem="UaV-Eh-CoG" firstAttribute="leading" secondItem="V41-1e-nQP" secondAttribute="leading" id="rqM-sj-lMg"/>
                                                 </constraints>
@@ -148,7 +159,7 @@
             <objects>
                 <tableViewController id="wPg-hn-Oxa" customClass="DetailedReceiptContainerTableViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cTc-oH-TBr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="238"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
