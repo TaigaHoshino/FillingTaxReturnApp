@@ -36,7 +36,7 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        receipts = AppDataModel.getReceipts()
+        receipts = ReceiptDataModel.getReceipts()
         collectionView.reloadData()
     }
     
@@ -71,14 +71,14 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
     @IBAction func onTrashButtonClick(_ sender: Any) {
         
         for id in selectedCellsReceiptIds {
-            let receipt = AppDataModel.getReceiptById(id: id)!.first!
+            let receipt = ReceiptDataModel.getReceiptById(id: id)!.first!
             let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: receipt.imageName!)!
-            if AppDataModel.deleteReceipt(receipt: receipt){
+            if ReceiptDataModel.deleteReceipt(receipt: receipt){
                 _ = ReadAndWriteFileUtil.deleteFileFromPath(path: path)
             }
         }
         
-        receipts = AppDataModel.getReceipts()
+        receipts = ReceiptDataModel.getReceipts()
         selectedCellsReceiptIds.removeAll()
         
         collectionView.reloadData()

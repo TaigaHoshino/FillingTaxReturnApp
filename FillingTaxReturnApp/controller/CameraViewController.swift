@@ -49,11 +49,11 @@ extension CameraViewController: CameraViewProtocol{
         if let targetDirectory = targetDirectory {
             
             if(ReadAndWriteFileUtil.saveImage(image: uiImage, path: targetDirectory)){
-                let receipt = AppDataModel.newReceipt()
+                let receipt = ReceiptDataModel.newReceipt()
                 receipt.createdAt = date
                 receipt.occuredAt = date
                 receipt.imageName = fileName
-                AppDataModel.save()
+                ReceiptDataModel.save()
                 
                 let viewController = DetailedReceiptViewController.getInitialViewController(receipt: receipt)
                 present(viewController, animated: true, completion: nil)

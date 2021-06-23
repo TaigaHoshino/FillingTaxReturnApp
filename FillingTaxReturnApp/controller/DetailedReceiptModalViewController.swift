@@ -55,7 +55,7 @@ class DetailedReceiptModalViewController: UIViewController {
         
         receipt?.isRegistered = NSNumber(value: isRegistered)
         
-        AppDataModel.save()
+        ReceiptDataModel.save()
     }
     
     private func setRegisterButtonUI(bool: Bool) {

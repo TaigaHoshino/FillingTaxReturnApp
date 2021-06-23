@@ -42,7 +42,7 @@ class DetailedReceiptViewController: UIViewController {
     
     @IBAction func onDeleteButtonClick(_ sender: Any) {
         let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: receipt.imageName!)!
-        if AppDataModel.deleteReceipt(receipt: receipt){
+        if ReceiptDataModel.deleteReceipt(receipt: receipt){
             _ = ReadAndWriteFileUtil.deleteFileFromPath(path: path)
         }
         

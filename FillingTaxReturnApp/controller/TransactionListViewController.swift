@@ -92,7 +92,7 @@ class TransactionListViewController: UIViewController {
             to = DatetimeUtil.formattedDateToDate(strDate: "\(year + 1)年1月1日")
         }
         
-        let receipts = AppDataModel.getReceiptsByDate(from: from, to: to)
+        let receipts = ReceiptDataModel.getReceiptsByDate(from: from, to: to, registeredOnly: true)
         
         return receipts
     }
