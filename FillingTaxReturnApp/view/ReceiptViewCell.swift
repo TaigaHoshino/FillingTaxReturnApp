@@ -13,10 +13,50 @@ class ReceiptViewCell: UICollectionViewCell {
     @IBOutlet weak var uiReceiptImageView: UIImageView!
     @IBOutlet weak var uiRegisterImageView: UIImageView!
     @IBOutlet weak var uiCheckBoxView: UIImageView!
-    private var isSettingModeActive = false
-    private var isCellSelected = false
-    private var receipt: Receipt!
+    private var _isSettingModeActive = false
+    public var settingModeActive: Bool {
+        set(bool){
+            if bool{
+                _isSettingModeActive = true
+                uiCheckBoxView.isHidden = false
+            }
+            else {
+                _isSettingModeActive = false
+                isCellSelected = false
+                uiCheckBoxView.image = getEmptyImage()
+                uiCheckBoxView.isHidden = true
+            }
+        }
+        get{
+            return _isSettingModeActive
+        }
+    }
     
+    private var _isCellSelected = false
+    public var isCellSelected:Bool {
+        set(bool) {
+            if bool {
+                _isCellSelected = true
+                uiCheckBoxView.image = getCheckedImage()
+            }
+            else {
+                _isCellSelected = false
+                uiCheckBoxView.image = getEmptyImage()
+            }
+        }
+        get {
+            return _isCellSelected
+        }
+    }
+    
+    private var _receipt: Receipt!
+    
+    public var receipt: Receipt{
+        get {
+            return _receipt
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -46,16 +86,22 @@ class ReceiptViewCell: UICollectionViewCell {
     
     func setupCell(receipt: Receipt){
         
+        self._receipt = receipt
+        
         DispatchQueue.global().async{
-            let targetFile: String! = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: receipt.imageName!)
+            let targetFile: String! = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: self._receipt.imageName!)
             let img = ReadAndWriteFileUtil.loadFileFromPath(path: targetFile)!.resize(withPercentage: 0.1)
             DispatchQueue.main.async {
                 self.uiReceiptImageView.image = img?.resize(size: self.frame.size)
                 self.occuredAtText.text = DatetimeUtil.dateToFormattedDate(date: receipt.occuredAt!)
-                self.uiRegisterImageView.image = UIImage(named: "baseline_check_circle_outline")
             }
         }
-        self.receipt = receipt
+        if Bool(truncating: receipt.isRegistered ?? false) {
+            self.uiRegisterImageView.image = UIImage(named: "baseline_check_circle_outline")
+        }
+        else {
+            self.uiRegisterImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
+        }
         uiCheckBoxView.image = getEmptyImage()
         isCellSelected = false
         uiCheckBoxView.isHidden = true
@@ -64,14 +110,7 @@ class ReceiptViewCell: UICollectionViewCell {
     }
     
     func setIsCellSelected(selected: Bool){
-        if selected {
-            isCellSelected = true
-            uiCheckBoxView.image = getCheckedImage()
-        }
-        else {
-            isCellSelected = false
-            uiCheckBoxView.image = getEmptyImage()
-        }
+        
     }
     
     func getIsCellSelected() -> Bool{
@@ -80,7 +119,7 @@ class ReceiptViewCell: UICollectionViewCell {
     
     func onSelect(){
         
-        if(isSettingModeActive == false){
+        if(_isSettingModeActive == false){
             return
         }
         
@@ -94,18 +133,6 @@ class ReceiptViewCell: UICollectionViewCell {
         isCellSelected = !isCellSelected
     }
     
-    func acitivateSettingMode(){
-        isSettingModeActive = true
-        uiCheckBoxView.isHidden = false
-    }
-    
-    func inactivateSettingMode(){
-        isSettingModeActive = false
-        isCellSelected = false
-        uiCheckBoxView.image = getEmptyImage()
-        uiCheckBoxView.isHidden = true
-    }
-    
     func getEmptyImage() -> UIImage{
         return UIImage.getEmptyImage(color: .white, size: uiCheckBoxView.frame.size, imageView: uiCheckBoxView)
     }
@@ -114,10 +141,6 @@ class ReceiptViewCell: UICollectionViewCell {
         let image = UIImage(systemName: "checkmark")
         let resultImage = image!.resize(size: uiCheckBoxView.frame.size)
         return resultImage!
-    }
-    
-    func getReceipt() -> Receipt{
-        return receipt
     }
 
 }

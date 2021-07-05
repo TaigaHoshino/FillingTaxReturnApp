@@ -57,12 +57,30 @@ class ReceiptDataModel {
         return receipt
     }
     
+    static func getReceiptByIsRegistered(isRegistered: Bool) -> [Receipt]? {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Receipt> = Receipt.fetchRequest()
+        let intBool = Bool(isRegistered)
+        let predicate = NSPredicate(format: "isRegistered = '\(intBool)'")
+        fetchRequest.predicate = predicate
+        var receipt: [Receipt]?
+        
+        do{
+            receipt = try context.fetch(fetchRequest)
+            
+        }
+        catch let error as NSError {
+            print("Error: \(error), \(error.userInfo)")
+        }
+        return receipt
+    }
+    
     static func getReceiptsByDate(from: Date, to: Date, registeredOnly: Bool = false) -> [Receipt]?{
         let context = persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Receipt> = Receipt.fetchRequest()
         let predicate: NSPredicate
         if registeredOnly {
-            predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@) AND (isRegistered == %@)", from as CVarArg, to as CVarArg, 0)
+            predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@) AND (isRegistered <> '0')", from as CVarArg, to as CVarArg)
         }
         else {
             predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@)", from as CVarArg, to as CVarArg)

@@ -57,3 +57,17 @@ class DatetimeUtil{
     }
     
 }
+
+extension Date {
+    var month: Int {
+        let calender = Calendar.current
+        let month = calender.component(.month, from: self)
+        return month
+    }
+    
+    var year: Int {
+        let calender = Calendar.current
+        let year = calender.component(.year, from: self)
+        return year
+    }
+}

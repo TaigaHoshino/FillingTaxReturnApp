@@ -53,6 +53,7 @@ extension CameraViewController: CameraViewProtocol{
                 receipt.createdAt = date
                 receipt.occuredAt = date
                 receipt.imageName = fileName
+                receipt.isRegistered = 0
                 ReceiptDataModel.save()
                 
                 let viewController = DetailedReceiptViewController.getInitialViewController(receipt: receipt)

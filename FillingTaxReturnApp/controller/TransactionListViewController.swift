@@ -15,6 +15,7 @@ class TransactionListViewController: UIViewController {
     
     private var selectedDateCellIndexPath: IndexPath!
     private var receiptsEachDayList: [ReceiptsEachDay] = []
+    private var currentSelectedDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,26 +27,31 @@ class TransactionListViewController: UIViewController {
         
         dateCollectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        let date = Date()
-        let calender = Calendar.current
-        let year = calender.component(.year, from: date)
-        let month = calender.component(.month, from: date)
-        
-        let receiptsEachMonth = getReceiptEachMonth(year: year, month: month)!
-        
-        receiptsEachDayList = separateReceiptsEachDay(receipts: receiptsEachMonth)
-        print(receiptsEachDayList)
+        currentSelectedDate = Date()
 
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
+        // 選択されたDateの年月を取得
+        let year = currentSelectedDate.year
+        let month = currentSelectedDate.month
+        
+        let receiptsEachMonth = getReceiptEachMonth(year: year, month: month)!
+        
+        // 取引一覧の日付ごとのセクション分けをするためにデータを仕分ける
+        receiptsEachDayList = separateReceiptsEachDay(receipts: receiptsEachMonth)
+        tvTransactionList.reloadData()
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let month = currentSelectedDate.month
+        
         // 今日の月のコレクションセルを探し、中央に表示して選択状態にする
-        let calender = Calendar.current
-        
-        let month = calender.component(.month, from: Date())
-        
         selectedDateCellIndexPath = IndexPath(row: month - 1, section: 0)
         dateCollectionView.scrollToItem(at: selectedDateCellIndexPath, at: .centeredHorizontally, animated: false)
     }
@@ -136,10 +142,9 @@ extension TransactionListViewController: UICollectionViewDataSource {
             preSelectedCell?.setDefault()
             cell.onSelect()
             selectedDateCellIndexPath = indexPath
-            let date = cell.getDate()
-            let calender = Calendar.current
-            let year = calender.component(.year, from: date)
-            let month = calender.component(.month, from: date)
+            currentSelectedDate = cell.getDate()
+            let year = currentSelectedDate.year
+            let month = currentSelectedDate.month
             let receiptsEachMonth = getReceiptEachMonth(year: year, month: month)!
             receiptsEachDayList = separateReceiptsEachDay(receipts: receiptsEachMonth)
             tvTransactionList.reloadData()
