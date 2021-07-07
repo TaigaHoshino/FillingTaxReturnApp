@@ -204,7 +204,7 @@ extension ReceiptCollectionViewController{
 extension ReceiptCollectionViewController: UICollectionViewDelegateFlowLayout {
     // [1]
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: cellWidth - 1, height: cellWidth * 9/5)
+        return CGSize.init(width: cellWidth - 1, height: cellWidth * 11/6)
     }
 
     private var cellWidth: CGFloat {

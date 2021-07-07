@@ -10,6 +10,8 @@ import UIKit
 class ReceiptViewCell: UICollectionViewCell {
     
     @IBOutlet weak var occuredAtText: UILabel!
+    @IBOutlet weak var countingClassLabel: UILabel!
+    @IBOutlet weak var isRegisteredLabel: UILabel!
     @IBOutlet weak var uiReceiptImageView: UIImageView!
     @IBOutlet weak var uiRegisterImageView: UIImageView!
     @IBOutlet weak var uiCheckBoxView: UIImageView!
@@ -87,9 +89,9 @@ class ReceiptViewCell: UICollectionViewCell {
     func setupCell(receipt: Receipt){
         
         self._receipt = receipt
+        let targetFile: String! = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: self._receipt.imageName!)
         
         DispatchQueue.global().async{
-            let targetFile: String! = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: self._receipt.imageName!)
             let img = ReadAndWriteFileUtil.loadFileFromPath(path: targetFile)!.resize(withPercentage: 0.1)
             DispatchQueue.main.async {
                 self.uiReceiptImageView.image = img?.resize(size: self.frame.size)
@@ -98,10 +100,13 @@ class ReceiptViewCell: UICollectionViewCell {
         }
         if Bool(truncating: receipt.isRegistered ?? false) {
             self.uiRegisterImageView.image = UIImage(named: "baseline_check_circle_outline")
+            isRegisteredLabel.text = "登録済み"
         }
         else {
             self.uiRegisterImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
+            isRegisteredLabel.text = "未登録"
         }
+        countingClassLabel.text = ReceiptClassesUtil.findCountingClassTitleById(id: receipt.countingClass as! Int)
         uiCheckBoxView.image = getEmptyImage()
         isCellSelected = false
         uiCheckBoxView.isHidden = true

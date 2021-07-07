@@ -87,6 +87,8 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="countingClassLabel" destination="MpL-1l-5od" id="HfY-A3-hNf"/>
+                <outlet property="isRegisteredLabel" destination="eUL-5W-wWs" id="Lbg-PV-re9"/>
                 <outlet property="occuredAtText" destination="GQ3-xo-ffo" id="prK-TN-kxn"/>
                 <outlet property="uiCheckBoxView" destination="il6-Ii-633" id="REC-tZ-29l"/>
                 <outlet property="uiReceiptImageView" destination="Bdq-zK-6d2" id="6D8-XQ-Its"/>

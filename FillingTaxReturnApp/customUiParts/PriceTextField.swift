@@ -10,6 +10,7 @@ import UIKit
 class PriceTextField: UITextField {
     
     private let formatter = NumberFormatter()
+    private var priceLabel: UILabel!
     
     init(){
         super.init(frame: CGRect.zero)
@@ -33,9 +34,12 @@ class PriceTextField: UITextField {
         formatter.groupingSeparator = ","
         formatter.groupingSize = 3
         
-        let toolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: 0, height: 35))
+        createPriceLabel()
+        let toolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: 0, height: 45))
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-        toolbar.setItems([doneItem], animated: true)
+        let toolbarLabel = UIBarButtonItem(customView: priceLabel)
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([doneItem, flexible, toolbarLabel], animated: true)
         
         self.inputAccessoryView = toolbar
         
@@ -57,6 +61,7 @@ class PriceTextField: UITextField {
     
     func setValue(value: Int){
         text = addComma(strNumber: String(value))
+        priceLabel.text = addComma(strNumber: String(value))
     }
     
     func getValue() -> Int{
@@ -72,6 +77,13 @@ class PriceTextField: UITextField {
         endEditing(true)
     }
     
+    private func createPriceLabel(){
+        priceLabel = UILabel(frame: CGRect.init(x: 0, y: 0, width: 100, height: 40))
+        priceLabel.text = "0"
+        priceLabel.center = CGPoint(x: self.frame.width/2, y: self.frame.height)
+        priceLabel.textAlignment = NSTextAlignment.right
+    }
+    
 }
 
 extension PriceTextField: UITextFieldDelegate {
@@ -79,6 +91,11 @@ extension PriceTextField: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         
         text = addComma(strNumber: text!)
+        priceLabel.text = addComma(strNumber: text!)
+        
+        if text?.count == 0 {
+            text = "0"
+        }
         
         guard let position = self.position(from: selectedTextRange!.start, offset: text!.count) else {return}
         
