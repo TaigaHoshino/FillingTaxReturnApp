@@ -25,5 +25,11 @@ class ViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
     
+    @IBAction func onBankWebButtonClick(_ sender: Any) {
+        let viewController = BankWebViewController.initialController
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    
 }
 
