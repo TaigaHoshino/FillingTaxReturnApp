@@ -31,5 +31,10 @@ class BankWebViewController: UIViewController {
         openUrl(strUrl: URLCollection.mizuhoDirectLogin)
 //        // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func scrapingButtonClick(_ sender: Any) {
+        let jsExecutor = WebViewJsExecutor(webView: webView)
+        jsExecutor.executeJs(jsScript: "document.body.innerHTML")
+    }
+    
 }

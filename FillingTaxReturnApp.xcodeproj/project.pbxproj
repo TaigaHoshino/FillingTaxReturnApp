@@ -54,6 +54,7 @@
 		95D0E4A626993119004EC7C3 /* BankWeb.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95D0E4A526993119004EC7C3 /* BankWeb.storyboard */; };
 		95D0E4A826993165004EC7C3 /* BankWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0E4A726993165004EC7C3 /* BankWebViewController.swift */; };
 		95D0E4AA26993774004EC7C3 /* URLCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0E4A926993774004EC7C3 /* URLCollection.swift */; };
+		95D0E4AC26996B7D004EC7C3 /* WebViewJsExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D0E4AB26996B7D004EC7C3 /* WebViewJsExecutor.swift */; };
 		95EBFE832625031A001095E7 /* DetailedReceiptContainerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBFE822625031A001095E7 /* DetailedReceiptContainerTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,7 @@
 		95D0E4A526993119004EC7C3 /* BankWeb.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BankWeb.storyboard; sourceTree = "<group>"; };
 		95D0E4A726993165004EC7C3 /* BankWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankWebViewController.swift; sourceTree = "<group>"; };
 		95D0E4A926993774004EC7C3 /* URLCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLCollection.swift; sourceTree = "<group>"; };
+		95D0E4AB26996B7D004EC7C3 /* WebViewJsExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewJsExecutor.swift; sourceTree = "<group>"; };
 		95EBFE822625031A001095E7 /* DetailedReceiptContainerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReceiptContainerTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				958823F42609517B001996DA /* ReceiptDataModel.swift */,
+				95D0E4AB26996B7D004EC7C3 /* WebViewJsExecutor.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				9546112E260580FE004D1BBC /* AppDelegate.swift in Sources */,
 				958823FB260AA719001996DA /* DatetimeUtil.swift in Sources */,
 				958EFD3D263A29580025B373 /* DateCell.swift in Sources */,
+				95D0E4AC26996B7D004EC7C3 /* WebViewJsExecutor.swift in Sources */,
 				9509BF47267961D6007515E9 /* SemiModalDismissInteractiveTransition.swift in Sources */,
 				95A05239262A5528001C94F0 /* PickerTextField.swift in Sources */,
 				953A3458266B023B00B5DD8C /* PriceUtil.swift in Sources */,
