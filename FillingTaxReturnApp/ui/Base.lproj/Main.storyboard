@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,12 +45,20 @@
                                     <action selector="showModal:" destination="BYZ-38-t0r" eventType="touchUpInside" id="na5-0T-Qw2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xf0-1U-AWB">
+                                <rect key="frame" x="114" y="459" width="92" height="30"/>
+                                <state key="normal" title="収入（手動）"/>
+                                <connections>
+                                    <action selector="onIncomeButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3vT-lP-8eq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vLO-sT-fAG" firstAttribute="top" secondItem="13t-SB-8im" secondAttribute="bottom" constant="20" id="7Vg-Mk-4zm"/>
                             <constraint firstItem="vLO-sT-fAG" firstAttribute="centerX" secondItem="13t-SB-8im" secondAttribute="centerX" id="Abq-nD-q66"/>
+                            <constraint firstItem="Xf0-1U-AWB" firstAttribute="top" secondItem="Vxj-HB-xZg" secondAttribute="bottom" constant="15" id="Dg0-DQ-8cE"/>
                             <constraint firstItem="Vxj-HB-xZg" firstAttribute="top" secondItem="vLO-sT-fAG" secondAttribute="bottom" constant="20" id="ELJ-La-jhU"/>
                             <constraint firstItem="hfn-JK-XK0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EiO-Vd-OkO"/>
                             <constraint firstItem="13t-SB-8im" firstAttribute="centerX" secondItem="hfn-JK-XK0" secondAttribute="centerX" id="GuN-Bp-6Id"/>
@@ -58,6 +66,7 @@
                             <constraint firstItem="hfn-JK-XK0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ocx-VN-R9K"/>
                             <constraint firstItem="Vxj-HB-xZg" firstAttribute="centerX" secondItem="vLO-sT-fAG" secondAttribute="centerX" id="lZ3-rE-uUU"/>
                             <constraint firstItem="13t-SB-8im" firstAttribute="top" secondItem="hfn-JK-XK0" secondAttribute="bottom" constant="15" id="ncc-Em-Ife"/>
+                            <constraint firstItem="Xf0-1U-AWB" firstAttribute="centerX" secondItem="Vxj-HB-xZg" secondAttribute="centerX" id="sYq-1r-SfG"/>
                             <constraint firstItem="hfn-JK-XK0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ubp-Rd-Thh"/>
                         </constraints>
                     </view>

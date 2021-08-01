@@ -155,10 +155,10 @@
             </objects>
             <point key="canvasLocation" x="-655.07246376811599" y="140.625"/>
         </scene>
-        <!--Detailed Receipt Container Table View Controller-->
+        <!--Detailed Receipt Static Table View Controller-->
         <scene sceneID="Ex4-tv-iKy">
             <objects>
-                <tableViewController id="wPg-hn-Oxa" customClass="DetailedReceiptContainerTableViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="wPg-hn-Oxa" customClass="DetailedReceiptStaticTableViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cTc-oH-TBr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

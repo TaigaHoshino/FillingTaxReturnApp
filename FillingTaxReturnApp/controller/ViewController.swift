@@ -25,5 +25,10 @@ class ViewController: UIViewController {
         present(viewController, animated: true, completion: nil)
     }
     
+    
+    @IBAction func onIncomeButtonClick(_ sender: Any) {
+        let viewController = RegisterBOPViewController.initialController
+        present(viewController, animated: true, completion: nil)
+    }
 }
 

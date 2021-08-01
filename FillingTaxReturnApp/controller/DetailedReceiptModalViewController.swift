@@ -45,7 +45,7 @@ class DetailedReceiptModalViewController: UIViewController {
             receipt?.expense = tfExpense.getValue() as NSNumber
         }
         
-        let detailedReceiptTableView = self.children[0] as! DetailedReceiptContainerTableViewController
+        let detailedReceiptTableView = self.children[0] as! DetailedReceiptStaticTableViewController
         
         receipt?.occuredAt = DatetimeUtil.formattedDateToDate(strDate: detailedReceiptTableView.tfOccuredDate.text!)
         
