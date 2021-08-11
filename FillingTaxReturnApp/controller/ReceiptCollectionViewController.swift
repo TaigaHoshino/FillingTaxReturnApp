@@ -162,7 +162,6 @@ extension ReceiptCollectionViewController{
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReceiptViewCell", for: indexPath)
-        print(receipts[indexPath.row].imageName)
         
         if let cell = cell as? ReceiptViewCell{
             cell.setupCell(receipt: receipts[indexPath.row])

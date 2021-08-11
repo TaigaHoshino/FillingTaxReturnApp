@@ -106,7 +106,7 @@ class ReceiptViewCell: UICollectionViewCell {
             self.uiRegisterImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
             isRegisteredLabel.text = "未登録"
         }
-        countingClassLabel.text = ReceiptClassesUtil.findCountingClassTitleById(id: receipt.countingClass as! Int)
+        countingClassLabel.text = Datasets.findCountingClassTitleById(id: receipt.countingClass as! Int)
         uiCheckBoxView.image = getEmptyImage()
         isCellSelected = false
         uiCheckBoxView.isHidden = true

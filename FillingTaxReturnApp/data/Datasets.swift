@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ReceiptClassesUtil {
+class Datasets {
     public static let countingClass = [["id": 1, "title": "飲食費", "description": "飲食に使用した経費"],
                                        ["id": 2, "title": "営業関連の支払い", "description": "任入・会議・広告・外注・交際など"],
                                        ["id": 3, "title": "物品の購入等", "description": "消耗品・新聞・書籍・リースなど"],
@@ -17,6 +17,8 @@ class ReceiptClassesUtil {
                                        ["id": 7, "title": "金銭貸借・一時支払", "description": "事業主の生活費・返済・仮払など"],
                                        ["id": 8, "title": "固定資産の購入", "description": "１年以上使う１０万円以上の物品購入"],
                                        ["id": 9, "title": "その他", "description": "いずれにもあてはまらないもの"]]
+    
+    public static let incomeOrExpenditure = ["収入", "支出"]
     
     public static func findCountingClassIdByTitle(title: String) -> Int?{
         for data in countingClass{

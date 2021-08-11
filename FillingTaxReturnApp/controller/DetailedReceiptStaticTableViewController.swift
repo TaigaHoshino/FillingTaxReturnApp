@@ -15,7 +15,7 @@ class DetailedReceiptStaticTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dataSource = ReceiptClassesUtil.countingClass
+        let dataSource = Datasets.countingClass
         var data = [String]()
         
         for title in dataSource{
@@ -42,16 +42,16 @@ class DetailedReceiptStaticTableViewController: UITableViewController {
         }
         
         if let id = receipt.countingClass{
-            if let title = ReceiptClassesUtil.findCountingClassTitleById(id: id.intValue){
+            if let title = Datasets.findCountingClassTitleById(id: id.intValue){
                 tfCountingClass.setDefaultValue(value: title)
             }
             else{
-                tfCountingClass.setDefaultValue(value: ReceiptClassesUtil.countingClass.first!["title"] as! String)
+                tfCountingClass.setDefaultValue(value: Datasets.countingClass.first!["title"] as! String)
             }
             
         }
         else {
-            tfCountingClass.setDefaultValue(value: ReceiptClassesUtil.countingClass.first!["title"] as! String)
+            tfCountingClass.setDefaultValue(value: Datasets.countingClass.first!["title"] as! String)
         }
     }
 }

@@ -30,7 +30,7 @@ class TransactionCell: UITableViewCell {
         self.receipt = receipt
         let price = receipt.expense as! Int
         self.lbPrice.text = price.addComma()
-        self.lbCountingClass.text = ReceiptClassesUtil.findCountingClassTitleById(id: receipt.countingClass as! Int)
+        self.lbCountingClass.text = Datasets.findCountingClassTitleById(id: receipt.countingClass as! Int)
     }
     
     func getReceipt() -> Receipt {

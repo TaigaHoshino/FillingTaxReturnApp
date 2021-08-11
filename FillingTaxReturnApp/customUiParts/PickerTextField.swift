@@ -12,20 +12,17 @@ class PickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSource
     private var dataSource = [String]()
     private var picker: UIPickerView!
     
-    init(){
-        super.init(frame: CGRect.zero)
-    }
-    
     override init(frame: CGRect){
         super.init(frame: frame)
+        initView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        initView()
     }
     
-    func setDataSource(dataSource: [String]){
-        self.dataSource = dataSource
+    private func initView() {
         
         picker = UIPickerView()
         picker.delegate = self
@@ -35,8 +32,12 @@ class PickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSource
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         toolbar.setItems([doneItem], animated: true)
         
-        self.inputView = picker
         self.inputAccessoryView = toolbar
+    }
+    
+    func setDataSource(dataSource: [String]){
+        self.dataSource = dataSource
+        self.inputView = picker
     }
     
     func setDefaultValue(value: String){

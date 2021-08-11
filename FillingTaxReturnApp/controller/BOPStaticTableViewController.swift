@@ -8,14 +8,16 @@
 import UIKit
 
 class BOPStaticTableViewController: UITableViewController {
-
+    
+    @IBOutlet weak var countingClass: PickerTextField!
+    @IBOutlet weak var client: AddablePickerTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        countingClass.setDataSource(dataSource: ["未選択"])
+        client.setDataSource(dataSource: ["未選択"], protectFromDelete: ["未選択"])
     }
+    
+    
 }

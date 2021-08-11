@@ -49,7 +49,7 @@ class DetailedReceiptModalViewController: UIViewController {
         
         receipt?.occuredAt = DatetimeUtil.formattedDateToDate(strDate: detailedReceiptTableView.tfOccuredDate.text!)
         
-        if let id = ReceiptClassesUtil.findCountingClassIdByTitle(title: detailedReceiptTableView.tfCountingClass.text!){
+        if let id = Datasets.findCountingClassIdByTitle(title: detailedReceiptTableView.tfCountingClass.text!){
             receipt?.countingClass = id as NSNumber
         }
         

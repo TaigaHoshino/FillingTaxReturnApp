@@ -9,6 +9,8 @@ import UIKit
 
 class RegisterBOPViewController: UIViewController {
     
+    @IBOutlet weak var bopPickerField: PickerTextField!
+    
     public static var initialController: Self {
         get{
             let storyboard = UIStoryboard(name: "RegisterBOP", bundle: nil)
@@ -20,18 +22,13 @@ class RegisterBOPViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        bopPickerField.setDataSource(dataSource: Datasets.incomeOrExpenditure)
     }
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func onBackButtonClick(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
+    
 
 }

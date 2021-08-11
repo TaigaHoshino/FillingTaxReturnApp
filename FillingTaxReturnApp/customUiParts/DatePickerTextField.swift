@@ -38,6 +38,7 @@ class DatePickerTextField: UITextField {
         self.inputAccessoryView = toolbar
         
         datePicker.addTarget(self, action: #selector(dateValueChanged(sender:)), for: UIControl.Event.valueChanged)
+        text = DatetimeUtil.dateToFormattedDate(date: Date())
     }
     
     func setDateValue(date: Date){
