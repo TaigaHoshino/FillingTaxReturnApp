@@ -16,8 +16,11 @@ class BOPStaticTableViewController: UITableViewController {
         super.viewDidLoad()
 
         countingClass.setDataSource(dataSource: ["未選択"])
-        client.setDataSource(dataSource: ["未選択"], protectFromDelete: ["未選択"])
+        client.setUserDefaults(userDefaultsKey: AppData.clientsDefaultKey, noSelectionValue: "未選択")
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        client.save()
+    }
     
 }

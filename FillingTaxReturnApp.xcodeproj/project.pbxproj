@@ -28,6 +28,7 @@
 		9546114526058100004D1BBC /* FillingTaxReturnAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546114426058100004D1BBC /* FillingTaxReturnAppTests.swift */; };
 		9546115026058100004D1BBC /* FillingTaxReturnAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9546114F26058100004D1BBC /* FillingTaxReturnAppUITests.swift */; };
 		9561AC5B261E5E7200D8585D /* UIExtensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9561AC5A261E5E7200D8585D /* UIExtensionUtil.swift */; };
+		9564E7B426C3501B00838DD6 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564E7B326C3501B00838DD6 /* AppData.swift */; };
 		956F48862622C7FF00A0A1DD /* DetailedReceipt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956F48852622C7FF00A0A1DD /* DetailedReceipt.storyboard */; };
 		956F488B2622D81F00A0A1DD /* DetailedReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F488A2622D81F00A0A1DD /* DetailedReceiptViewController.swift */; };
 		958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9588239E2607F65E001996DA /* AppData.xcdatamodeld */; };
@@ -104,6 +105,7 @@
 		9546114F26058100004D1BBC /* FillingTaxReturnAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillingTaxReturnAppUITests.swift; sourceTree = "<group>"; };
 		9546115126058100004D1BBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9561AC5A261E5E7200D8585D /* UIExtensionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensionUtil.swift; sourceTree = "<group>"; };
+		9564E7B326C3501B00838DD6 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		956F48852622C7FF00A0A1DD /* DetailedReceipt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailedReceipt.storyboard; sourceTree = "<group>"; };
 		956F488A2622D81F00A0A1DD /* DetailedReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReceiptViewController.swift; sourceTree = "<group>"; };
 		9588239F2607F65E001996DA /* AppData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppData.xcdatamodel; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				958823A92607F7EC001996DA /* Receipt+CoreDataProperties.swift */,
 				9588239E2607F65E001996DA /* AppData.xcdatamodeld */,
 				95AE9D832647D4DF00B5EAC3 /* ReceiptsEachDay.swift */,
+				9564E7B326C3501B00838DD6 /* AppData.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				9591E144266D85E200F12A92 /* CameraView.swift in Sources */,
 				95C687F926B6D03A0058A3E1 /* ClosableTextField.swift in Sources */,
 				95AE9D842647D4DF00B5EAC3 /* ReceiptsEachDay.swift in Sources */,
+				9564E7B426C3501B00838DD6 /* AppData.swift in Sources */,
 				958EFD382636274A0025B373 /* TransactionListViewController.swift in Sources */,
 				958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */,
 				95A05254262CDFA4001C94F0 /* PriceTextField.swift in Sources */,

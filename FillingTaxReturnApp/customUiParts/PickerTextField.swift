@@ -56,6 +56,7 @@ class PickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.text = dataSource[row]
         return dataSource[row]
     }
     
