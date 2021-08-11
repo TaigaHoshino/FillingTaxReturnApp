@@ -41,17 +41,12 @@ class DetailedReceiptStaticTableViewController: UITableViewController {
             tfOccuredDate.setDateValue(date: receipt.occuredAt!)
         }
         
-        if let id = receipt.countingClass{
-            if let title = Datasets.findCountingClassTitleById(id: id.intValue){
-                tfCountingClass.setDefaultValue(value: title)
-            }
-            else{
-                tfCountingClass.setDefaultValue(value: Datasets.countingClass.first!["title"] as! String)
-            }
-            
+        if let title = Datasets.findCountingClassTitleById(id: Int(receipt.countingClass)){
+            tfCountingClass.setDefaultValue(value: title)
         }
-        else {
+        else{
             tfCountingClass.setDefaultValue(value: Datasets.countingClass.first!["title"] as! String)
         }
+            
     }
 }

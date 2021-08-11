@@ -98,7 +98,7 @@ class ReceiptViewCell: UICollectionViewCell {
                 self.occuredAtText.text = DatetimeUtil.dateToFormattedDate(date: receipt.occuredAt!)
             }
         }
-        if Bool(truncating: receipt.isRegistered ?? false) {
+        if Bool(truncating: NSNumber(value: receipt.isRegistered)) {
             self.uiRegisterImageView.image = UIImage(named: "baseline_check_circle_outline")
             isRegisteredLabel.text = "登録済み"
         }
@@ -106,7 +106,7 @@ class ReceiptViewCell: UICollectionViewCell {
             self.uiRegisterImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
             isRegisteredLabel.text = "未登録"
         }
-        countingClassLabel.text = Datasets.findCountingClassTitleById(id: receipt.countingClass as! Int)
+        countingClassLabel.text = Datasets.findCountingClassTitleById(id: Int(receipt.countingClass))
         uiCheckBoxView.image = getEmptyImage()
         isCellSelected = false
         uiCheckBoxView.isHidden = true

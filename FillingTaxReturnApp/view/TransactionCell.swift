@@ -28,9 +28,9 @@ class TransactionCell: UITableViewCell {
     
     func setupCell(receipt: Receipt){
         self.receipt = receipt
-        let price = receipt.expense as! Int
+        let price = Int(receipt.expense)
         self.lbPrice.text = price.addComma()
-        self.lbCountingClass.text = Datasets.findCountingClassTitleById(id: receipt.countingClass as! Int)
+        self.lbCountingClass.text = Datasets.findCountingClassTitleById(id: Int(receipt.countingClass))
     }
     
     func getReceipt() -> Receipt {

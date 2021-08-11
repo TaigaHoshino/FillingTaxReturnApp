@@ -21,11 +21,11 @@ class DetailedReceiptModalViewController: UIViewController {
         super.viewDidLoad()
 
         if let expense = receipt?.expense{
-            tfExpense.setValue(value: expense as! Int)
+            tfExpense.setValue(value: Int(expense))
         }
         
         if let isRegistered = receipt?.isRegistered{
-            self.isRegistered = Bool(truncating: isRegistered)
+            self.isRegistered = Bool(truncating: NSNumber(value: isRegistered))
             setRegisterButtonUI(bool: self.isRegistered)
         }
         // Do any additional setup after loading the view.
@@ -42,7 +42,7 @@ class DetailedReceiptModalViewController: UIViewController {
     
     private func saveAllContents(){
         if tfExpense.text != "" {
-            receipt?.expense = tfExpense.getValue() as NSNumber
+            receipt?.expense = Int64(tfExpense.getValue())
         }
         
         let detailedReceiptTableView = self.children[0] as! DetailedReceiptStaticTableViewController
@@ -50,10 +50,10 @@ class DetailedReceiptModalViewController: UIViewController {
         receipt?.occuredAt = DatetimeUtil.formattedDateToDate(strDate: detailedReceiptTableView.tfOccuredDate.text!)
         
         if let id = Datasets.findCountingClassIdByTitle(title: detailedReceiptTableView.tfCountingClass.text!){
-            receipt?.countingClass = id as NSNumber
+            receipt?.countingClass = Int16(id)
         }
         
-        receipt?.isRegistered = NSNumber(value: isRegistered)
+        receipt?.isRegistered = Int16(truncating: NSNumber(value: isRegistered))
         
         ReceiptDataModel.save()
     }

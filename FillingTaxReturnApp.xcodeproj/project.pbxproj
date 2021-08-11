@@ -32,8 +32,6 @@
 		956F48862622C7FF00A0A1DD /* DetailedReceipt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 956F48852622C7FF00A0A1DD /* DetailedReceipt.storyboard */; };
 		956F488B2622D81F00A0A1DD /* DetailedReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956F488A2622D81F00A0A1DD /* DetailedReceiptViewController.swift */; };
 		958823A12607F65E001996DA /* AppData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9588239E2607F65E001996DA /* AppData.xcdatamodeld */; };
-		958823AA2607F7EC001996DA /* Receipt+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958823A82607F7EC001996DA /* Receipt+CoreDataClass.swift */; };
-		958823AB2607F7EC001996DA /* Receipt+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958823A92607F7EC001996DA /* Receipt+CoreDataProperties.swift */; };
 		958823F52609517B001996DA /* ReceiptDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958823F42609517B001996DA /* ReceiptDataModel.swift */; };
 		958823FB260AA719001996DA /* DatetimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958823FA260AA719001996DA /* DatetimeUtil.swift */; };
 		95882403260AA923001996DA /* ReadAndWriteFileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95882402260AA923001996DA /* ReadAndWriteFileUtil.swift */; };
@@ -110,8 +108,6 @@
 		956F488A2622D81F00A0A1DD /* DetailedReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReceiptViewController.swift; sourceTree = "<group>"; };
 		9588239F2607F65E001996DA /* AppData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppData.xcdatamodel; sourceTree = "<group>"; };
 		958823A02607F65E001996DA /* ReceiptData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReceiptData.xcdatamodel; sourceTree = "<group>"; };
-		958823A82607F7EC001996DA /* Receipt+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataClass.swift"; sourceTree = "<group>"; };
-		958823A92607F7EC001996DA /* Receipt+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Receipt+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		958823F42609517B001996DA /* ReceiptDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptDataModel.swift; sourceTree = "<group>"; };
 		958823FA260AA719001996DA /* DatetimeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatetimeUtil.swift; sourceTree = "<group>"; };
 		95882402260AA923001996DA /* ReadAndWriteFileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadAndWriteFileUtil.swift; sourceTree = "<group>"; };
@@ -191,8 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				95A05240262BA886001C94F0 /* Datasets.swift */,
-				958823A82607F7EC001996DA /* Receipt+CoreDataClass.swift */,
-				958823A92607F7EC001996DA /* Receipt+CoreDataProperties.swift */,
 				9588239E2607F65E001996DA /* AppData.xcdatamodeld */,
 				95AE9D832647D4DF00B5EAC3 /* ReceiptsEachDay.swift */,
 				9564E7B326C3501B00838DD6 /* AppData.swift */,
@@ -478,7 +472,6 @@
 				95A05239262A5528001C94F0 /* PickerTextField.swift in Sources */,
 				953A3458266B023B00B5DD8C /* PriceUtil.swift in Sources */,
 				95461130260580FE004D1BBC /* SceneDelegate.swift in Sources */,
-				958823AA2607F7EC001996DA /* Receipt+CoreDataClass.swift in Sources */,
 				9509BF42267961CD007515E9 /* SemiModalDismissAnimatedTransition.swift in Sources */,
 				95C687FB26B6D84E0058A3E1 /* AddablePickerTextField.swift in Sources */,
 				9591E135266CBDDB00F12A92 /* ImageUtil.swift in Sources */,
@@ -491,7 +484,6 @@
 				95A05254262CDFA4001C94F0 /* PriceTextField.swift in Sources */,
 				956F488B2622D81F00A0A1DD /* DetailedReceiptViewController.swift in Sources */,
 				95EBFE832625031A001095E7 /* DetailedReceiptStaticTableViewController.swift in Sources */,
-				958823AB2607F7EC001996DA /* Receipt+CoreDataProperties.swift in Sources */,
 				9561AC5B261E5E7200D8585D /* UIExtensionUtil.swift in Sources */,
 				958823F52609517B001996DA /* ReceiptDataModel.swift in Sources */,
 				9509BF51267961E7007515E9 /* SemiModalOverlayView.swift in Sources */,
