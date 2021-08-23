@@ -31,43 +31,48 @@ class CameraView: UIView {
         }
     }
     // デバイスからの入力と出力を管理するオブジェクトの作成
-    var captureSession = AVCaptureSession()
+    private var captureSession: AVCaptureSession!
     // カメラデバイスそのものを管理するオブジェクトの作成
     // メインカメラの管理オブジェクトの作成
-    var mainCamera: AVCaptureDevice?
+    private var mainCamera: AVCaptureDevice?
     // インカメの管理オブジェクトの作成
-    var innerCamera: AVCaptureDevice?
+    private var innerCamera: AVCaptureDevice?
     // 現在使用しているカメラデバイスの管理オブジェクトの作成
-    var currentDevice: AVCaptureDevice?
+    private var currentDevice: AVCaptureDevice?
     // キャプチャーの出力データを受け付けるオブジェクト
-    var photoOutput : AVCapturePhotoOutput?
+    private var photoOutput : AVCapturePhotoOutput?
     // プレビュー表示用のレイヤ
-    var cameraPreviewLayer : AVCaptureVideoPreviewLayer?
+    private var cameraPreviewLayer : AVCaptureVideoPreviewLayer?
+    
+    private var cameraView: UIView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
-        setup()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         loadNib()
-        setup()
     }
     
-    override class func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func loadNib() {
-//        if let view = Bundle(for: type(of: self)).loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)?.first as? UIView {
-//            view.frame = self.bounds
-//            self.addSubview(view)
-//        }
+    override func layoutSubviews() {
+        setup()
+    }
+    
+    private func loadNib() {
+        if let view = Bundle(for: type(of: self)).loadNibNamed(String(describing: type(of: self)), owner: self, options: nil)?.first as? UIView {
+            view.frame = self.bounds
+            addSubview(view)
+        }
     }
     
     private func setup(){
+        captureSession = AVCaptureSession()
         setupCaptureSession()
         setupDevice()
         setupInputOutput()
@@ -84,11 +89,6 @@ class CameraView: UIView {
         settings.flashMode = .auto
         // 撮影された画像をdelegateメソッドで処理
         self.photoOutput?.capturePhoto(with: settings, delegate: self as AVCapturePhotoCaptureDelegate)
-    }
-    
-    func adjustPreviewLayer(size: CGRect){
-        self.cameraPreviewLayer?.frame = size
-        self.layer.insertSublayer(self.cameraPreviewLayer!, at: 0)
     }
     
     @IBAction func pinchGestureRecognized(_ sender: UIPinchGestureRecognizer) {
@@ -186,8 +186,8 @@ extension CameraView{
         // プレビューレイヤの表示の向きを設定
         self.cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
 
-        self.cameraPreviewLayer?.frame = self.frame
-        self.layer.insertSublayer(self.cameraPreviewLayer!, at: 0)
+        self.cameraPreviewLayer?.frame = self.bounds
+        self.layer.addSublayer(self.cameraPreviewLayer!)
     }
 
 }

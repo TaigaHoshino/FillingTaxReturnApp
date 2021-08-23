@@ -14,7 +14,6 @@ class CameraViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cameraView.adjustPreviewLayer(size: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.width * 4/3))
         cameraView.delegate = self
     }
 
@@ -53,7 +52,7 @@ extension CameraViewController: CameraViewProtocol{
                 receipt.createdAt = date
                 receipt.occuredAt = date
                 receipt.imageName = fileName
-                receipt.isRegistered = 0
+                receipt.isRegistered = false
                 ReceiptDataModel.save()
                 
                 let viewController = DetailedReceiptViewController.getInitialViewController(receipt: receipt)

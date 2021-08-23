@@ -53,7 +53,7 @@ class DetailedReceiptModalViewController: UIViewController {
             receipt?.countingClass = Int16(id)
         }
         
-        receipt?.isRegistered = Int16(truncating: NSNumber(value: isRegistered))
+        receipt?.isRegistered = isRegistered
         
         ReceiptDataModel.save()
     }

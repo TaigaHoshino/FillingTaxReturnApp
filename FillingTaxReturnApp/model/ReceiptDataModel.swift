@@ -80,7 +80,7 @@ class ReceiptDataModel {
         let fetchRequest: NSFetchRequest<Receipt> = Receipt.fetchRequest()
         let predicate: NSPredicate
         if registeredOnly {
-            predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@) AND (isRegistered <> '0')", from as CVarArg, to as CVarArg)
+            predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@) AND (isRegistered <> 'false')", from as CVarArg, to as CVarArg)
         }
         else {
             predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@)", from as CVarArg, to as CVarArg)
