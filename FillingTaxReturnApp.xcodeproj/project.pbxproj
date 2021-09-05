@@ -50,12 +50,14 @@
 		95A05254262CDFA4001C94F0 /* PriceTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A05253262CDFA4001C94F0 /* PriceTextField.swift */; };
 		95AE9D842647D4DF00B5EAC3 /* ReceiptsEachDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AE9D832647D4DF00B5EAC3 /* ReceiptsEachDay.swift */; };
 		95B174AF26D3D419005E0259 /* CameraView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95B174AE26D3D419005E0259 /* CameraView.xib */; };
-		95BDB47326B0B2FB008E5D5F /* RegisterBOPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BDB47126B0B2FB008E5D5F /* RegisterBOPViewController.swift */; };
-		95C687F326B211130058A3E1 /* RegisterBOP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95C687F226B211130058A3E1 /* RegisterBOP.storyboard */; };
+		95BDB47326B0B2FB008E5D5F /* BOPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95BDB47126B0B2FB008E5D5F /* BOPViewController.swift */; };
+		95C687F326B211130058A3E1 /* BOP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95C687F226B211130058A3E1 /* BOP.storyboard */; };
 		95C687F526B692330058A3E1 /* BOPStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C687F426B692330058A3E1 /* BOPStaticTableViewController.swift */; };
 		95C687F726B6A1EF0058A3E1 /* ClosableTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C687F626B6A1EF0058A3E1 /* ClosableTextView.swift */; };
 		95C687F926B6D03A0058A3E1 /* ClosableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C687F826B6D03A0058A3E1 /* ClosableTextField.swift */; };
 		95C687FB26B6D84E0058A3E1 /* AddablePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C687FA26B6D84E0058A3E1 /* AddablePickerTextField.swift */; };
+		95CF879B26E42C52009BA978 /* RegisterBOP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95CF879A26E42C52009BA978 /* RegisterBOP.storyboard */; };
+		95CF879F26E5642E009BA978 /* RegisterBOPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CF879E26E5642E009BA978 /* RegisterBOPViewController.swift */; };
 		95EBFE832625031A001095E7 /* DetailedReceiptStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBFE822625031A001095E7 /* DetailedReceiptStaticTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,12 +129,14 @@
 		95A05253262CDFA4001C94F0 /* PriceTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceTextField.swift; sourceTree = "<group>"; };
 		95AE9D832647D4DF00B5EAC3 /* ReceiptsEachDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptsEachDay.swift; sourceTree = "<group>"; };
 		95B174AE26D3D419005E0259 /* CameraView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraView.xib; sourceTree = "<group>"; };
-		95BDB47126B0B2FB008E5D5F /* RegisterBOPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBOPViewController.swift; sourceTree = "<group>"; };
-		95C687F226B211130058A3E1 /* RegisterBOP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterBOP.storyboard; sourceTree = "<group>"; };
+		95BDB47126B0B2FB008E5D5F /* BOPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOPViewController.swift; sourceTree = "<group>"; };
+		95C687F226B211130058A3E1 /* BOP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BOP.storyboard; sourceTree = "<group>"; };
 		95C687F426B692330058A3E1 /* BOPStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BOPStaticTableViewController.swift; sourceTree = "<group>"; };
 		95C687F626B6A1EF0058A3E1 /* ClosableTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosableTextView.swift; sourceTree = "<group>"; };
 		95C687F826B6D03A0058A3E1 /* ClosableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosableTextField.swift; sourceTree = "<group>"; };
 		95C687FA26B6D84E0058A3E1 /* AddablePickerTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddablePickerTextField.swift; sourceTree = "<group>"; };
+		95CF879A26E42C52009BA978 /* RegisterBOP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterBOP.storyboard; sourceTree = "<group>"; };
+		95CF879E26E5642E009BA978 /* RegisterBOPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBOPViewController.swift; sourceTree = "<group>"; };
 		95EBFE822625031A001095E7 /* DetailedReceiptStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedReceiptStaticTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,8 +184,9 @@
 				95EBFE822625031A001095E7 /* DetailedReceiptStaticTableViewController.swift */,
 				958EFD372636274A0025B373 /* TransactionListViewController.swift */,
 				9509BF6426796707007515E9 /* DetailedReceiptModalViewController.swift */,
-				95BDB47126B0B2FB008E5D5F /* RegisterBOPViewController.swift */,
+				95BDB47126B0B2FB008E5D5F /* BOPViewController.swift */,
 				95C687F426B692330058A3E1 /* BOPStaticTableViewController.swift */,
+				95CF879E26E5642E009BA978 /* RegisterBOPViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -218,7 +223,8 @@
 				958EFD32263505ED0025B373 /* TransactionList.storyboard */,
 				9591E139266D84B900F12A92 /* Camera.storyboard */,
 				9509BF5F2679626B007515E9 /* DetailedReceiptModal.storyboard */,
-				95C687F226B211130058A3E1 /* RegisterBOP.storyboard */,
+				95C687F226B211130058A3E1 /* BOP.storyboard */,
+				95CF879A26E42C52009BA978 /* RegisterBOP.storyboard */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -422,6 +428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95CF879B26E42C52009BA978 /* RegisterBOP.storyboard in Resources */,
 				9591E13A266D84B900F12A92 /* Camera.storyboard in Resources */,
 				956F48862622C7FF00A0A1DD /* DetailedReceipt.storyboard in Resources */,
 				9509BF602679626B007515E9 /* DetailedReceiptModal.storyboard in Resources */,
@@ -431,7 +438,7 @@
 				95461135260580FE004D1BBC /* Main.storyboard in Resources */,
 				95B174AF26D3D419005E0259 /* CameraView.xib in Resources */,
 				959947A72616840D00C516B3 /* ReceiptViewCell.xib in Resources */,
-				95C687F326B211130058A3E1 /* RegisterBOP.storyboard in Resources */,
+				95C687F326B211130058A3E1 /* BOP.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +465,7 @@
 			files = (
 				9509BF56267961F0007515E9 /* SemiModalPresentationController.swift in Sources */,
 				95461132260580FE004D1BBC /* ViewController.swift in Sources */,
-				95BDB47326B0B2FB008E5D5F /* RegisterBOPViewController.swift in Sources */,
+				95BDB47326B0B2FB008E5D5F /* BOPViewController.swift in Sources */,
 				953A3450266AE87E00B5DD8C /* TransactionCell.swift in Sources */,
 				95C687F526B692330058A3E1 /* BOPStaticTableViewController.swift in Sources */,
 				95882403260AA923001996DA /* ReadAndWriteFileUtil.swift in Sources */,
@@ -467,6 +474,7 @@
 				9509BF5B267961F9007515E9 /* SemiModalPresenter.swift in Sources */,
 				950499192605DF5C005CF8BF /* CameraViewController.swift in Sources */,
 				95C687F726B6A1EF0058A3E1 /* ClosableTextView.swift in Sources */,
+				95CF879F26E5642E009BA978 /* RegisterBOPViewController.swift in Sources */,
 				95A0524F262C31DE001C94F0 /* DatePickerTextField.swift in Sources */,
 				9546112E260580FE004D1BBC /* AppDelegate.swift in Sources */,
 				958823FB260AA719001996DA /* DatetimeUtil.swift in Sources */,

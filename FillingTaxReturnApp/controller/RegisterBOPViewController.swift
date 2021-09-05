@@ -1,15 +1,15 @@
 //
-//  RegisterBOPAlertViewController.swift
+//  RegisterBOPViewController.swift
 //  FillingTaxReturnApp
 //
-//  Created by 星野大我 on 2021/07/28.
+//  Created by 星野大我 on 2021/09/06.
 //
 
 import UIKit
 
 class RegisterBOPViewController: UIViewController {
     
-    @IBOutlet weak var bopPickerField: PickerTextField!
+    @IBOutlet weak var bopContainerView: UIView!
     
     public static var initialController: Self {
         get{
@@ -18,17 +18,15 @@ class RegisterBOPViewController: UIViewController {
             return viewController
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bopPickerField.setDataSource(dataSource: Datasets.incomeOrExpenditure)
-    }
-
-
-    @IBAction func onBackButtonClick(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        let bopViewController = BOPViewController.initialController
+        addChild(bopViewController)
+        bopViewController.view.frame = bopContainerView.bounds
+        bopContainerView.addSubview(bopViewController.view)
+        bopViewController.didMove(toParent: self)
     }
     
-
 }
