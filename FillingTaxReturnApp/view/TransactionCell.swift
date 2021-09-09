@@ -11,7 +11,7 @@ class TransactionCell: UITableViewCell {
     
     @IBOutlet weak var lbPrice: UILabel!
     @IBOutlet weak var lbCountingClass: UILabel!
-    private var receipt: Receipt!
+    private var expense: Expense!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,15 +26,15 @@ class TransactionCell: UITableViewCell {
         // Initialization code
     }
     
-    func setupCell(receipt: Receipt){
-        self.receipt = receipt
-        let price = Int(receipt.expense)
+    func setupCell(expense: Expense){
+        self.expense = expense
+        let price = Int(expense.expense)
         self.lbPrice.text = price.addComma()
-        self.lbCountingClass.text = Datasets.findCountingClassTitleById(id: Int(receipt.countingClass))
+        self.lbCountingClass.text = Datasets.findCountingClassTitleById(id: Int(expense.countingClass))
     }
     
-    func getReceipt() -> Receipt {
-        return receipt
+    func getExpense() -> Expense {
+        return expense
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -1,18 +1,18 @@
 //
-//  ReceiptViewCell.swift
+//  ExpenseViewCell.swift
 //  FillingTaxReturnApp
 //
-//  Created by 星野大我 on 2021/04/02.
+//  Created by 星野大我 on 2021/09/10.
 //
 
 import UIKit
 
-class ReceiptViewCell: UICollectionViewCell {
+class ExpenseViewCell: UICollectionViewCell {
     
     @IBOutlet weak var occuredAtText: UILabel!
     @IBOutlet weak var countingClassLabel: UILabel!
     @IBOutlet weak var isRegisteredLabel: UILabel!
-    @IBOutlet weak var uiReceiptImageView: UIImageView!
+    @IBOutlet weak var uiExpenseImageView: UIImageView!
     @IBOutlet weak var uiRegisterImageView: UIImageView!
     @IBOutlet weak var uiCheckBoxView: UIImageView!
     private var _isSettingModeActive = false
@@ -51,11 +51,11 @@ class ReceiptViewCell: UICollectionViewCell {
         }
     }
     
-    private var _receipt: Receipt!
+    private var _expense: Expense!
     
-    public var receipt: Receipt{
+    public var expense: Expense{
         get {
-            return _receipt
+            return _expense
         }
     }
 
@@ -86,19 +86,19 @@ class ReceiptViewCell: UICollectionViewCell {
 
     }
     
-    func setupCell(receipt: Receipt){
+    func setupCell(expense: Expense){
         
-        self._receipt = receipt
-        let targetFile: String! = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: self._receipt.imageName!)
+        self._expense = expense
+        let targetFile: String! = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: self._expense.imageName!)
         
         DispatchQueue.global().async{
             let img = ReadAndWriteFileUtil.loadFileFromPath(path: targetFile)!.resize(withPercentage: 0.1)
             DispatchQueue.main.async {
-                self.uiReceiptImageView.image = img?.resize(size: self.frame.size)
-                self.occuredAtText.text = DatetimeUtil.dateToFormattedDate(date: receipt.occuredAt!)
+                self.uiExpenseImageView.image = img?.resize(size: self.frame.size)
+                self.occuredAtText.text = DatetimeUtil.dateToFormattedDate(date: expense.occuredAt!)
             }
         }
-        if Bool(truncating: NSNumber(value: receipt.isRegistered)) {
+        if Bool(truncating: NSNumber(value: expense.isRegistered)) {
             self.uiRegisterImageView.image = UIImage(named: "baseline_check_circle_outline")
             isRegisteredLabel.text = "登録済み"
         }
@@ -106,7 +106,7 @@ class ReceiptViewCell: UICollectionViewCell {
             self.uiRegisterImageView.image = UIImage(systemName: "exclamationmark.triangle.fill")
             isRegisteredLabel.text = "未登録"
         }
-        countingClassLabel.text = Datasets.findCountingClassTitleById(id: Int(receipt.countingClass))
+        countingClassLabel.text = Datasets.findCountingClassTitleById(id: Int(expense.countingClass))
         uiCheckBoxView.image = getEmptyImage()
         isCellSelected = false
         uiCheckBoxView.isHidden = true

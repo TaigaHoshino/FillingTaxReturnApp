@@ -9,8 +9,6 @@ import UIKit
 
 class BOPViewController: UIViewController {
     
-    @IBOutlet weak var bopPickerField: PickerTextField!
-    
     public static var initialController: Self {
         get{
             let storyboard = UIStoryboard(name: "BOP", bundle: nil)
@@ -21,8 +19,6 @@ class BOPViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        bopPickerField.setDataSource(dataSource: Datasets.incomeOrExpenditure)
     }
 
 }

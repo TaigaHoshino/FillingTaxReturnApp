@@ -1,5 +1,5 @@
 //
-//  ReceiptCollectionViewController.swift
+//  ExpenseCollectionViewController.swift
 //  FillingTaxReturnApp
 //
 //  Created by 星野大我 on 2021/03/21.
@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSource {
+class ExpenseCollectionViewController: UIViewController, UICollectionViewDataSource {
     
-    private var receipts: [Receipt] = []
-    private var selectedCellsReceiptIds: [UUID] = [UUID]()
+    private var expenses: [Expense] = []
+    private var selectedCellsExpenseIds: [UUID] = [UUID]()
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var settingButton: UIButton!
     @IBOutlet weak var trashButton: UIButton!
@@ -27,14 +27,14 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
         
         collectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        collectionView.register(UINib(nibName: "ReceiptViewCell", bundle: nil), forCellWithReuseIdentifier: "ReceiptViewCell")
+        collectionView.register(UINib(nibName: "ExpenseViewCell", bundle: nil), forCellWithReuseIdentifier: "ExpenseViewCell")
         
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        receipts = ReceiptDataModel.getReceiptByIsRegistered(isRegistered: false)!
+        expenses = ExpenseDataModel.getExpensesByIsRegistered(isRegistered: false)!
         collectionView.reloadData()
     }
     
@@ -48,19 +48,19 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
     
     @IBAction func onSettingButtonClick(_ sender: Any){
         
-        let visibleCells = collectionView.visibleCells as! [ReceiptViewCell]
+        let visibleCells = collectionView.visibleCells as! [ExpenseViewCell]
         
         if isSettingButtonsShowed == false{
             for cell in visibleCells {
                 cell.settingModeActive = true
-                checkAlreadySelectedCell(receiptViewCell: cell)
+                checkAlreadySelectedCell(ExpenseViewCell: cell)
             }
         }
         else {
             for cell in visibleCells {
                 cell.settingModeActive = false
             }
-            selectedCellsReceiptIds.removeAll()
+            selectedCellsExpenseIds.removeAll()
         }
         
         settingButtonAnimation()
@@ -68,16 +68,16 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
     
     @IBAction func onTrashButtonClick(_ sender: Any) {
         
-        for id in selectedCellsReceiptIds {
-            let receipt = ReceiptDataModel.getReceiptById(id: id)!.first!
-            let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: receipt.imageName!)!
-            if ReceiptDataModel.deleteReceipt(receipt: receipt){
+        for id in selectedCellsExpenseIds {
+            let expense = ExpenseDataModel.getExpenseById(id: id)!.first!
+            let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: expense.imageName!)!
+            if ExpenseDataModel.deleteExpense(expense: expense){
                 _ = ReadAndWriteFileUtil.deleteFileFromPath(path: path)
             }
         }
         
-        receipts = ReceiptDataModel.getReceipts()
-        selectedCellsReceiptIds.removeAll()
+        expenses = ExpenseDataModel.getExpenses()
+        selectedCellsExpenseIds.removeAll()
         
         collectionView.reloadData()
         
@@ -138,21 +138,21 @@ class ReceiptCollectionViewController: UIViewController, UICollectionViewDataSou
 
 }
 
-extension ReceiptCollectionViewController{
+extension ExpenseCollectionViewController{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return receipts.count
+        return expenses.count
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = cell as? ReceiptViewCell{
+        if let cell = cell as? ExpenseViewCell{
             if isSettingButtonsShowed{
                 cell.settingModeActive = true
-                checkAlreadySelectedCell(receiptViewCell: cell)
+                checkAlreadySelectedCell(ExpenseViewCell: cell)
             }
             else{
                 cell.settingModeActive = false
@@ -161,10 +161,10 @@ extension ReceiptCollectionViewController{
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReceiptViewCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExpenseViewCell", for: indexPath)
         
-        if let cell = cell as? ReceiptViewCell{
-            cell.setupCell(receipt: receipts[indexPath.row])
+        if let cell = cell as? ExpenseViewCell{
+            cell.setupCell(expense: expenses[indexPath.row])
         }
         
         return cell
@@ -172,35 +172,35 @@ extension ReceiptCollectionViewController{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        if let cell = cell as? ReceiptViewCell{
+        if let cell = cell as? ExpenseViewCell{
             
             if isSettingButtonsShowed == false{
-                let detailedReceitViewController = DetailedReceiptViewController.getInitialViewController(receipt: cell.receipt)
+                let detailedReceitViewController = DetailedExpenseViewController.getInitialViewController(expense: cell.expense)
                 present(detailedReceitViewController, animated: true, completion: nil)
                 return
             }
             
             cell.onSelect()
             if cell.getIsCellSelected(){
-                selectedCellsReceiptIds.append(cell.receipt.id!)
+                selectedCellsExpenseIds.append(cell.expense.id!)
             }
             else {
-                let index = selectedCellsReceiptIds.firstIndex(of: cell.receipt.id!)
+                let index = selectedCellsExpenseIds.firstIndex(of: cell.expense.id!)
                 if let index = index{
-                    selectedCellsReceiptIds.remove(at: index)
+                    selectedCellsExpenseIds.remove(at: index)
                 }
             }
         }
     }
     
-    private func checkAlreadySelectedCell(receiptViewCell: ReceiptViewCell){
-        if selectedCellsReceiptIds.contains(receiptViewCell.receipt.id!){
-            receiptViewCell.setIsCellSelected(selected: true)
+    private func checkAlreadySelectedCell(ExpenseViewCell: ExpenseViewCell){
+        if selectedCellsExpenseIds.contains(ExpenseViewCell.expense.id!){
+            ExpenseViewCell.setIsCellSelected(selected: true)
         }
     }
 }
 
-extension ReceiptCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension ExpenseCollectionViewController: UICollectionViewDelegateFlowLayout {
     // [1]
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize.init(width: cellWidth - 1, height: cellWidth * 11/6)

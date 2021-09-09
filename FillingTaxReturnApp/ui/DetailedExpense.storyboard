@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detailed Receipt View Controller-->
+        <!--Detailed Expense View Controller-->
         <scene sceneID="EDD-Qg-FGo">
             <objects>
-                <viewController storyboardIdentifier="DetailedReceiptViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1kH-V3-yKy" customClass="DetailedReceiptViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedExpenseViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1kH-V3-yKy" customClass="DetailedExpenseViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LNn-9J-LnP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -80,7 +80,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="uiReceiptImage" destination="fYe-BS-DME" id="ibG-Av-ptc"/>
+                        <outlet property="uiExpenseImage" destination="fYe-BS-DME" id="ibG-Av-ptc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JYk-7R-FBB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -1,5 +1,5 @@
 //
-//  AccountingDataModel.swift
+//  IncomeDataModel.swift
 //  FillingTaxReturnApp
 //
 //  Created by 星野大我 on 2021/08/11.
@@ -8,16 +8,16 @@
 import UIKit
 import CoreData
 
-class AccountingDataModel {
+class IncomeDataModel {
     private static var persistentContainer: NSPersistentCloudKitContainer! = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
 
     static func save(){
-        AccountingDataModel.persistentContainer.saveContext()
+        IncomeDataModel.persistentContainer.saveContext()
     }
     
-    static func deleteAccounting(accounting: Accounting) -> Bool{
+    static func deleteIncome(income: Income) -> Bool{
         let context = persistentContainer.viewContext
-        context.delete(accounting)
+        context.delete(income)
         do{
             try context.save()
         }
@@ -28,22 +28,22 @@ class AccountingDataModel {
         return false
     }
     
-    static func getAccountings() -> [Accounting]{
+    static func getIncomes() -> [Income]{
         let context = persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Accounting")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Income")
         do {
-            let accounting = try context.fetch(request) as! [Accounting]
-            return accounting
+            let income = try context.fetch(request) as! [Income]
+            return income
         }
         catch{
             fatalError()
         }
     }
     
-    static func newAccounting() -> Accounting{
+    static func newIncome() -> Income{
         let context = persistentContainer.viewContext
-        let accounting = NSEntityDescription.insertNewObject(forEntityName: "Receipt", into: context) as! Accounting
-        accounting.id = UUID()
-        return accounting
+        let income = NSEntityDescription.insertNewObject(forEntityName: "Receipt", into: context) as! Income
+        income.id = UUID()
+        return income
     }
 }

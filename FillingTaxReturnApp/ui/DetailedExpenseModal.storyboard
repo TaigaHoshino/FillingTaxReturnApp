@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Detailed Receipt Modal View Controller-->
+        <!--Detailed Expense Modal View Controller-->
         <scene sceneID="cxe-zg-Bj1">
             <objects>
-                <viewController storyboardIdentifier="DetailedReceiptModalViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q1l-bI-d4D" customClass="DetailedReceiptModalViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedExpenseModalViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Q1l-bI-d4D" customClass="DetailedExpenseModalViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="txF-rQ-JCH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +93,7 @@
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
-                                                                    <action selector="onRegisterButtonClick:" destination="Q1l-bI-d4D" eventType="touchUpInside" id="pzy-jf-pnj"/>
+                                                                    <action selector="onRegisterButtonClick:" destination="Q1l-bI-d4D" eventType="touchUpInside" id="7ul-Hx-o1M"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -147,7 +147,7 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="pLM-r6-rGL" id="sxB-G7-Boa"/>
-                        <outlet property="registerReceiptButton" destination="bgv-zL-NFj" id="CSM-Tg-qWs"/>
+                        <outlet property="registerExpenseButton" destination="bgv-zL-NFj" id="YgO-M9-PdF"/>
                         <outlet property="tfExpense" destination="Qar-Z6-Rx0" id="WZN-gD-ze5"/>
                     </connections>
                 </viewController>
@@ -155,10 +155,10 @@
             </objects>
             <point key="canvasLocation" x="-655.07246376811599" y="140.625"/>
         </scene>
-        <!--Detailed Receipt Static Table View Controller-->
+        <!--Detailed Expense Static Table View Controller-->
         <scene sceneID="Ex4-tv-iKy">
             <objects>
-                <tableViewController id="wPg-hn-Oxa" customClass="DetailedReceiptStaticTableViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="wPg-hn-Oxa" customClass="DetailedExpenseStaticTableViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cTc-oH-TBr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

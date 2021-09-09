@@ -43,19 +43,19 @@ class CameraViewController: UIViewController {
 extension CameraViewController: CameraViewProtocol{
     func photoOutput(uiImage: UIImage) {
         let date = Date()
-        let fileName = "receipt\(DatetimeUtil.dateToSimpleDateTime(date: date))"
+        let fileName = "expense\(DatetimeUtil.dateToSimpleDateTime(date: date))"
         let targetDirectory: String? = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: fileName)
         if let targetDirectory = targetDirectory {
             
             if(ReadAndWriteFileUtil.saveImage(image: uiImage, path: targetDirectory)){
-                let receipt = ReceiptDataModel.newReceipt()
-                receipt.createdAt = date
-                receipt.occuredAt = date
-                receipt.imageName = fileName
-                receipt.isRegistered = false
-                ReceiptDataModel.save()
+                let expense = ExpenseDataModel.newExpense()
+                expense.createdAt = date
+                expense.occuredAt = date
+                expense.imageName = fileName
+                expense.isRegistered = false
+                ExpenseDataModel.save()
                 
-                let viewController = DetailedReceiptViewController.getInitialViewController(receipt: receipt)
+                let viewController = DetailedExpenseViewController.getInitialViewController(expense: expense)
                 present(viewController, animated: true, completion: nil)
             }
         }

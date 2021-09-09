@@ -14,7 +14,7 @@ class TransactionListViewController: UIViewController {
     @IBOutlet weak var tvTransactionList: UITableView!
     
     private var selectedDateCellIndexPath: IndexPath!
-    private var receiptsEachDayList: [ReceiptsEachDay] = []
+    private var expensesEachDayList: [ExpensesEachDay] = []
     private var currentSelectedDate = Date()
     
     override func viewDidLoad() {
@@ -38,10 +38,10 @@ class TransactionListViewController: UIViewController {
         let year = currentSelectedDate.year
         let month = currentSelectedDate.month
         
-        let receiptsEachMonth = getReceiptEachMonth(year: year, month: month)!
+        let expensesEachMonth = getExpenseEachMonth(year: year, month: month)!
         
         // 取引一覧の日付ごとのセクション分けをするためにデータを仕分ける
-        receiptsEachDayList = separateReceiptsEachDay(receipts: receiptsEachMonth)
+        expensesEachDayList = separateExpensesEachDay(expenses: expensesEachMonth)
         tvTransactionList.reloadData()
         
         
@@ -56,38 +56,38 @@ class TransactionListViewController: UIViewController {
         dateCollectionView.scrollToItem(at: selectedDateCellIndexPath, at: .centeredHorizontally, animated: false)
     }
     
-    // 日付で昇順ソートしたreceiptListを引数にすること
-    private func separateReceiptsEachDay(receipts: [Receipt]) -> [ReceiptsEachDay]{
+    // 日付で昇順ソートしたexpenseListを引数にすること
+    private func separateExpensesEachDay(expenses: [Expense]) -> [ExpensesEachDay]{
         
-        var receiptList: [Receipt] = []
-        var receiptsEachDayList: [ReceiptsEachDay] = []
+        var expenseList: [Expense] = []
+        var expensesEachDayList: [ExpensesEachDay] = []
         
-        if receipts.count == 0 {
-            return receiptsEachDayList
+        if expenses.count == 0 {
+            return expensesEachDayList
         }
         
-        var separateDay: Date = DatetimeUtil.truncateDate(date: receipts.first!.occuredAt!)
+        var separateDay: Date = DatetimeUtil.truncateDate(date: expenses.first!.occuredAt!)
         
-        for receipt in receipts {
-            let truncateDay = DatetimeUtil.truncateDate(date: receipt.occuredAt!)
+        for expense in expenses {
+            let truncateDay = DatetimeUtil.truncateDate(date: expense.occuredAt!)
     
             if separateDay == truncateDay {
-                receiptList.append(receipt)
+                expenseList.append(expense)
             }
             else{
-                receiptsEachDayList.append(ReceiptsEachDay(date: separateDay, receipts: receiptList))
-                receiptList = []
-                receiptList.append(receipt)
+                expensesEachDayList.append(ExpensesEachDay(date: separateDay, expenses: expenseList))
+                expenseList = []
+                expenseList.append(expense)
                 separateDay = truncateDay
             }
         }
         
-        receiptsEachDayList.append(ReceiptsEachDay(date: separateDay, receipts: receiptList))
+        expensesEachDayList.append(ExpensesEachDay(date: separateDay, expenses: expenseList))
         
-        return receiptsEachDayList
+        return expensesEachDayList
     }
     
-    private func getReceiptEachMonth(year: Int, month: Int) -> [Receipt]?{
+    private func getExpenseEachMonth(year: Int, month: Int) -> [Expense]?{
         let from = DatetimeUtil.formattedDateToDate(strDate: "\(year)年\(month)月1日")
         var to: Date
         
@@ -98,9 +98,9 @@ class TransactionListViewController: UIViewController {
             to = DatetimeUtil.formattedDateToDate(strDate: "\(year + 1)年1月1日")
         }
         
-        let receipts = ReceiptDataModel.getReceiptsByDate(from: from, to: to, registeredOnly: true)
+        let expenses = ExpenseDataModel.getExpensesByDate(from: from, to: to, registeredOnly: true)
         
-        return receipts
+        return expenses
     }
 
 }
@@ -145,8 +145,8 @@ extension TransactionListViewController: UICollectionViewDataSource {
             currentSelectedDate = cell.getDate()
             let year = currentSelectedDate.year
             let month = currentSelectedDate.month
-            let receiptsEachMonth = getReceiptEachMonth(year: year, month: month)!
-            receiptsEachDayList = separateReceiptsEachDay(receipts: receiptsEachMonth)
+            let expensesEachMonth = getExpenseEachMonth(year: year, month: month)!
+            expensesEachDayList = separateExpensesEachDay(expenses: expensesEachMonth)
             tvTransactionList.reloadData()
         }
     }
@@ -154,15 +154,15 @@ extension TransactionListViewController: UICollectionViewDataSource {
 
 extension TransactionListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return receiptsEachDayList.count
+        return expensesEachDayList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return receiptsEachDayList[section].receipts.count
+        return expensesEachDayList[section].expenses.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return DatetimeUtil.dateToFormattedDate(date: receiptsEachDayList[section].date)
+        return DatetimeUtil.dateToFormattedDate(date: expensesEachDayList[section].date)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -170,7 +170,7 @@ extension TransactionListViewController: UITableViewDataSource {
         let cell = tvTransactionList.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath)
         
         if let cell = cell as? TransactionCell {
-            cell.setupCell(receipt: receiptsEachDayList[indexPath.section].receipts[indexPath.row])
+            cell.setupCell(expense: expensesEachDayList[indexPath.section].expenses[indexPath.row])
         }
         
         return cell
@@ -185,7 +185,7 @@ extension TransactionListViewController: UITableViewDelegate {
         
         if let cell = cell as? TransactionCell {
             
-            let detailedReceitViewController = DetailedReceiptViewController.getInitialViewController(receipt: cell.getReceipt())
+            let detailedReceitViewController = DetailedExpenseViewController.getInitialViewController(expense: cell.getExpense())
             present(detailedReceitViewController, animated: true, completion: nil)
         }
     }

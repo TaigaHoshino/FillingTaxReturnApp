@@ -8,16 +8,16 @@
 import UIKit
 import CoreData
 
-class ReceiptDataModel {
+class ExpenseDataModel {
     private static var persistentContainer: NSPersistentCloudKitContainer! = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
 
     static func save(){
-        ReceiptDataModel.persistentContainer.saveContext()
+        ExpenseDataModel.persistentContainer.saveContext()
     }
     
-    static func deleteReceipt(receipt: Receipt) -> Bool{
+    static func deleteExpense(expense: Expense) -> Bool{
         let context = persistentContainer.viewContext
-        context.delete(receipt)
+        context.delete(expense)
         do{
             try context.save()
         }
@@ -28,56 +28,56 @@ class ReceiptDataModel {
         return false
     }
     
-    static func getReceipts() -> [Receipt]{
+    static func getExpenses() -> [Expense]{
         let context = persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Receipt")
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Expense")
         do {
-            let receipts = try context.fetch(request) as! [Receipt]
-            return receipts
+            let expenses = try context.fetch(request) as! [Expense]
+            return expenses
         }
         catch{
             fatalError()
         }
     }
     
-    static func getReceiptById(id: UUID) -> [Receipt]?{
+    static func getExpenseById(id: UUID) -> [Expense]?{
         let context = persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Receipt> = Receipt.fetchRequest()
+        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
         let predicate = NSPredicate(format: "id = '\(id)'")
         fetchRequest.predicate = predicate
-        var receipt: [Receipt]?
+        var expenses: [Expense]?
         
         do{
-            receipt = try context.fetch(fetchRequest)
+            expenses = try context.fetch(fetchRequest)
             
         }
         catch let error as NSError {
             print("Error: \(error), \(error.userInfo)")
         }
-        return receipt
+        return expenses
     }
     
-    static func getReceiptByIsRegistered(isRegistered: Bool) -> [Receipt]? {
+    static func getExpensesByIsRegistered(isRegistered: Bool) -> [Expense]? {
         let context = persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Receipt> = Receipt.fetchRequest()
+        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
         let intBool = Bool(isRegistered)
         let predicate = NSPredicate(format: "isRegistered = '\(intBool)'")
         fetchRequest.predicate = predicate
-        var receipt: [Receipt]?
+        var expenses: [Expense]?
         
         do{
-            receipt = try context.fetch(fetchRequest)
+            expenses = try context.fetch(fetchRequest)
             
         }
         catch let error as NSError {
             print("Error: \(error), \(error.userInfo)")
         }
-        return receipt
+        return expenses
     }
     
-    static func getReceiptsByDate(from: Date, to: Date, registeredOnly: Bool = false) -> [Receipt]?{
+    static func getExpensesByDate(from: Date, to: Date, registeredOnly: Bool = false) -> [Expense]?{
         let context = persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Receipt> = Receipt.fetchRequest()
+        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
         let predicate: NSPredicate
         if registeredOnly {
             predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@) AND (isRegistered <> 'false')", from as CVarArg, to as CVarArg)
@@ -88,23 +88,23 @@ class ReceiptDataModel {
         let sortDescripter = NSSortDescriptor(key: "occuredAt", ascending: true)
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [sortDescripter]
-        var receipts: [Receipt]?
+        var expenses: [Expense]?
         
         do{
-            receipts = try context.fetch(fetchRequest)
+            expenses = try context.fetch(fetchRequest)
             
         }
         catch let error as NSError {
             print("Error: \(error), \(error.userInfo)")
         }
-        return receipts
+        return expenses
     }
     
-    static func newReceipt() -> Receipt{
+    static func newExpense() -> Expense{
         let context = persistentContainer.viewContext
-        let receipt = NSEntityDescription.insertNewObject(forEntityName: "Receipt", into: context) as! Receipt
-        receipt.id = UUID()
-        return receipt
+        let expense = NSEntityDescription.insertNewObject(forEntityName: "Expense", into: context) as! Expense
+        expense.id = UUID()
+        return expense
     }
     
 }

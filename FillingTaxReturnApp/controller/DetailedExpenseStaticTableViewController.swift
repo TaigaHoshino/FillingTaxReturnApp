@@ -1,5 +1,5 @@
 //
-//  DetailedReceiptContainerTableTableViewController.swift
+//  DetailedExpenseContainerTableTableViewController.swift
 //  FillingTaxReturnApp
 //
 //  Created by 星野大我 on 2021/04/13.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailedReceiptStaticTableViewController: UITableViewController {
+class DetailedExpenseStaticTableViewController: UITableViewController {
 
     @IBOutlet weak var tfCountingClass: PickerTextField!
     @IBOutlet weak var tfOccuredDate: DatePickerTextField!
@@ -31,17 +31,17 @@ class DetailedReceiptStaticTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let parent = self.parent as! DetailedReceiptModalViewController
-        let receipt = parent.getReceipt()
+        let parent = self.parent as! DetailedExpenseModalViewController
+        let expenses = parent.getExpenses()
         
-        if receipt.occuredAt == nil {
-            tfOccuredDate.setDateValue(date: receipt.createdAt!)
+        if expenses.occuredAt == nil {
+            tfOccuredDate.setDateValue(date: expenses.createdAt!)
         }
         else {
-            tfOccuredDate.setDateValue(date: receipt.occuredAt!)
+            tfOccuredDate.setDateValue(date: expenses.occuredAt!)
         }
         
-        if let title = Datasets.findCountingClassTitleById(id: Int(receipt.countingClass)){
+        if let title = Datasets.findCountingClassTitleById(id: Int(expenses.countingClass)){
             tfCountingClass.setDefaultValue(value: title)
         }
         else{

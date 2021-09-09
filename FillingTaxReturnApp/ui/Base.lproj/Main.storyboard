@@ -75,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="-303.75" y="295.77464788732397"/>
         </scene>
-        <!--Receipt Collection View Controller-->
+        <!--Expense Collection View Controller-->
         <scene sceneID="gf9-ZN-ulr">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="RhA-lj-kim" customClass="ReceiptCollectionViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="RhA-lj-kim" customClass="ExpenseCollectionViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ER6-18-d8J">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,10 +162,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Nft-Gn-gEU"/>
                     <connections>
-                        <outlet property="addButton" destination="YgK-hW-mFw" id="Ire-Ex-rKd"/>
-                        <outlet property="collectionView" destination="5yq-Am-cvN" id="Uiy-MV-DBL"/>
-                        <outlet property="settingButton" destination="WmR-S9-xxC" id="sMS-aY-7l3"/>
-                        <outlet property="trashButton" destination="wR0-EK-8Sh" id="l59-Fn-FxF"/>
+                        <outlet property="addButton" destination="YgK-hW-mFw" id="aWV-Qw-lIQ"/>
+                        <outlet property="collectionView" destination="5yq-Am-cvN" id="4pD-Lw-NX5"/>
+                        <outlet property="settingButton" destination="WmR-S9-xxC" id="Gqz-rr-gfD"/>
+                        <outlet property="trashButton" destination="wR0-EK-8Sh" id="UnI-HB-OpM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ehg-hU-e8H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

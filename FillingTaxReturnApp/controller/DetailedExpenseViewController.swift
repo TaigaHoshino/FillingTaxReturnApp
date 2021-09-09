@@ -1,5 +1,5 @@
 //
-//  DetailedReceiptController.swift
+//  DetailedExpenseController.swift
 //  FillingTaxReturnApp
 //
 //  Created by 星野大我 on 2021/04/11.
@@ -7,20 +7,20 @@
 
 import UIKit
 
-class DetailedReceiptViewController: UIViewController {
+class DetailedExpenseViewController: UIViewController {
     
     private var semiModalPresenter = SemiModalPresenter()
-    var receipt: Receipt!
-    @IBOutlet weak var uiReceiptImage: UIImageView!
+    var expense: Expense!
+    @IBOutlet weak var uiExpenseImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let fileName = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: (receipt?.imageName)!)
+        let fileName = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: (expense?.imageName)!)
         
         let uiImage = ReadAndWriteFileUtil.loadFileFromPath(path: fileName!)
         
-        uiReceiptImage.image = uiImage
+        uiExpenseImage.image = uiImage
         
         // Do any additional setup after loading the view.
     }
@@ -31,9 +31,9 @@ class DetailedReceiptViewController: UIViewController {
     }
     
     @IBAction func onEditButtonClick(_ sender: Any) {
-        let viewController = DetailedReceiptModalViewController.getInitialController(receipt: self.receipt!)
-        viewController.dismissCompletion = { receipt in
-            self.receipt = receipt
+        let viewController = DetailedExpenseModalViewController.getInitialController(expense: self.expense!)
+        viewController.dismissCompletion = { expense in
+            self.expense = expense
         }
         semiModalPresenter.viewController = viewController
         present(viewController, animated: true, completion: nil)
@@ -41,19 +41,19 @@ class DetailedReceiptViewController: UIViewController {
     }
     
     @IBAction func onDeleteButtonClick(_ sender: Any) {
-        let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: receipt.imageName!)!
-        if ReceiptDataModel.deleteReceipt(receipt: receipt){
+        let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: expense.imageName!)!
+        if ExpenseDataModel.deleteExpense(expense: expense){
             _ = ReadAndWriteFileUtil.deleteFileFromPath(path: path)
         }
         
         dismiss(animated: true, completion: nil)
     }
     
-    static func getInitialViewController(receipt: Receipt) -> DetailedReceiptViewController {
-        let storyboard = UIStoryboard(name: "DetailedReceipt", bundle: nil)
-        let detailedReceitViewController = storyboard.instantiateViewController(withIdentifier: "DetailedReceiptViewController") as! DetailedReceiptViewController
-        detailedReceitViewController.receipt = receipt
-        return detailedReceitViewController
+    static func getInitialViewController(expense: Expense) -> DetailedExpenseViewController {
+        let storyboard = UIStoryboard(name: "DetailedExpense", bundle: nil)
+        let detailedExpenseViewController = storyboard.instantiateViewController(withIdentifier: "DetailedExpenseViewController") as! DetailedExpenseViewController
+        detailedExpenseViewController.expense = expense
+        return detailedExpenseViewController
     }
 
     /*
@@ -68,6 +68,6 @@ class DetailedReceiptViewController: UIViewController {
 
 }
 //
-//extension DetailedReceiptViewController: UIFontPickerViewDelegate, UIPickerViewDataSource{
+//extension DetailedExpenseViewController: UIFontPickerViewDelegate, UIPickerViewDataSource{
 //    
 //}

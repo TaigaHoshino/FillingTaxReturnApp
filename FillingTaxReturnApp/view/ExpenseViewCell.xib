@@ -8,9 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ExpenseViewCell" customModule="FillingTaxReturnApp" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ReceiptViewCell" id="gTV-IL-0wX" customClass="ReceiptViewCell" customModule="FillingTaxReturnApp" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExpenseViewCell" id="gTV-IL-0wX" customClass="ExpenseViewCell" customModule="FillingTaxReturnApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -87,12 +87,12 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="countingClassLabel" destination="MpL-1l-5od" id="HfY-A3-hNf"/>
-                <outlet property="isRegisteredLabel" destination="eUL-5W-wWs" id="Lbg-PV-re9"/>
-                <outlet property="occuredAtText" destination="GQ3-xo-ffo" id="prK-TN-kxn"/>
-                <outlet property="uiCheckBoxView" destination="il6-Ii-633" id="REC-tZ-29l"/>
-                <outlet property="uiReceiptImageView" destination="Bdq-zK-6d2" id="6D8-XQ-Its"/>
-                <outlet property="uiRegisterImageView" destination="S7r-c4-SNz" id="NND-i2-Irj"/>
+                <outlet property="countingClassLabel" destination="MpL-1l-5od" id="2WJ-CL-F1Z"/>
+                <outlet property="isRegisteredLabel" destination="eUL-5W-wWs" id="BUh-5r-JUN"/>
+                <outlet property="occuredAtText" destination="GQ3-xo-ffo" id="Txd-Qg-gxz"/>
+                <outlet property="uiCheckBoxView" destination="il6-Ii-633" id="hwI-A7-lWw"/>
+                <outlet property="uiExpenseImageView" destination="Bdq-zK-6d2" id="SXI-IM-pfA"/>
+                <outlet property="uiRegisterImageView" destination="S7r-c4-SNz" id="L3D-rH-4YJ"/>
             </connections>
             <point key="canvasLocation" x="301.44927536231887" y="205.58035714285714"/>
         </collectionViewCell>

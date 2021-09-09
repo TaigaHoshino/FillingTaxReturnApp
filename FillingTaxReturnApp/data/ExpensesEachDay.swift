@@ -7,13 +7,13 @@
 
 import Foundation
 
-class ReceiptsEachDay {
+class ExpensesEachDay {
     
     let date: Date
-    let receipts: [Receipt]
+    let expenses: [Expense]
     
-    init(date: Date, receipts: [Receipt]){
+    init(date: Date, expenses: [Expense]){
         self.date = date
-        self.receipts = receipts
+        self.expenses = expenses
     }
 }
