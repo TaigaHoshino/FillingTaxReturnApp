@@ -58,6 +58,8 @@
 		95CF87A126EAC1BE009BA978 /* ExpenseViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CF87A026EAC1BE009BA978 /* ExpenseViewCell.swift */; };
 		95CF87A326ED61AE009BA978 /* IncomeTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95CF87A226ED61AE009BA978 /* IncomeTable.storyboard */; };
 		95CF87A526ED8B4D009BA978 /* BaseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CF87A426ED8B4D009BA978 /* BaseDataModel.swift */; };
+		95CF87A726EDD6FB009BA978 /* ExpenseTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95CF87A626EDD6FB009BA978 /* ExpenseTable.storyboard */; };
+		95CF87A926EDD750009BA978 /* ExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CF87A826EDD750009BA978 /* ExpenseTableViewController.swift */; };
 		95EBFE832625031A001095E7 /* DetailedExpenseStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBFE822625031A001095E7 /* DetailedExpenseStaticTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +139,8 @@
 		95CF87A026EAC1BE009BA978 /* ExpenseViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewCell.swift; sourceTree = "<group>"; };
 		95CF87A226ED61AE009BA978 /* IncomeTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IncomeTable.storyboard; sourceTree = "<group>"; };
 		95CF87A426ED8B4D009BA978 /* BaseDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataModel.swift; sourceTree = "<group>"; };
+		95CF87A626EDD6FB009BA978 /* ExpenseTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpenseTable.storyboard; sourceTree = "<group>"; };
+		95CF87A826EDD750009BA978 /* ExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewController.swift; sourceTree = "<group>"; };
 		95EBFE822625031A001095E7 /* DetailedExpenseStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedExpenseStaticTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +191,7 @@
 				9509BF6426796707007515E9 /* DetailedExpenseModalViewController.swift */,
 				95C687F426B692330058A3E1 /* IncomeStaticTableViewController.swift */,
 				95CF879E26E5642E009BA978 /* RegisterBOPViewController.swift */,
+				95CF87A826EDD750009BA978 /* ExpenseTableViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				9509BF5F2679626B007515E9 /* DetailedExpenseModal.storyboard */,
 				95CF879A26E42C52009BA978 /* RegisterBOP.storyboard */,
 				95CF87A226ED61AE009BA978 /* IncomeTable.storyboard */,
+				95CF87A626EDD6FB009BA978 /* ExpenseTable.storyboard */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				958EFD33263505ED0025B373 /* TransactionList.storyboard in Resources */,
 				95461135260580FE004D1BBC /* Main.storyboard in Resources */,
 				95B174AF26D3D419005E0259 /* CameraView.xib in Resources */,
+				95CF87A726EDD6FB009BA978 /* ExpenseTable.storyboard in Resources */,
 				959947A72616840D00C516B3 /* ExpenseViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,6 +490,7 @@
 				95461130260580FE004D1BBC /* SceneDelegate.swift in Sources */,
 				9509BF42267961CD007515E9 /* SemiModalDismissAnimatedTransition.swift in Sources */,
 				95C687FB26B6D84E0058A3E1 /* AddablePickerTextField.swift in Sources */,
+				95CF87A926EDD750009BA978 /* ExpenseTableViewController.swift in Sources */,
 				95CF87A126EAC1BE009BA978 /* ExpenseViewCell.swift in Sources */,
 				9591E135266CBDDB00F12A92 /* ImageUtil.swift in Sources */,
 				95CF87A526ED8B4D009BA978 /* BaseDataModel.swift in Sources */,
