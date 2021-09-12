@@ -8,12 +8,7 @@
 import UIKit
 import CoreData
 
-class ExpenseDataModel {
-    private static var persistentContainer: NSPersistentCloudKitContainer! = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
-
-    static func save(){
-        ExpenseDataModel.persistentContainer.saveContext()
-    }
+class ExpenseDataModel: BaseDataModel {
     
     static func deleteExpense(expense: Expense) -> Bool{
         let context = persistentContainer.viewContext
@@ -107,25 +102,4 @@ class ExpenseDataModel {
         return expense
     }
     
-}
-
-extension NSPersistentCloudKitContainer{
-    func saveContext(){
-        saveContext(context: viewContext)
-    }
-
-    func saveContext(context: NSManagedObjectContext) {
-            
-        // 変更がなければ何もしない
-        guard context.hasChanges else {
-            return
-        }
-        
-        do {
-            try context.save()
-        }
-        catch let error as NSError {
-            print("Error: \(error), \(error.userInfo)")
-        }
-    }
 }

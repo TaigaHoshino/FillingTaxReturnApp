@@ -47,7 +47,7 @@ class DetailedExpenseModalViewController: UIViewController {
         
         let detailedExpenseTableView = self.children[0] as! DetailedExpenseStaticTableViewController
         
-        expense?.occuredAt = DatetimeUtil.formattedDateToDate(strDate: detailedExpenseTableView.tfOccuredDate.text!)
+        expense?.occuredAt = detailedExpenseTableView.tfOccuredDate.getDateValue()
         
         if let id = Datasets.findCountingClassIdByTitle(title: detailedExpenseTableView.tfCountingClass.text!){
             expense?.countingClass = Int16(id)

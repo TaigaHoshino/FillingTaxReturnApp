@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func onIncomeButtonClick(_ sender: Any) {
-        let viewController = RegisterBOPViewController.initialController
+        let viewController = RegisterBOPViewController.getInitialController()
         present(viewController, animated: true, completion: nil)
     }
 }

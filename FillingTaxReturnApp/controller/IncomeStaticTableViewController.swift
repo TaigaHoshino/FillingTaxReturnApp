@@ -9,6 +9,8 @@ import UIKit
 
 class IncomeStaticTableViewController: UITableViewController {
     
+    private var income: Income? = nil
+    
     @IBOutlet weak var expense: PriceTextField!
     @IBOutlet weak var countingClass: PickerTextField!
     @IBOutlet weak var client: AddablePickerTextField!
@@ -20,9 +22,7 @@ class IncomeStaticTableViewController: UITableViewController {
         super.viewDidLoad()
         
         initAllItems()
-        
-        client.setUserDefaults(userDefaultsKey: AppData.clientsDefaultKey, noSelectionValue: "未選択")
-        
+        setupTable()
         
     }
     
@@ -40,6 +40,41 @@ class IncomeStaticTableViewController: UITableViewController {
 
         countingClass.setDataSource(dataSource: incomeTitles)
         countingClass.setDefaultValue(value: incomeTitles.first!)
+        client.setUserDefaults(userDefaultsKey: AppData.clientsDefaultKey, noSelectionValue: "未選択")
     }
     
+    public func save() {
+        IncomeDataModel.insertIncome(income: income!)
+        income!.money = Int64(expense.getValue())
+        income!.countingClass = Int16(Datasets.findIncomeClassByTitle(title: countingClass.text!)!["id"] as! Int)
+        income!.client = client.text
+        income!.occuredAt = occuredDate.getDateValue()
+        income!.item = items.text
+        income!.memo = memo.text
+        
+        IncomeDataModel.save()
+    }
+    
+    public static func getInitialController(income: Income? = nil) -> Self {
+        let storyboard = UIStoryboard(name: "IncomeTable", bundle: nil)
+        let controller = storyboard.instantiateViewController(identifier: "IncomeStaticTableViewController") as! Self
+        controller.income = income
+        return controller
+    }
+    
+    private func setupTable() {
+        guard let income = income else {
+            income = IncomeDataModel.newIncome()
+            return}
+        
+        expense.setValue(value: Int(income.money))
+        let value = Datasets.findIncomeClassById(id: Int(income.countingClass))!["title"] as! String
+        countingClass.setDefaultValue(value: value)
+        client.text = income.client
+        occuredDate.setDateValue(date: income.occuredAt!)
+        items.text = income.item
+        memo.text = income.memo
+        
+    }
+        
 }

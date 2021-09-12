@@ -8,12 +8,7 @@
 import UIKit
 import CoreData
 
-class IncomeDataModel {
-    private static var persistentContainer: NSPersistentCloudKitContainer! = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
-
-    static func save(){
-        IncomeDataModel.persistentContainer.saveContext()
-    }
+class IncomeDataModel: BaseDataModel {
     
     static func deleteIncome(income: Income) -> Bool{
         let context = persistentContainer.viewContext
@@ -42,8 +37,14 @@ class IncomeDataModel {
     
     static func newIncome() -> Income{
         let context = persistentContainer.viewContext
-        let income = NSEntityDescription.insertNewObject(forEntityName: "Receipt", into: context) as! Income
+        let entity = NSEntityDescription.entity(forEntityName: "Income", in: context)
+        let income = Income(entity: entity!, insertInto: nil)
         income.id = UUID()
         return income
+    }
+    
+    static func insertIncome(income: Income) {
+        let context = persistentContainer.viewContext
+        context.insert(income)
     }
 }

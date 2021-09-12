@@ -11,8 +11,8 @@
         <attribute name="taxClass" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Income" representedClassName="Income" syncable="YES" codeGenerationType="class">
-        <attribute name="accountingClass" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="client" optional="YES" attributeType="String"/>
+        <attribute name="countingClass" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="item" optional="YES" attributeType="String"/>
         <attribute name="memo" optional="YES" attributeType="String"/>
@@ -20,7 +20,7 @@
         <attribute name="occuredAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="Income" positionX="-45" positionY="63" width="128" height="134"/>
         <element name="Expense" positionX="-63" positionY="-18" width="128" height="149"/>
+        <element name="Income" positionX="-45" positionY="63" width="128" height="134"/>
     </elements>
 </model>

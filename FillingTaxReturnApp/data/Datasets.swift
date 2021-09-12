@@ -58,4 +58,13 @@ class Datasets {
         }
         return nil
     }
+    
+    public static func findIncomeClassByTitle(title: String) -> [String: Any]? {
+        for data in incomeClass{
+            if data["title"] as! String == title{
+                return data
+            }
+        }
+        return nil
+    }
 }

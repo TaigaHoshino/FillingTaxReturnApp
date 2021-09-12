@@ -45,6 +45,10 @@ class DatePickerTextField: UITextField {
         text = DatetimeUtil.dateToFormattedDate(date: date)
     }
     
+    public func getDateValue() -> Date {
+        return DatetimeUtil.formattedDateToDate(strDate: self.text!)
+    }
+    
     @objc func dateValueChanged(sender:UIDatePicker){
         text = DatetimeUtil.dateToFormattedDate(date: sender.date)
     }
