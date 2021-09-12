@@ -6,10 +6,10 @@
 //
 
 import UIKit
+import CoreData
 
 class ExpenseCollectionViewController: UIViewController, UICollectionViewDataSource {
     
-    private var expenses: [Expense] = []
     private var selectedCellsExpenseIds: [UUID] = [UUID]()
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var settingButton: UIButton!
@@ -18,6 +18,17 @@ class ExpenseCollectionViewController: UIViewController, UICollectionViewDataSou
     private var animator: UIViewPropertyAnimator!
     private var isSettingButtonsShowed = false
     private var didViewLoad = false
+    private var blocks: [() -> Void] = []
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Expense> = {
+        let sortDescripter = NSSortDescriptor(key: "occuredAt", ascending: true)
+        
+        let predicate = NSPredicate(format: "isRegistered = 'false'")
+        let controller: NSFetchedResultsController<Expense> = BaseDataModel.getFetchedResultController(sortDescriptors: [sortDescripter], predicate: predicate)
+        controller.delegate = self
+        
+        return controller
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +45,13 @@ class ExpenseCollectionViewController: UIViewController, UICollectionViewDataSou
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        expenses = ExpenseDataModel.getExpensesByIsRegistered(isRegistered: false)!
+        
+        do {
+            try fetchedResultsController.performFetch()
+        }
+        catch {
+            print(error)
+        }
         collectionView.reloadData()
     }
     
@@ -76,7 +93,6 @@ class ExpenseCollectionViewController: UIViewController, UICollectionViewDataSou
             }
         }
         
-        expenses = ExpenseDataModel.getExpenses()
         selectedCellsExpenseIds.removeAll()
         
         collectionView.reloadData()
@@ -141,11 +157,15 @@ class ExpenseCollectionViewController: UIViewController, UICollectionViewDataSou
 extension ExpenseCollectionViewController{
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return fetchedResultsController.sections?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return expenses.count
+        guard let sections = fetchedResultsController.sections else {return 0}
+        
+        let sectionInfo = sections[section]
+        
+        return sectionInfo.numberOfObjects
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -164,7 +184,7 @@ extension ExpenseCollectionViewController{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ExpenseViewCell", for: indexPath)
         
         if let cell = cell as? ExpenseViewCell{
-            cell.setupCell(expense: expenses[indexPath.row])
+            cell.setupCell(expense: fetchedResultsController.object(at: indexPath))
         }
         
         return cell
@@ -214,4 +234,43 @@ extension ExpenseCollectionViewController: UICollectionViewDelegateFlowLayout {
 
         return ((availableWidth - interColumnSpace * numInterColumnSpaces) / numColumns).rounded(.down)
     }
+}
+
+extension ExpenseCollectionViewController: NSFetchedResultsControllerDelegate {
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+            switch type {
+            case .delete:
+                blocks.append { [weak self] in
+                    self?.collectionView.deleteItems(at: [indexPath!])
+                }
+            case .insert:
+                blocks.append  { [weak self] in
+                    self?.collectionView.insertItems(at: [newIndexPath!])
+                }
+            case .move:
+                blocks.append { [weak self] in
+                    self?.collectionView.moveItem(at: indexPath!, to: newIndexPath!)
+                }
+            case .update:
+                blocks.append { [weak self] in
+                    self?.collectionView.reloadItems(at: [indexPath!])
+                }
+            @unknown default:
+                break
+            }
+        }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        blocks.removeAll()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        collectionView.performBatchUpdates({
+            self.blocks.forEach{ block in
+                block()
+            }
+        }, completion: nil)
+    }
+    
 }
