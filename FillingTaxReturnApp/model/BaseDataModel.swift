@@ -14,6 +14,18 @@ class BaseDataModel {
     static func save(){
         BaseDataModel.persistentContainer.saveContext()
     }
+    
+    public static func getFetchedResultController<T: NSManagedObject>(sortDescriptors: [NSSortDescriptor] = [],
+                                                                      predicate: NSPredicate? = nil,
+                                                               sectionNameKeyPath: String? = nil,
+                                                               cacheName: String? = nil) -> NSFetchedResultsController<T> {
+        
+        let context = BaseDataModel.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
+        fetchRequest.sortDescriptors = sortDescriptors
+        fetchRequest.predicate = predicate
+        return NSFetchedResultsController<T>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
+    }
 }
 
 extension NSPersistentCloudKitContainer{

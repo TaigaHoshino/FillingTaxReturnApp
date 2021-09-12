@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TransactionListViewController: UIViewController {
     
@@ -14,8 +15,21 @@ class TransactionListViewController: UIViewController {
     @IBOutlet weak var tvTransactionList: UITableView!
     
     private var selectedDateCellIndexPath: IndexPath!
-    private var expensesEachDayList: [ExpensesEachDay] = []
     private var currentSelectedDate = Date()
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Expense> = {
+        let sortDescripter = NSSortDescriptor(key: "occuredAt", ascending: true)
+        
+        let result = getMonthRange(date: currentSelectedDate)
+        let from = result["from"]!
+        let to = result["to"]!
+        
+        let predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@) AND (isRegistered <> 'false')", from as CVarArg, to as CVarArg)
+        let controller: NSFetchedResultsController<Expense> = BaseDataModel.getFetchedResultController(sortDescriptors: [sortDescripter], predicate: predicate, sectionNameKeyPath: "occuredAt")
+        controller.delegate = self
+        
+        return controller
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,60 +48,25 @@ class TransactionListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        // 選択されたDateの年月を取得
-        let year = currentSelectedDate.year
-        let month = currentSelectedDate.month
-        
-        let expensesEachMonth = getExpenseEachMonth(year: year, month: month)!
-        
-        // 取引一覧の日付ごとのセクション分けをするためにデータを仕分ける
-        expensesEachDayList = separateExpensesEachDay(expenses: expensesEachMonth)
-        tvTransactionList.reloadData()
-        
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        do {
+            try fetchedResultsController.performFetch()
+        }
+        catch {
+            print(error)
+        }
         
         let month = currentSelectedDate.month
         
         // 今日の月のコレクションセルを探し、中央に表示して選択状態にする
         selectedDateCellIndexPath = IndexPath(row: month - 1, section: 0)
         dateCollectionView.scrollToItem(at: selectedDateCellIndexPath, at: .centeredHorizontally, animated: false)
+        
     }
     
-    // 日付で昇順ソートしたexpenseListを引数にすること
-    private func separateExpensesEachDay(expenses: [Expense]) -> [ExpensesEachDay]{
+    private func getMonthRange(date: Date) -> [String: Date]{
+        let year = currentSelectedDate.year
+        let month = currentSelectedDate.month
         
-        var expenseList: [Expense] = []
-        var expensesEachDayList: [ExpensesEachDay] = []
-        
-        if expenses.count == 0 {
-            return expensesEachDayList
-        }
-        
-        var separateDay: Date = DatetimeUtil.truncateDate(date: expenses.first!.occuredAt!)
-        
-        for expense in expenses {
-            let truncateDay = DatetimeUtil.truncateDate(date: expense.occuredAt!)
-    
-            if separateDay == truncateDay {
-                expenseList.append(expense)
-            }
-            else{
-                expensesEachDayList.append(ExpensesEachDay(date: separateDay, expenses: expenseList))
-                expenseList = []
-                expenseList.append(expense)
-                separateDay = truncateDay
-            }
-        }
-        
-        expensesEachDayList.append(ExpensesEachDay(date: separateDay, expenses: expenseList))
-        
-        return expensesEachDayList
-    }
-    
-    private func getExpenseEachMonth(year: Int, month: Int) -> [Expense]?{
         let from = DatetimeUtil.formattedDateToDate(strDate: "\(year)年\(month)月1日")
         var to: Date
         
@@ -98,9 +77,8 @@ class TransactionListViewController: UIViewController {
             to = DatetimeUtil.formattedDateToDate(strDate: "\(year + 1)年1月1日")
         }
         
-        let expenses = ExpenseDataModel.getExpensesByDate(from: from, to: to, registeredOnly: true)
+        return ["from": from, "to": to]
         
-        return expenses
     }
 
 }
@@ -143,10 +121,16 @@ extension TransactionListViewController: UICollectionViewDataSource {
             cell.onSelect()
             selectedDateCellIndexPath = indexPath
             currentSelectedDate = cell.getDate()
-            let year = currentSelectedDate.year
-            let month = currentSelectedDate.month
-            let expensesEachMonth = getExpenseEachMonth(year: year, month: month)!
-            expensesEachDayList = separateExpensesEachDay(expenses: expensesEachMonth)
+            let result = getMonthRange(date: currentSelectedDate)
+            let from = result["from"]!
+            let to = result["to"]!
+            do {
+                fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@) AND (isRegistered <> 'false')", from as CVarArg, to as CVarArg)
+                try fetchedResultsController.performFetch()
+            }
+            catch {
+                print(error)
+            }
             tvTransactionList.reloadData()
         }
     }
@@ -154,23 +138,38 @@ extension TransactionListViewController: UICollectionViewDataSource {
 
 extension TransactionListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return expensesEachDayList.count
+        return fetchedResultsController.sections?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return expensesEachDayList[section].expenses.count
+        
+        guard let sections = fetchedResultsController.sections else {return 0}
+        
+        let sectionInfo = sections[section]
+        
+        return sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return DatetimeUtil.dateToFormattedDate(date: expensesEachDayList[section].date)
+        
+        guard let sections = fetchedResultsController.sections else {return ""}
+        
+        let sectionName = sections[section].name
+        let charloc = sectionName[...sectionName.range(of: " ")!.lowerBound]
+        
+        let returnValue = String(charloc)
+        
+        return returnValue
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tvTransactionList.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath)
         
+        
         if let cell = cell as? TransactionCell {
-            cell.setupCell(expense: expensesEachDayList[indexPath.section].expenses[indexPath.row])
+            let expense = fetchedResultsController.object(at: indexPath)
+            cell.setupCell(expense: expense)
         }
         
         return cell
@@ -197,4 +196,30 @@ extension TransactionListViewController: UICollectionViewDelegateFlowLayout {
         return CGSize.init(width: 80, height: 50)
     }
     
+}
+
+extension TransactionListViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tvTransactionList.insertRows(at: [indexPath!], with: .automatic)
+        case .delete:
+            tvTransactionList.deleteRows(at: [indexPath!], with: .automatic)
+        case .move:
+            tvTransactionList.moveRow(at: indexPath!, to: newIndexPath!)
+        case .update:
+            tvTransactionList.reloadRows(at: [indexPath!], with: .automatic)
+        @unknown default:
+            break;
+        }
+        
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tvTransactionList.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tvTransactionList.endUpdates()
+    }
 }
