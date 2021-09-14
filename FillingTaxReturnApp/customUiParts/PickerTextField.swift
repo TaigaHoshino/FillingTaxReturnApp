@@ -43,8 +43,8 @@ class PickerTextField: UITextField, UIPickerViewDelegate, UIPickerViewDataSource
     func setDefaultValue(value: String){
         
         guard let index = dataSource.firstIndex(of: value) else {return}
-        text = value
         picker.selectRow(index, inComponent: 0, animated: true)
+        self.text = value
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

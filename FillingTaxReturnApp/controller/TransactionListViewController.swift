@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import LabelSwitch
 
 class TransactionListViewController: UIViewController {
     
@@ -16,6 +17,9 @@ class TransactionListViewController: UIViewController {
     private var selectedDateCellIndexPath: IndexPath!
     private var currentSelectedDate = Date()
     private var expenseTableView: ExpenseTableViewController!
+    private var labelSwitch: LabelSwitch!
+    @IBOutlet weak var navigationItems: UINavigationItem!
+    @IBOutlet weak var yearPicker: PickerTextField!
     
     var contentViewController: UIViewController? {
         didSet {
@@ -52,7 +56,6 @@ class TransactionListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         dateCollectionView.dataSource = self
         dateCollectionView.delegate = self
         
@@ -62,6 +65,28 @@ class TransactionListViewController: UIViewController {
         
         expenseTableView = ExpenseTableViewController.getInitialController(date: currentSelectedDate)
         contentViewController = expenseTableView
+        
+        let ls = LabelSwitchConfig(text: "収入", textColor: .white, font: UIFont.boldSystemFont(ofSize: 20), backgroundColor: .green)
+
+        let rs = LabelSwitchConfig(text: "経費", textColor: .white, font: UIFont.boldSystemFont(ofSize: 20), backgroundColor: .orange)
+
+        labelSwitch = LabelSwitch(center: .zero, leftConfig: ls, rightConfig: rs)
+        
+        let button1 = UIButton(frame: CGRect(x: 2, y: 2, width: 60, height: 20))
+            button1.setTitle("one", for: .normal)
+        button1.backgroundColor = UIColor.black
+        
+        let bopSwitch = UIBarButtonItem(customView: labelSwitch)
+        
+        navigationItems.rightBarButtonItem = bopSwitch
+        
+        var years: [String] = []
+        for i in 2000...Date().year + 1 {
+            years.append(String(i))
+        }
+        yearPicker.setDataSource(dataSource: years)
+        yearPicker.setDefaultValue(value: String(Date().year))
+        yearPicker.delegate = self
         
     }
     
@@ -127,4 +152,10 @@ extension TransactionListViewController: UICollectionViewDelegateFlowLayout {
         return CGSize.init(width: 80, height: 50)
     }
     
+}
+
+extension TransactionListViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    }
 }

@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v75-bZ-ZqA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="65"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="KCQ-pv-maC"/>
@@ -80,36 +80,59 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXF-3M-E08">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="kWH-Ui-u3Q">
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Back" image="chevron.backward" catalog="system" id="rNp-84-Pqd"/>
+                                            <barButtonItem title="YearPicker" style="plain" id="GZM-Yq-6YF">
+                                                <textField key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="zov-II-Efn" customClass="PickerTextField" customModule="FillingTaxReturnApp" customModuleProvider="target">
+                                                    <rect key="frame" x="49.5" y="5" width="83" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bth-jH-Oti">
-                                <rect key="frame" x="0.0" y="65" width="375" height="602"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="i5g-7a-5SG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="v75-bZ-ZqA" firstAttribute="trailing" secondItem="i5g-7a-5SG" secondAttribute="trailing" id="0rn-aw-aYV"/>
+                            <constraint firstItem="fXF-3M-E08" firstAttribute="trailing" secondItem="i5g-7a-5SG" secondAttribute="trailing" id="36e-va-YoB"/>
                             <constraint firstItem="v75-bZ-ZqA" firstAttribute="trailing" secondItem="i5g-7a-5SG" secondAttribute="trailing" id="3pF-IL-hLk"/>
                             <constraint firstItem="v75-bZ-ZqA" firstAttribute="leading" secondItem="i5g-7a-5SG" secondAttribute="leading" id="6Pu-JY-eBA"/>
-                            <constraint firstItem="bth-jH-Oti" firstAttribute="top" secondItem="v75-bZ-ZqA" secondAttribute="bottom" id="Iel-op-AZz"/>
-                            <constraint firstItem="v75-bZ-ZqA" firstAttribute="top" secondItem="i5g-7a-5SG" secondAttribute="top" id="Jhd-cy-pJD"/>
-                            <constraint firstItem="v75-bZ-ZqA" firstAttribute="top" secondItem="i5g-7a-5SG" secondAttribute="top" id="Ksq-SO-Ems"/>
+                            <constraint firstItem="fXF-3M-E08" firstAttribute="top" secondItem="i5g-7a-5SG" secondAttribute="top" id="GXC-LH-K2c"/>
+                            <constraint firstItem="v75-bZ-ZqA" firstAttribute="top" secondItem="fXF-3M-E08" secondAttribute="bottom" id="Rh5-kX-vtC"/>
                             <constraint firstItem="bth-jH-Oti" firstAttribute="leading" secondItem="i5g-7a-5SG" secondAttribute="leading" id="bXF-HJ-6gm"/>
                             <constraint firstItem="i5g-7a-5SG" firstAttribute="bottom" secondItem="bth-jH-Oti" secondAttribute="bottom" id="gO3-IN-gY2"/>
                             <constraint firstItem="i5g-7a-5SG" firstAttribute="trailing" secondItem="bth-jH-Oti" secondAttribute="trailing" id="oN7-Fx-wLB"/>
                             <constraint firstItem="v75-bZ-ZqA" firstAttribute="leading" secondItem="i5g-7a-5SG" secondAttribute="leading" id="pZs-1d-rHd"/>
+                            <constraint firstItem="bth-jH-Oti" firstAttribute="top" secondItem="v75-bZ-ZqA" secondAttribute="bottom" id="rZN-uD-kRr"/>
+                            <constraint firstItem="fXF-3M-E08" firstAttribute="leading" secondItem="i5g-7a-5SG" secondAttribute="leading" id="z90-fg-pli"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="bth-jH-Oti" id="hq1-Ae-yrG"/>
                         <outlet property="dateCollectionView" destination="v75-bZ-ZqA" id="aKl-uB-HXB"/>
+                        <outlet property="navigationItems" destination="kWH-Ui-u3Q" id="hIX-sJ-THc"/>
+                        <outlet property="yearPicker" destination="zov-II-Efn" id="Wsi-Wl-uwj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rec-z3-9tx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-959" y="-143"/>
+            <point key="canvasLocation" x="-959.20000000000005" y="-143.47826086956522"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
