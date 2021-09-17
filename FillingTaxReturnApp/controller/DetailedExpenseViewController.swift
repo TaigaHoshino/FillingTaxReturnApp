@@ -12,6 +12,7 @@ class DetailedExpenseViewController: UIViewController {
     private var semiModalPresenter = SemiModalPresenter()
     var expense: Expense!
     @IBOutlet weak var uiExpenseImage: UIImageView!
+    private var expenseModalViewController: DetailedExpenseModalViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,23 +21,26 @@ class DetailedExpenseViewController: UIViewController {
         
         let uiImage = ReadAndWriteFileUtil.loadFileFromPath(path: fileName!)
         
+        expenseModalViewController = DetailedExpenseModalViewController.getInitialController(expense: self.expense!)
+        semiModalPresenter.viewController = expenseModalViewController
+        
         uiExpenseImage.image = uiImage
         
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        present(expenseModalViewController, animated: true, completion: nil)
+    }
+    
     
     @IBAction func onBackButtonClick(_ sender: Any) {
+        expenseModalViewController.saveAllContents()
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func onEditButtonClick(_ sender: Any) {
-        let viewController = DetailedExpenseModalViewController.getInitialController(expense: self.expense!)
-        viewController.dismissCompletion = { expense in
-            self.expense = expense
-        }
-        semiModalPresenter.viewController = viewController
-        present(viewController, animated: true, completion: nil)
+        present(expenseModalViewController, animated: true, completion: nil)
         
     }
     

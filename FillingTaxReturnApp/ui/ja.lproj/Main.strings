@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "レシート一覧"; ObjectID = "13t-SB-8im"; */
+"13t-SB-8im.normalTitle" = "レシート一覧";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Vxj-HB-xZg"; */
+"Vxj-HB-xZg.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "収入（手動）"; ObjectID = "Xf0-1U-AWB"; */
+"Xf0-1U-AWB.normalTitle" = "収入（手動）";
+
+/* Class = "UIButton"; normalTitle = "撮影画面に移動"; ObjectID = "hfn-JK-XK0"; */
+"hfn-JK-XK0.normalTitle" = "撮影画面に移動";
+
+/* Class = "UIButton"; normalTitle = "取引一覧"; ObjectID = "vLO-sT-fAG"; */
+"vLO-sT-fAG.normalTitle" = "取引一覧";

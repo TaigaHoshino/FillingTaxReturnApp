@@ -56,6 +56,22 @@ class DatetimeUtil{
         return truncateDay!
     }
     
+    static func dateToStrDate(date: Date, format: String) -> String {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: date)
+    }
+    
+    static func strDateToDate(strDate: String, format: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = format
+        return dateFormatter.date(from: strDate)
+    }
+    
 }
 
 extension Date {

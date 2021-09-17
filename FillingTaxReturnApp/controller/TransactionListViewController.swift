@@ -59,8 +59,6 @@ class TransactionListViewController: UIViewController {
         dateCollectionView.dataSource = self
         dateCollectionView.delegate = self
         
-        dateCollectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-        
         currentSelectedDate = Date()
         
         expenseTableView = ExpenseTableViewController.getInitialController(date: currentSelectedDate)
@@ -90,8 +88,7 @@ class TransactionListViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewDidLayoutSubviews() {
         let month = currentSelectedDate.month
         
         // 今日の月のコレクションセルを探し、中央に表示して選択状態にする
@@ -114,10 +111,11 @@ extension TransactionListViewController: UICollectionViewDataSource {
             
             let calender = Calendar.current
             
-            let year = calender.component(.year, from: Date())
+            let year = calender.component(.year, from: currentSelectedDate)
             let month = indexPath[1] + 1
             
-            cell.setupCell(date: DatetimeUtil.formattedDateToDate(strDate: "\(year)年\(month)月1日"))
+            cell.setupCell(date: DatetimeUtil.strDateToDate(strDate: String(format: NSLocalizedString("formattedStrDate", comment: ""), String(year), String(month), "1"),
+                                                            format: String(format: NSLocalizedString("formattedStrDate", comment: ""), "yyyy", "MM", "dd"))!)
             
             if selectedDateCellIndexPath == indexPath{
                 cell.onSelect()
@@ -156,6 +154,10 @@ extension TransactionListViewController: UICollectionViewDelegateFlowLayout {
 
 extension TransactionListViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        let newDate = DatetimeUtil.strDateToDate(strDate: String(format: NSLocalizedString("formattedStrDate", comment: ""), textField.text!, String(currentSelectedDate.month), "1"),
+                                                 format: String(format: NSLocalizedString("formattedStrDate", comment: ""), "yyyy", "MM", "dd"))
+        currentSelectedDate = newDate!
+        dateCollectionView.reloadData()
+        expenseTableView.setDate(date: currentSelectedDate)
     }
 }

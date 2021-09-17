@@ -14,8 +14,6 @@ class DetailedExpenseModalViewController: UIViewController {
     private var expense: Expense!
     @IBOutlet weak var registerExpenseButton: UIButton!
     private var isRegistered: Bool = false
-    
-    var dismissCompletion: ((_ expense: Expense) -> Void)? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,16 +29,11 @@ class DetailedExpenseModalViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        dismissCompletion?(expense)
-        saveAllContents()
-    }
-    
     func getExpenses() -> Expense {
         return expense
     }
     
-    private func saveAllContents(){
+    public func saveAllContents(){
         if tfExpense.text != "" {
             expense?.expense = Int64(tfExpense.getValue())
         }

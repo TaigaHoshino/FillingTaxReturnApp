@@ -19,7 +19,7 @@ class ExpenseTableViewController: UITableViewController {
         let from = result["from"]!
         let to = result["to"]!
         
-        let predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@) AND (isRegistered <> 'false')", from as CVarArg, to as CVarArg)
+        let predicate = NSPredicate(format: "(isRegistered == true) AND (occuredAt >= %@) AND (occuredAt < %@)", from as CVarArg, to as CVarArg)
         let controller: NSFetchedResultsController<Expense> = BaseDataModel.getFetchedResultController(sortDescriptors: [sortDescripter], predicate: predicate, sectionNameKeyPath: "occuredAt")
         controller.delegate = self
         
@@ -40,13 +40,13 @@ class ExpenseTableViewController: UITableViewController {
     public func setDate(date: Date) {
         
         self.date = date
-        
+           
         let result = getMonthRange(date: date)
         let from = result["from"]!
         let to = result["to"]!
         
         do {
-            fetchedResultsController.fetchRequest.predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@) AND (isRegistered <> 'false')", from as CVarArg, to as CVarArg)
+            fetchedResultsController.fetchRequest.predicate = NSPredicate(format:"(isRegistered == true) AND (occuredAt >= %@) AND (occuredAt < %@)", from as CVarArg, to as CVarArg)
             try fetchedResultsController.performFetch()
         }
         catch {
@@ -100,9 +100,8 @@ extension ExpenseTableViewController {
         guard let sections = fetchedResultsController.sections else {return ""}
         
         let sectionName = sections[section].name
-        let charloc = sectionName[...sectionName.range(of: " ")!.lowerBound]
-        
-        let returnValue = String(charloc)
+        let date = DatetimeUtil.strDateToDate(strDate: sectionName, format: NSLocalizedString("swiftStrDate", comment: ""))
+        let returnValue = DatetimeUtil.dateToStrDate(date: date!, format: String(format: NSLocalizedString("formattedStrDate", comment: ""), "yyyy", "MM", "dd"))
         
         return returnValue
     }
@@ -159,6 +158,17 @@ extension ExpenseTableViewController: NSFetchedResultsControllerDelegate {
             break;
         }
         
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+            switch type {
+            case .insert:
+                tableView.insertSections(IndexSet(integer: sectionIndex), with: .automatic)
+            case .delete:
+                tableView.deleteSections(IndexSet(integer: sectionIndex), with: .automatic)
+            default:
+                return
+            }
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

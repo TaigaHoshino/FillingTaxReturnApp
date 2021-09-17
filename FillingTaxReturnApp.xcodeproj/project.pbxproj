@@ -62,6 +62,7 @@
 		95CF87A726EDD6FB009BA978 /* ExpenseTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95CF87A626EDD6FB009BA978 /* ExpenseTable.storyboard */; };
 		95CF87A926EDD750009BA978 /* ExpenseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CF87A826EDD750009BA978 /* ExpenseTableViewController.swift */; };
 		95E051A826EF8FA7001DEC5D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 95E051A726EF8FA7001DEC5D /* Podfile */; };
+		95E051AD26F158EB001DEC5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95E051AF26F158EB001DEC5D /* Localizable.strings */; };
 		95EBFE832625031A001095E7 /* DetailedExpenseStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95EBFE822625031A001095E7 /* DetailedExpenseStaticTableViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +147,9 @@
 		95CF87A626EDD6FB009BA978 /* ExpenseTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpenseTable.storyboard; sourceTree = "<group>"; };
 		95CF87A826EDD750009BA978 /* ExpenseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewController.swift; sourceTree = "<group>"; };
 		95E051A726EF8FA7001DEC5D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		95E051A926F158AB001DEC5D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		95E051AA26F158AC001DEC5D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		95E051AE26F158EB001DEC5D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95EBFE822625031A001095E7 /* DetailedExpenseStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedExpenseStaticTableViewController.swift; sourceTree = "<group>"; };
 		FE27147CDC6EE60BD3007BEF /* Pods-FillingTaxReturnApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillingTaxReturnApp.release.xcconfig"; path = "Target Support Files/Pods-FillingTaxReturnApp/Pods-FillingTaxReturnApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -267,6 +271,7 @@
 		95461121260580FE004D1BBC = {
 			isa = PBXGroup;
 			children = (
+				95E051AF26F158EB001DEC5D /* Localizable.strings */,
 				95E051A726EF8FA7001DEC5D /* Podfile */,
 				9509BF40267961B9007515E9 /* SemiModal */,
 				9546112C260580FE004D1BBC /* FillingTaxReturnApp */,
@@ -444,6 +449,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 95461121260580FE004D1BBC;
 			productRefGroup = 9546112B260580FE004D1BBC /* Products */;
@@ -465,6 +471,7 @@
 				95CF879B26E42C52009BA978 /* RegisterBOP.storyboard in Resources */,
 				9591E13A266D84B900F12A92 /* Camera.storyboard in Resources */,
 				956F48862622C7FF00A0A1DD /* DetailedExpense.storyboard in Resources */,
+				95E051AD26F158EB001DEC5D /* Localizable.strings in Resources */,
 				9509BF602679626B007515E9 /* DetailedExpenseModal.storyboard in Resources */,
 				95CF87A326ED61AE009BA978 /* IncomeTable.storyboard in Resources */,
 				9546113A26058100004D1BBC /* LaunchScreen.storyboard in Resources */,
@@ -603,6 +610,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				95461134260580FE004D1BBC /* Base */,
+				95E051A926F158AB001DEC5D /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -611,8 +619,17 @@
 			isa = PBXVariantGroup;
 			children = (
 				9546113926058100004D1BBC /* Base */,
+				95E051AA26F158AC001DEC5D /* ja */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		95E051AF26F158EB001DEC5D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95E051AE26F158EB001DEC5D /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -622,6 +639,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -683,6 +701,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

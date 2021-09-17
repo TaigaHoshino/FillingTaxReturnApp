@@ -23,7 +23,7 @@ class ExpenseCollectionViewController: UIViewController, UICollectionViewDataSou
     lazy var fetchedResultsController: NSFetchedResultsController<Expense> = {
         let sortDescripter = NSSortDescriptor(key: "occuredAt", ascending: true)
         
-        let predicate = NSPredicate(format: "isRegistered = 'false'")
+        let predicate = NSPredicate(format: "isRegistered == false")
         let controller: NSFetchedResultsController<Expense> = BaseDataModel.getFetchedResultController(sortDescriptors: [sortDescripter], predicate: predicate)
         controller.delegate = self
         
