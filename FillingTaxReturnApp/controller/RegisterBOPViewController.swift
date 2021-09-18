@@ -47,13 +47,13 @@ class RegisterBOPViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let incomeController = IncomeStaticTableViewController.getInitialController()
+        let incomeController = DetailedIncomeStaticTableViewController.getInitialController()
         contentViewController = incomeController
     }
     
     @IBAction func onSaveButtonClick(_ sender: Any) {
-        if contentViewController is IncomeStaticTableViewController {
-            let viewController = contentViewController as! IncomeStaticTableViewController
+        if contentViewController is DetailedIncomeStaticTableViewController {
+            let viewController = contentViewController as! DetailedIncomeStaticTableViewController
             viewController.save()
         }
         dismiss(animated: true, completion: nil)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IncomeStaticTableViewController: UITableViewController {
+class DetailedIncomeStaticTableViewController: UITableViewController {
     
     private var income: Income? = nil
     
@@ -56,8 +56,8 @@ class IncomeStaticTableViewController: UITableViewController {
     }
     
     public static func getInitialController(income: Income? = nil) -> Self {
-        let storyboard = UIStoryboard(name: "IncomeTable", bundle: nil)
-        let controller = storyboard.instantiateViewController(identifier: "IncomeStaticTableViewController") as! Self
+        let storyboard = UIStoryboard(name: "DetailedIncome", bundle: nil)
+        let controller = storyboard.instantiateViewController(identifier: "DetailedIncomeStaticTableViewController") as! Self
         controller.income = income
         return controller
     }

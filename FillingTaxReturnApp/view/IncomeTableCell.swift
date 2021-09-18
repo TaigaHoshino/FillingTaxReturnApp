@@ -1,17 +1,22 @@
 //
-//  TransactionListCell.swift
+//  IncomeTableCell.swift
 //  FillingTaxReturnApp
 //
-//  Created by 星野大我 on 2021/06/05.
+//  Created by 星野大我 on 2021/09/17.
 //
 
 import UIKit
 
-class TransactionCell: UITableViewCell {
+class IncomeTableCell: UITableViewCell {
     
-    @IBOutlet weak var lbPrice: UILabel!
-    @IBOutlet weak var lbCountingClass: UILabel!
-    private var expense: Expense!
+    private var _income: Income!
+    public var income: Income{
+        get{
+            return _income
+        }
+    }
+    @IBOutlet weak var countingClass: UILabel!
+    @IBOutlet weak var price: UILabel!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,22 +30,17 @@ class TransactionCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    func setupCell(expense: Expense){
-        self.expense = expense
-        let price = Int(expense.expense)
-        self.lbPrice.text = price.addComma()
-        self.lbCountingClass.text = Datasets.findCountingClassTitleById(id: Int(expense.countingClass))
-    }
-    
-    func getExpense() -> Expense {
-        return expense
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    public func setupCell(income: Income) {
+        self._income = income
+        self.countingClass.text = Datasets.findIncomeClassById(id: Int(_income.countingClass))!["title"] as? String
+        self.price.text = Int(income.money).addComma()
     }
 
 }

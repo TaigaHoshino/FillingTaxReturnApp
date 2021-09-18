@@ -1,26 +1,26 @@
 //
-//  ExpenseTableViewController.swift
+//  IncomeTableViewController.swift
 //  FillingTaxReturnApp
 //
-//  Created by 星野大我 on 2021/09/12.
+//  Created by 星野大我 on 2021/09/17.
 //
 
 import UIKit
 import CoreData
 
-class ExpenseTableViewController: UITableViewController {
+class IncomeTableViewController: UITableViewController {
     
     private var date: Date!
     
-    lazy var fetchedResultsController: NSFetchedResultsController<Expense> = {
+    lazy var fetchedResultsController: NSFetchedResultsController<Income> = {
         let sortDescripter = NSSortDescriptor(key: "occuredAt", ascending: true)
         
         let result = getMonthRange(date: date)
         let from = result["from"]!
         let to = result["to"]!
         
-        let predicate = NSPredicate(format: "(isRegistered == true) AND (occuredAt >= %@) AND (occuredAt < %@)", from as CVarArg, to as CVarArg)
-        let controller: NSFetchedResultsController<Expense> = BaseDataModel.getFetchedResultController(sortDescriptors: [sortDescripter], predicate: predicate, sectionNameKeyPath: "occuredAt")
+        let predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@)", from as CVarArg, to as CVarArg)
+        let controller: NSFetchedResultsController<Income> = BaseDataModel.getFetchedResultController(sortDescriptors: [sortDescripter], predicate: predicate, sectionNameKeyPath: "occuredAt")
         controller.delegate = self
         
         return controller
@@ -46,7 +46,7 @@ class ExpenseTableViewController: UITableViewController {
         let to = result["to"]!
         
         do {
-            fetchedResultsController.fetchRequest.predicate = NSPredicate(format:"(isRegistered == true) AND (occuredAt >= %@) AND (occuredAt < %@)", from as CVarArg, to as CVarArg)
+            fetchedResultsController.fetchRequest.predicate = NSPredicate(format:"(occuredAt >= %@) AND (occuredAt < %@)", from as CVarArg, to as CVarArg)
             try fetchedResultsController.performFetch()
         }
         catch {
@@ -77,14 +77,14 @@ class ExpenseTableViewController: UITableViewController {
     }
     
     public static func getInitialController(date: Date) -> Self {
-        let storyboard = UIStoryboard(name: "ExpenseTable", bundle: nil)
-        let viewController = storyboard.instantiateViewController(identifier: "ExpenseTableViewController") as! Self
+        let storyboard = UIStoryboard(name: "IncomeTable", bundle: nil)
+        let viewController = storyboard.instantiateViewController(identifier: "IncomeTableViewController") as! Self
         viewController.date = date
         return viewController
     }
 }
 
-extension ExpenseTableViewController {
+extension IncomeTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
@@ -111,11 +111,11 @@ extension ExpenseTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ExpenseCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "IncomeCell", for: indexPath)
         
-        if let cell = cell as? ExpenseTableCell {
-            let expense = fetchedResultsController.object(at: indexPath)
-            cell.setupCell(expense: expense)
+        if let cell = cell as? IncomeTableCell {
+            let income = fetchedResultsController.object(at: indexPath)
+            cell.setupCell(income: income)
         }
         
         return cell
@@ -124,20 +124,20 @@ extension ExpenseTableViewController {
 }
 
 
-extension ExpenseTableViewController {
+extension IncomeTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         
-        if let cell = cell as? ExpenseTableCell {
+        if let cell = cell as? IncomeTableCell {
             
-            let detailedExpenseViewController = DetailedExpenseViewController.getInitialViewController(expense: cell.getExpense())
-            present(detailedExpenseViewController, animated: true, completion: nil)
+            let editIncomeViewController = EditDetailedIncomeViewController.getInitialController(income: cell.income)
+            present(editIncomeViewController, animated: true, completion: nil)
         }
     }
 }
 
-extension ExpenseTableViewController: UICollectionViewDelegateFlowLayout {
+extension IncomeTableViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize.init(width: 80, height: 50)
@@ -145,7 +145,7 @@ extension ExpenseTableViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-extension ExpenseTableViewController: NSFetchedResultsControllerDelegate {
+extension IncomeTableViewController: NSFetchedResultsControllerDelegate {
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:

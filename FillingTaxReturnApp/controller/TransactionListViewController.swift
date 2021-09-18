@@ -17,6 +17,7 @@ class TransactionListViewController: UIViewController {
     private var selectedDateCellIndexPath: IndexPath!
     private var currentSelectedDate = Date()
     private var expenseTableView: ExpenseTableViewController!
+    private var incomeTableView: IncomeTableViewController!
     private var labelSwitch: LabelSwitch!
     @IBOutlet weak var navigationItems: UINavigationItem!
     @IBOutlet weak var yearPicker: PickerTextField!
@@ -61,6 +62,7 @@ class TransactionListViewController: UIViewController {
         
         currentSelectedDate = Date()
         
+        incomeTableView = IncomeTableViewController.getInitialController(date: currentSelectedDate)
         expenseTableView = ExpenseTableViewController.getInitialController(date: currentSelectedDate)
         contentViewController = expenseTableView
         
@@ -69,6 +71,7 @@ class TransactionListViewController: UIViewController {
         let rs = LabelSwitchConfig(text: "経費", textColor: .white, font: UIFont.boldSystemFont(ofSize: 20), backgroundColor: .orange)
 
         labelSwitch = LabelSwitch(center: .zero, leftConfig: ls, rightConfig: rs)
+        labelSwitch.delegate = self
         
         let button1 = UIButton(frame: CGRect(x: 2, y: 2, width: 60, height: 20))
             button1.setTitle("one", for: .normal)
@@ -159,5 +162,16 @@ extension TransactionListViewController: UITextFieldDelegate {
         currentSelectedDate = newDate!
         dateCollectionView.reloadData()
         expenseTableView.setDate(date: currentSelectedDate)
+    }
+}
+
+extension TransactionListViewController: LabelSwitchDelegate {
+    func switchChangToState(sender: LabelSwitch) {
+        switch sender.curState {
+        case .L:
+            contentViewController = expenseTableView
+        case .R:
+            contentViewController = incomeTableView
+        }
     }
 }

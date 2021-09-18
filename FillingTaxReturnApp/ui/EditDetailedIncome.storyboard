@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Detailed Income View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="EditDetailedIncomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="EditDetailedIncomeViewController" customModule="FillingTaxReturnApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O1W-v9-Mhr">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xYy-9a-8ty"/>
+                                    <barButtonItem title="更新" id="utW-eB-C6y">
+                                        <connections>
+                                            <action selector="onUpdateButtonClick:" destination="Y6W-OH-hqX" id="gex-YL-N2W"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="opD-Ip-66v"/>
+                                    <barButtonItem image="trash.fill" catalog="system" id="Wrf-Sy-uNk">
+                                        <connections>
+                                            <action selector="onDeleteButtonClick:" destination="Y6W-OH-hqX" id="5dJ-V4-7kT"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y7I-ff-brM">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="CUp-Hk-myT">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="Ueg-gb-NGP">
+                                            <connections>
+                                                <action selector="onCloseButtonClick:" destination="Y6W-OH-hqX" id="sFu-pe-4GD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6t1-Bc-J3X">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="y7I-ff-brM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="7nn-r8-btc"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="6t1-Bc-J3X" secondAttribute="trailing" id="BBx-Kh-2pO"/>
+                            <constraint firstItem="O1W-v9-Mhr" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="FtU-c9-gG1"/>
+                            <constraint firstItem="O1W-v9-Mhr" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="LxE-2h-iq9"/>
+                            <constraint firstItem="O1W-v9-Mhr" firstAttribute="top" secondItem="6t1-Bc-J3X" secondAttribute="bottom" id="OMV-Nb-ttu"/>
+                            <constraint firstItem="6t1-Bc-J3X" firstAttribute="top" secondItem="y7I-ff-brM" secondAttribute="bottom" id="PTA-lX-Hsn"/>
+                            <constraint firstItem="y7I-ff-brM" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="R22-Or-z6j"/>
+                            <constraint firstItem="6t1-Bc-J3X" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="V0S-g8-bSz"/>
+                            <constraint firstItem="y7I-ff-brM" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="hC2-Tw-8I3"/>
+                            <constraint firstItem="O1W-v9-Mhr" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="raM-Fx-HJt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="6t1-Bc-J3X" id="LUi-T4-yhi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-23" y="81"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
