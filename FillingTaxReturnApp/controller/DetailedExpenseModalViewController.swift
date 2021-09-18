@@ -11,12 +11,18 @@ class DetailedExpenseModalViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tfExpense: PriceTextField!
-    private var expense: Expense!
+    private var expense: Expense? = nil
     @IBOutlet weak var registerExpenseButton: UIButton!
     private var isRegistered: Bool = false
+    private var isNew = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if expense == nil {
+            expense = ExpenseDataModel.newExpense()
+            isNew = true
+        }
 
         if let expense = expense?.expense{
             tfExpense.setValue(value: Int(expense))
@@ -30,10 +36,15 @@ class DetailedExpenseModalViewController: UIViewController {
     }
     
     func getExpenses() -> Expense {
-        return expense
+        return expense!
     }
     
     public func saveAllContents(){
+        
+        if isNew {
+            _ = ExpenseDataModel.insertExpense(expense: expense!)
+        }
+        
         if tfExpense.text != "" {
             expense?.expense = Int64(tfExpense.getValue())
         }

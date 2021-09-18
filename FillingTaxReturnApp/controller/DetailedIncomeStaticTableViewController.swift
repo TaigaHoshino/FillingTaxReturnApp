@@ -17,6 +17,7 @@ class DetailedIncomeStaticTableViewController: UITableViewController {
     @IBOutlet weak var occuredDate: DatePickerTextField!
     @IBOutlet weak var items: ClosableTextField!
     @IBOutlet weak var memo: ClosableTextView!
+    private var isNew = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,9 @@ class DetailedIncomeStaticTableViewController: UITableViewController {
     }
     
     public func save() {
-        IncomeDataModel.insertIncome(income: income!)
+        if isNew {
+            IncomeDataModel.insertIncome(income: income!)
+        }
         income!.money = Int64(expense.getValue())
         income!.countingClass = Int16(Datasets.findIncomeClassByTitle(title: countingClass.text!)!["id"] as! Int)
         income!.client = client.text
@@ -65,6 +68,7 @@ class DetailedIncomeStaticTableViewController: UITableViewController {
     private func setupTable() {
         guard let income = income else {
             income = IncomeDataModel.newIncome()
+            isNew = true
             return}
         
         expense.setValue(value: Int(income.money))

@@ -38,6 +38,17 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4pX-Ty-GDP"/>
+                                    <barButtonItem style="plain" id="0uw-i5-Fqn">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="sVj-aY-Jym">
+                                            <rect key="frame" x="184" y="7" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="保存"/>
+                                            <connections>
+                                                <action selector="onUpdateButtonClick:" destination="1kH-V3-yKy" eventType="touchUpInside" id="5W7-ms-wLy"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="osB-8q-Hdg"/>
                                     <barButtonItem image="trash" catalog="system" id="2y7-Zf-TLp">
                                         <connections>
                                             <action selector="onDeleteButtonClick:" destination="1kH-V3-yKy" id="UV7-Jj-sci"/>

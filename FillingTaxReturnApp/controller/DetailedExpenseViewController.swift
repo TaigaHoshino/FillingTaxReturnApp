@@ -33,9 +33,11 @@ class DetailedExpenseViewController: UIViewController {
         present(expenseModalViewController, animated: true, completion: nil)
     }
     
+    @IBAction func onUpdateButtonClick(_ sender: Any) {
+        expenseModalViewController.saveAllContents()
+    }
     
     @IBAction func onBackButtonClick(_ sender: Any) {
-        expenseModalViewController.saveAllContents()
         dismiss(animated: true, completion: nil)
     }
     
@@ -46,9 +48,8 @@ class DetailedExpenseViewController: UIViewController {
     
     @IBAction func onDeleteButtonClick(_ sender: Any) {
         let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: expense.imageName!)!
-        if ExpenseDataModel.deleteExpense(expense: expense){
-            _ = ReadAndWriteFileUtil.deleteFileFromPath(path: path)
-        }
+        _ = ReadAndWriteFileUtil.deleteFileFromPath(path: path)
+        _ = ExpenseDataModel.deleteExpense(expense: expense)
         
         dismiss(animated: true, completion: nil)
     }

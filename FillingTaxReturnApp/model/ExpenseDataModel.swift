@@ -97,8 +97,15 @@ class ExpenseDataModel: BaseDataModel {
     
     static func newExpense() -> Expense{
         let context = persistentContainer.viewContext
-        let expense = NSEntityDescription.insertNewObject(forEntityName: "Expense", into: context) as! Expense
+        let entity = NSEntityDescription.entity(forEntityName: "Expense", in: context)
+        let expense = Expense(entity: entity!, insertInto: nil)
         expense.id = UUID()
+        return expense
+    }
+    
+    static func insertExpense(expense: Expense) -> Expense {
+        let context = persistentContainer.viewContext
+        context.insert(expense)
         return expense
     }
     
