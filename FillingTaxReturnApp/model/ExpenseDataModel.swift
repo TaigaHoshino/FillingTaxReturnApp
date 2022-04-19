@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ExpenseDataModel: BaseDataModel {
+class ExpenseDataModel: BaseDataModel<Expense> {
     
     static func deleteExpense(expense: Expense) -> Bool{
         let context = persistentContainer.viewContext
@@ -96,16 +96,8 @@ class ExpenseDataModel: BaseDataModel {
     }
     
     static func newExpense() -> Expense{
-        let context = persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Expense", in: context)
-        let expense = Expense(entity: entity!, insertInto: nil)
+        let expense = new();
         expense.id = UUID()
-        return expense
-    }
-    
-    static func insertExpense(expense: Expense) -> Expense {
-        let context = persistentContainer.viewContext
-        context.insert(expense)
         return expense
     }
     

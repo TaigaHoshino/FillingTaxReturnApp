@@ -46,7 +46,7 @@ class DetailedIncomeStaticTableViewController: UITableViewController {
     
     public func save() {
         if isNew {
-            IncomeDataModel.insertIncome(income: income!)
+            IncomeDataModel.insert(entity: income!)
         }
         income!.money = Int64(expense.getValue())
         income!.countingClass = Int16(Datasets.findIncomeClassByTitle(title: countingClass.text!)!["id"] as! Int)

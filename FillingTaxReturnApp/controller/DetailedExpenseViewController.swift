@@ -10,7 +10,7 @@ import UIKit
 class DetailedExpenseViewController: UIViewController {
     
     private var semiModalPresenter = SemiModalPresenter()
-    var expense: Expense!
+    private var expense: Expense!
     @IBOutlet weak var uiExpenseImage: UIImageView!
     private var expenseModalViewController: DetailedExpenseModalViewController!
     
@@ -35,6 +35,13 @@ class DetailedExpenseViewController: UIViewController {
     
     @IBAction func onUpdateButtonClick(_ sender: Any) {
         expenseModalViewController.saveAllContents()
+        let dialog = UIAlertController(title: nil, message: NSLocalizedString("save.complete", comment: ""), preferredStyle: .alert)
+        dialog.addAction(UIAlertAction(title: NSLocalizedString("close", comment: ""), style: .default, handler: {
+            _ in
+            self.dismiss(animated: true)
+        }))
+
+        self.present(dialog, animated: true)
     }
     
     @IBAction func onBackButtonClick(_ sender: Any) {
@@ -61,18 +68,4 @@ class DetailedExpenseViewController: UIViewController {
         return detailedExpenseViewController
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
-//
-//extension DetailedExpenseViewController: UIFontPickerViewDelegate, UIPickerViewDataSource{
-//    
-//}

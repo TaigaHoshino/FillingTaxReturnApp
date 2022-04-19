@@ -1,2 +1,4 @@
 "formattedStrDate" = "%@年%@年%@日";
 "swiftStrDate" = "yyyy-MM-dd HH:mm:ss XX";
+"save.complete" = "保存しました";
+"close" = "閉じる";

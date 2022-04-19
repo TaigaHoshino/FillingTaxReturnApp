@@ -8,17 +8,36 @@
 import CoreData
 import UIKit
 
-class BaseDataModel {
-    public static let persistentContainer: NSPersistentCloudKitContainer! = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+class BaseDataModel<TEntity : NSManagedObject> {
+
+    
+    public static var persistentContainer: NSPersistentCloudKitContainer! {
+        get{
+            return (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+        }
+    }
     
     static func save(){
         BaseDataModel.persistentContainer.saveContext()
     }
     
+    static func insert(entity: TEntity) -> TEntity {
+        let context = BaseDataModel.persistentContainer.viewContext
+        context.insert(entity)
+        return entity
+    }
+    
+    static func new() -> TEntity {
+        let context = BaseDataModel.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Expense", in: context)
+        let tEntity = TEntity(entity: entity!, insertInto: nil)
+        return tEntity
+    }
+    
     public static func getFetchedResultController<T: NSManagedObject>(sortDescriptors: [NSSortDescriptor] = [],
                                                                       predicate: NSPredicate? = nil,
-                                                               sectionNameKeyPath: String? = nil,
-                                                               cacheName: String? = nil) -> NSFetchedResultsController<T> {
+                                                                      sectionNameKeyPath: String? = nil,
+                                                                      cacheName: String? = nil) -> NSFetchedResultsController<T> {
         
         let context = BaseDataModel.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))

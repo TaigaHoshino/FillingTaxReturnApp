@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class IncomeDataModel: BaseDataModel {
+class IncomeDataModel: BaseDataModel<Income> {
     
     static func deleteIncome(income: Income) -> Bool{
         let context = persistentContainer.viewContext
@@ -36,15 +36,8 @@ class IncomeDataModel: BaseDataModel {
     }
     
     static func newIncome() -> Income{
-        let context = persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Income", in: context)
-        let income = Income(entity: entity!, insertInto: nil)
+        let income = new()
         income.id = UUID()
         return income
-    }
-    
-    static func insertIncome(income: Income) {
-        let context = persistentContainer.viewContext
-        context.insert(income)
     }
 }

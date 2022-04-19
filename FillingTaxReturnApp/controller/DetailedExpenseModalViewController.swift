@@ -7,6 +7,8 @@
 
 import UIKit
 
+// 支出オプション用モーダルビューのコントローラー
+// 支出系ビューのモーダルビューとして利用すること
 class DetailedExpenseModalViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
@@ -42,7 +44,7 @@ class DetailedExpenseModalViewController: UIViewController {
     public func saveAllContents(){
         
         if isNew {
-            _ = ExpenseDataModel.insertExpense(expense: expense!)
+            _ = ExpenseDataModel.insert(entity: expense!)
         }
         
         if tfExpense.text != "" {
@@ -58,6 +60,8 @@ class DetailedExpenseModalViewController: UIViewController {
         }
         
         expense?.isRegistered = isRegistered
+        
+        ExpenseDataModel.insert(entity: expense!)
         
         ExpenseDataModel.save()
     }
@@ -84,17 +88,6 @@ class DetailedExpenseModalViewController: UIViewController {
         isRegistered = !isRegistered
         setRegisterButtonUI(bool: isRegistered)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
