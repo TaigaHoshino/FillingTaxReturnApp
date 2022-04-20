@@ -56,7 +56,7 @@ class DetailedExpenseViewController: UIViewController {
     @IBAction func onDeleteButtonClick(_ sender: Any) {
         let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: expense.imageName!)!
         _ = ReadAndWriteFileUtil.deleteFileFromPath(path: path)
-        _ = ExpenseDataModel.deleteExpense(expense: expense)
+        _ = ExpenseDataModel.delete(entity: expense)
         
         dismiss(animated: true, completion: nil)
     }

@@ -20,7 +20,7 @@ class IncomeTableViewController: UITableViewController {
         let to = result["to"]!
         
         let predicate = NSPredicate(format: "(occuredAt >= %@) AND (occuredAt < %@)", from as CVarArg, to as CVarArg)
-        let controller: NSFetchedResultsController<Income> = BaseDataModel.getFetchedResultController(sortDescriptors: [sortDescripter], predicate: predicate, sectionNameKeyPath: "occuredAt")
+        let controller = IncomeDataModel.getFetchedResultController(sortDescriptors: [sortDescripter], predicate: predicate, sectionNameKeyPath: "occuredAt")
         controller.delegate = self
         
         return controller

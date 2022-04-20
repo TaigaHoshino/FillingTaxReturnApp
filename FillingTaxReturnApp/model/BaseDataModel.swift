@@ -23,29 +23,53 @@ class BaseDataModel<TEntity : NSManagedObject> {
     
     // 新規エンティティを保存する際はこのメソッドにエンティティを通すこと
     // すでにCoreDataに追加済みのエンティティを通すとバグが発生するため注意
-    static func insert(entity: TEntity) -> TEntity {
+    static func insert(entity: TEntity) {
         let context = BaseDataModel.persistentContainer.viewContext
         context.insert(entity)
-        return entity
     }
     
     static func new() -> TEntity {
         let context = BaseDataModel.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "Expense", in: context)
+        let entity = NSEntityDescription.entity(forEntityName: String(describing: TEntity.self), in: context)
         let tEntity = TEntity(entity: entity!, insertInto: nil)
         return tEntity
     }
     
-    public static func getFetchedResultController<T: NSManagedObject>(sortDescriptors: [NSSortDescriptor] = [],
+    static func delete(entity: TEntity) -> Bool {
+        let context = persistentContainer.viewContext
+        context.delete(entity)
+        do{
+            try context.save()
+        }
+        catch{
+            print(error)
+            return true
+        }
+        return false
+    }
+    
+    static func getAll() -> [TEntity] {
+        let context = persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: TEntity.self))
+        do {
+            let entities = try context.fetch(request) as! [TEntity]
+            return entities
+        }
+        catch{
+            fatalError()
+        }
+    }
+    
+    public static func getFetchedResultController(sortDescriptors: [NSSortDescriptor] = [],
                                                                       predicate: NSPredicate? = nil,
                                                                       sectionNameKeyPath: String? = nil,
-                                                                      cacheName: String? = nil) -> NSFetchedResultsController<T> {
+                                                                      cacheName: String? = nil) -> NSFetchedResultsController<TEntity> {
         
         let context = BaseDataModel.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<T>(entityName: String(describing: T.self))
+        let fetchRequest = NSFetchRequest<TEntity>(entityName: String(describing: TEntity.self))
         fetchRequest.sortDescriptors = sortDescriptors
         fetchRequest.predicate = predicate
-        return NSFetchedResultsController<T>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
+        return NSFetchedResultsController<TEntity>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
     }
 }
 

@@ -10,46 +10,20 @@ import CoreData
 
 class ExpenseDataModel: BaseDataModel<Expense> {
     
-    static func deleteExpense(expense: Expense) -> Bool{
-        let context = persistentContainer.viewContext
-        context.delete(expense)
-        do{
-            try context.save()
-        }
-        catch{
-            print(error)
-            return true
-        }
-        return false
-    }
-    
-    static func getExpenses() -> [Expense]{
-        let context = persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Expense")
-        do {
-            let expenses = try context.fetch(request) as! [Expense]
-            return expenses
-        }
-        catch{
-            fatalError()
-        }
-    }
-    
-    static func getExpenseById(id: UUID) -> [Expense]?{
+    static func getExpenseById(id: UUID) -> Expense?{
         let context = persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
         let predicate = NSPredicate(format: "id = '\(id)'")
         fetchRequest.predicate = predicate
-        var expenses: [Expense]?
+        var expense: Expense?
         
         do{
-            expenses = try context.fetch(fetchRequest)
-            
+            expense = try context.fetch(fetchRequest).first
         }
         catch let error as NSError {
             print("Error: \(error), \(error.userInfo)")
         }
-        return expenses
+        return expense
     }
     
     static func getExpensesByIsRegistered(isRegistered: Bool) -> [Expense]? {

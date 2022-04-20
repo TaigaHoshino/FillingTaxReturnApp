@@ -13,7 +13,12 @@ class DetailedExpenseModalViewController: UIViewController {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tfExpense: PriceTextField!
-    private var expense: Expense? = nil
+    private var _expense: Expense!
+    var expense: Expense {
+        get{
+            return _expense
+        }
+    }
     @IBOutlet weak var registerExpenseButton: UIButton!
     private var isRegistered: Bool = false
     private var isNew = false
@@ -21,45 +26,40 @@ class DetailedExpenseModalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if expense == nil {
-            expense = ExpenseDataModel.newExpense()
+        if ExpenseDataModel.getExpenseById(id: _expense!.id!) == nil {
             isNew = true
         }
 
-        if let expense = expense?.expense{
+        if let expense = _expense?.expense{
             tfExpense.setValue(value: Int(expense))
         }
         
-        if let isRegistered = expense?.isRegistered{
+        if let isRegistered = _expense?.isRegistered{
             self.isRegistered = Bool(truncating: NSNumber(value: isRegistered))
             setRegisterButtonUI(bool: self.isRegistered)
         }
         // Do any additional setup after loading the view.
     }
     
-    func getExpenses() -> Expense {
-        return expense!
-    }
-    
     public func saveAllContents(){
         
         if isNew {
-            _ = ExpenseDataModel.insert(entity: expense!)
+            ExpenseDataModel.insert(entity: _expense!)
         }
         
         if tfExpense.text != "" {
-            expense?.expense = Int64(tfExpense.getValue())
+            _expense?.expense = Int64(tfExpense.getValue())
         }
         
         let detailedExpenseTableView = self.children[0] as! DetailedExpenseStaticTableViewController
         
-        expense?.occuredAt = detailedExpenseTableView.tfOccuredDate.getDateValue()
+        _expense?.occuredAt = detailedExpenseTableView.tfOccuredDate.getDateValue()
         
         if let id = Datasets.findCountingClassIdByTitle(title: detailedExpenseTableView.tfCountingClass.text!){
-            expense?.countingClass = Int16(id)
+            _expense?.countingClass = Int16(id)
         }
         
-        expense?.isRegistered = isRegistered
+        _expense?.isRegistered = isRegistered
         
         ExpenseDataModel.save()
     }
@@ -78,7 +78,7 @@ class DetailedExpenseModalViewController: UIViewController {
     static func getInitialController(expense: Expense) -> DetailedExpenseModalViewController {
         let storyboard = UIStoryboard(name: "DetailedExpenseModal", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "DetailedExpenseModalViewController") as! DetailedExpenseModalViewController
-        viewController.expense = expense
+        viewController._expense = expense
         return viewController
     }
     

@@ -38,7 +38,7 @@ class EditDetailedIncomeViewController: UIViewController {
     }
     
     @IBAction func onDeleteButtonClick(_ sender: Any) {
-        IncomeDataModel.deleteIncome(income: income)
+        _ = IncomeDataModel.delete(entity: income)
     }
     
     @IBAction func onUpdateButtonClick(_ sender: Any) {

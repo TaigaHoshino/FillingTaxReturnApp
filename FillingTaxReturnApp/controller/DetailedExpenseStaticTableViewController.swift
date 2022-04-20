@@ -32,16 +32,16 @@ class DetailedExpenseStaticTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let parent = self.parent as! DetailedExpenseModalViewController
-        let expenses = parent.getExpenses()
+        let expense = parent.expense
         
-        if expenses.occuredAt == nil {
-            tfOccuredDate.setDateValue(date: expenses.createdAt!)
+        if expense.occuredAt == nil {
+            tfOccuredDate.setDateValue(date: expense.createdAt!)
         }
         else {
-            tfOccuredDate.setDateValue(date: expenses.occuredAt!)
+            tfOccuredDate.setDateValue(date: expense.occuredAt!)
         }
         
-        if let title = Datasets.findCountingClassTitleById(id: Int(expenses.countingClass)){
+        if let title = Datasets.findCountingClassTitleById(id: Int(expense.countingClass)){
             tfCountingClass.setDefaultValue(value: title)
         }
         else{

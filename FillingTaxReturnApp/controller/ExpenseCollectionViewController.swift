@@ -24,7 +24,7 @@ class ExpenseCollectionViewController: UIViewController, UICollectionViewDataSou
         let sortDescripter = NSSortDescriptor(key: "occuredAt", ascending: true)
         
         let predicate = NSPredicate(format: "isRegistered == false")
-        let controller: NSFetchedResultsController<Expense> = BaseDataModel.getFetchedResultController(sortDescriptors: [sortDescripter], predicate: predicate)
+        let controller = ExpenseDataModel.getFetchedResultController(sortDescriptors: [sortDescripter], predicate: predicate)
         controller.delegate = self
         
         return controller
@@ -86,9 +86,9 @@ class ExpenseCollectionViewController: UIViewController, UICollectionViewDataSou
     @IBAction func onTrashButtonClick(_ sender: Any) {
         
         for id in selectedCellsExpenseIds {
-            let expense = ExpenseDataModel.getExpenseById(id: id)!.first!
+            let expense = ExpenseDataModel.getExpenseById(id: id)!
             let path = ReadAndWriteFileUtil.getImageInDocumentsDirectory(filename: expense.imageName!)!
-            if ExpenseDataModel.deleteExpense(expense: expense){
+            if ExpenseDataModel.delete(entity: expense){
                 _ = ReadAndWriteFileUtil.deleteFileFromPath(path: path)
             }
         }
