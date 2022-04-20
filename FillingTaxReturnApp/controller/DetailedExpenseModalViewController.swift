@@ -61,8 +61,6 @@ class DetailedExpenseModalViewController: UIViewController {
         
         expense?.isRegistered = isRegistered
         
-        ExpenseDataModel.insert(entity: expense!)
-        
         ExpenseDataModel.save()
     }
     

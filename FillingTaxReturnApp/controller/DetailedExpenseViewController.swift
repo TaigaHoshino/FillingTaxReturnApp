@@ -33,7 +33,7 @@ class DetailedExpenseViewController: UIViewController {
         present(expenseModalViewController, animated: true, completion: nil)
     }
     
-    @IBAction func onUpdateButtonClick(_ sender: Any) {
+    @IBAction func onSaveButtonClick(_ sender: Any) {
         expenseModalViewController.saveAllContents()
         let dialog = UIAlertController(title: nil, message: NSLocalizedString("save.complete", comment: ""), preferredStyle: .alert)
         dialog.addAction(UIAlertAction(title: NSLocalizedString("close", comment: ""), style: .default, handler: {

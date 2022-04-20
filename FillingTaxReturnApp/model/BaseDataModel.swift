@@ -21,6 +21,8 @@ class BaseDataModel<TEntity : NSManagedObject> {
         BaseDataModel.persistentContainer.saveContext()
     }
     
+    // 新規エンティティを保存する際はこのメソッドにエンティティを通すこと
+    // すでにCoreDataに追加済みのエンティティを通すとバグが発生するため注意
     static func insert(entity: TEntity) -> TEntity {
         let context = BaseDataModel.persistentContainer.viewContext
         context.insert(entity)
