@@ -41,7 +41,7 @@ class EditDetailedIncomeViewController: UIViewController {
         _ = IncomeDataModel.delete(entity: income)
     }
     
-    @IBAction func onUpdateButtonClick(_ sender: Any) {
+    @IBAction func onSaveButtonClick(_ sender: Any) {
         detaliedIncomeStaticTableViewController.save()
     }
     
